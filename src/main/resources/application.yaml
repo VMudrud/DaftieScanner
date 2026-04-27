@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: daftiescanner
+
+tenants:
+  active: []
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
+
+daft:
+  dynamo:
+    endpoint: ${DAFT_DYNAMO_ENDPOINT:}
+    seen-table: ${DAFT_DYNAMO_SEEN_TABLE:daftiescanner_seen}
+    cursor-table: ${DAFT_DYNAMO_CURSOR_TABLE:daftiescanner_cursor}
+
+logging:
+  level:
+    root: INFO
+    com.vmudrud.daftiescanner: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n"

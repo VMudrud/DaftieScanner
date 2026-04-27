@@ -1,0 +1,22 @@
+tenants:
+  active:
+    - "1"
+
+daft:
+  dynamo:
+    endpoint: ""
+    seen-table: ""
+    cursor-table: ""
+
+tenant:
+  "1":
+    enabled: true
+    email: test@example.com
+    section: residential-to-rent
+    rental-price-min: 1200
+    rental-price-max: 2300
+    num-beds-min: 1
+    num-beds-max: 3
+    stored-shape-ids:
+      - "42"
+      - "43"

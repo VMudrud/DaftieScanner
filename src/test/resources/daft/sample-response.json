@@ -1,0 +1,49 @@
+{
+  "listings": [
+    {
+      "listing": {
+        "id": 12345678,
+        "title": "2 Bedroom Apartment to Rent in Somewhere, Dublin 7",
+        "publishDate": 1713960000000,
+        "price": "€2,100 per month",
+        "numBedrooms": "2 Bed",
+        "numBathrooms": "1 Bath",
+        "propertyType": "Apartment",
+        "seoFriendlyPath": "/for-rent/apartment/somewhere-dublin-7/12345678",
+        "state": "PUBLISHED",
+        "seller": {
+          "name": "Sample Agency",
+          "branch": "Dublin Branch",
+          "sellerType": "LETTING_AGENT",
+          "showContactForm": true
+        },
+        "media": {
+          "images": [
+            {
+              "size720x480": "https://media.daft.ie/sample/photo1_720x480.jpg",
+              "size72x52": "https://media.daft.ie/sample/photo1_72x52.jpg"
+            }
+          ]
+        },
+        "ber": {
+          "rating": "C3"
+        },
+        "point": {
+          "coordinates": [-6.2603, 53.3498]
+        },
+        "facilities": [
+          {"key": "parking", "name": "Parking"},
+          {"key": "washer_dryer", "name": "Washer/Dryer"}
+        ],
+        "primaryAreaId": 42
+      }
+    }
+  ],
+  "paging": {
+    "totalPages": 1,
+    "currentPage": 0,
+    "totalResults": 1,
+    "from": 0,
+    "pageSize": 20
+  }
+}
