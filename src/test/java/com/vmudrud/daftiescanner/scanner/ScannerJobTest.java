@@ -8,6 +8,7 @@ import com.vmudrud.daftiescanner.client.dto.SearchResult;
 import com.vmudrud.daftiescanner.config.dto.FilterSpec;
 import com.vmudrud.daftiescanner.config.dto.Tenant;
 import com.vmudrud.daftiescanner.notifier.Notifier;
+import com.vmudrud.daftiescanner.store.AlertThrottle;
 import com.vmudrud.daftiescanner.store.dto.Cursor;
 import com.vmudrud.daftiescanner.store.CursorStore;
 import com.vmudrud.daftiescanner.store.DedupStore;
@@ -43,6 +44,8 @@ class ScannerJobTest {
     @Mock DedupStore dedupStore;
     @Mock BlockDetector blockDetector;
     @Mock Notifier notifier;
+    @Mock MetricsPublisher metricsPublisher;
+    @Mock AlertThrottle alertThrottle;
 
     private TenantBackoff backoff;
     private EmailNotificationGuard emailGuard;
@@ -58,7 +61,8 @@ class ScannerJobTest {
                         new FilterSpec.Range(1200, 2300),
                         new FilterSpec.Range(1, 3),
                         List.of("42")));
-        job = new ScannerJob(tenant, daftClient, cursorStore, dedupStore, blockDetector, emailGuard, backoff);
+        job = new ScannerJob(tenant, daftClient, cursorStore, dedupStore, blockDetector,
+                emailGuard, backoff, metricsPublisher, alertThrottle);
     }
 
     @Test
@@ -157,12 +161,29 @@ class ScannerJobTest {
         when(cursorStore.load(TENANT_ID)).thenReturn(Optional.of(new Cursor(CURSOR_DATE, 0L, 0L)));
         when(daftClient.search(any())).thenThrow(new HttpClientErrorException(HttpStatus.FORBIDDEN));
         when(blockDetector.classify(any())).thenReturn(BlockStatus.BLOCKED);
+        when(alertThrottle.tryFire(anyString())).thenReturn(true);
 
         job.poll(); // must not throw
 
         assertThat(backoff.isBlocked()).isTrue();
         assertThat(backoff.level()).isEqualTo(1);
         verify(notifier, never()).notify(any(), any());
+        verify(metricsPublisher).recordBlockDetected(TENANT_ID);
+        verify(alertThrottle).tryFire(TENANT_ID + ":block_detected");
+    }
+
+    @Test
+    void poll_blocked_throttled_doesNotFireAlert() {
+        when(cursorStore.load(TENANT_ID)).thenReturn(Optional.of(new Cursor(CURSOR_DATE, 0L, 0L)));
+        when(daftClient.search(any())).thenThrow(new HttpClientErrorException(HttpStatus.FORBIDDEN));
+        when(blockDetector.classify(any())).thenReturn(BlockStatus.BLOCKED);
+        when(alertThrottle.tryFire(anyString())).thenReturn(false);
+
+        job.poll();
+
+        verify(metricsPublisher).recordBlockDetected(TENANT_ID);
+        verify(alertThrottle).tryFire(TENANT_ID + ":block_detected");
+        // no BLOCK ALERT FIRED log — just check the throttle was consulted
     }
 
     @Test
@@ -175,6 +196,8 @@ class ScannerJobTest {
 
         assertThat(backoff.isBlocked()).isTrue();
         assertThat(backoff.level()).isEqualTo(0); // rate-limit does not escalate level
+        verify(metricsPublisher).recordPollError(TENANT_ID, BlockStatus.RATE_LIMITED.name());
+        verify(metricsPublisher, never()).recordBlockDetected(any());
     }
 
     @Test
@@ -187,6 +210,7 @@ class ScannerJobTest {
 
         assertThat(backoff.level()).isEqualTo(0);
         assertThat(backoff.isBlocked()).isFalse();
+        verify(metricsPublisher).recordPollError(TENANT_ID, BlockStatus.UNKNOWN.name());
     }
 
     @Test
@@ -196,6 +220,7 @@ class ScannerJobTest {
                 .thenThrow(new HttpClientErrorException(HttpStatus.FORBIDDEN))
                 .thenReturn(searchResult());
         when(blockDetector.classify(any())).thenReturn(BlockStatus.BLOCKED);
+        when(alertThrottle.tryFire(anyString())).thenReturn(true);
 
         job.poll(); // blocked → level becomes 1
         assertThat(backoff.level()).isEqualTo(1);
@@ -215,6 +240,19 @@ class ScannerJobTest {
 
         verify(cursorStore, never()).save(any(), anyLong(), anyLong());
         verify(notifier, never()).notify(any(), any());
+    }
+
+    @Test
+    void poll_recordsListingsFound_andDuration() {
+        var cursor = new Cursor(CURSOR_DATE, 999L, System.currentTimeMillis());
+        when(cursorStore.load(TENANT_ID)).thenReturn(Optional.of(cursor));
+        when(daftClient.search(any())).thenReturn(searchResult(listing(1001L, OLD_DATE)));
+        when(dedupStore.seen(TENANT_ID, 1001L)).thenReturn(true);
+
+        job.poll();
+
+        verify(metricsPublisher).recordListingsFound(TENANT_ID, 1);
+        verify(metricsPublisher).recordPollDuration(eq(TENANT_ID), longThat(d -> d >= 0));
     }
 
     @Test
@@ -245,8 +283,10 @@ class ScannerJobTest {
         when(cursorStore.load("B")).thenReturn(Optional.of(cursor));
         when(daftClient.search(any())).thenReturn(searchResult(listing(1001L, NEW_DATE)));
 
-        var jobA = new ScannerJob(tenantA, daftClient, cursorStore, dedupStore, blockDetector, emailGuard, new TenantBackoff());
-        var jobB = new ScannerJob(tenantB, daftClient, cursorStore, dedupStore, blockDetector, emailGuard, new TenantBackoff());
+        var jobA = new ScannerJob(tenantA, daftClient, cursorStore, dedupStore, blockDetector,
+                emailGuard, new TenantBackoff(), metricsPublisher, alertThrottle);
+        var jobB = new ScannerJob(tenantB, daftClient, cursorStore, dedupStore, blockDetector,
+                emailGuard, new TenantBackoff(), metricsPublisher, alertThrottle);
 
         var latch = new CountDownLatch(1);
         ExecutorService pool = Executors.newFixedThreadPool(2);

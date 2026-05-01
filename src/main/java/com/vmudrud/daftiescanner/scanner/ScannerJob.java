@@ -6,9 +6,11 @@ import com.vmudrud.daftiescanner.client.DaftClient;
 import com.vmudrud.daftiescanner.client.dto.ListingResult;
 import com.vmudrud.daftiescanner.client.dto.SearchResult;
 import com.vmudrud.daftiescanner.config.dto.Tenant;
+import com.vmudrud.daftiescanner.store.AlertThrottle;
 import com.vmudrud.daftiescanner.store.dto.Cursor;
 import com.vmudrud.daftiescanner.store.CursorStore;
 import com.vmudrud.daftiescanner.store.DedupStore;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.Instant;
@@ -16,6 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Slf4j
+@RequiredArgsConstructor
 class ScannerJob {
 
     private final Tenant tenant;
@@ -25,18 +28,8 @@ class ScannerJob {
     private final BlockDetector blockDetector;
     private final EmailNotificationGuard emailGuard;
     private final TenantBackoff backoff;
-
-    ScannerJob(Tenant tenant, DaftClient daftClient, CursorStore cursorStore,
-               DedupStore dedupStore, BlockDetector blockDetector,
-               EmailNotificationGuard emailGuard, TenantBackoff backoff) {
-        this.tenant = tenant;
-        this.daftClient = daftClient;
-        this.cursorStore = cursorStore;
-        this.dedupStore = dedupStore;
-        this.blockDetector = blockDetector;
-        this.emailGuard = emailGuard;
-        this.backoff = backoff;
-    }
+    private final MetricsPublisher metricsPublisher;
+    private final AlertThrottle alertThrottle;
 
     void poll() {
         long start = System.currentTimeMillis();
@@ -47,6 +40,8 @@ class ScannerJob {
                     .listings().stream()
                     .map(SearchResult.ListingWrapper::listing)
                     .toList();
+
+            metricsPublisher.recordListingsFound(tenantId, listings.size());
 
             if (cursorOpt.isEmpty()) {
                 coldStart(tenantId, listings, start);
@@ -66,17 +61,20 @@ class ScannerJob {
                 .orElse(Instant.now().toEpochMilli());
         long topId = listings.isEmpty() ? 0L : listings.get(0).id();
         cursorStore.save(tenantId, maxDate, topId);
+        long elapsed = System.currentTimeMillis() - start;
         log.info("tenant={} cold-start found={} new=0 skipped={} elapsed={}ms",
-                tenantId, listings.size(), listings.size(), System.currentTimeMillis() - start);
+                tenantId, listings.size(), listings.size(), elapsed);
+        metricsPublisher.recordPollDuration(tenantId, elapsed);
         backoff.reset();
     }
 
     private void normalPoll(String tenantId, List<ListingResult> listings, Cursor cursor, long start) {
         long notified = listings.stream().filter(l -> processListing(tenantId, l, cursor)).count();
         advanceCursor(tenantId, listings, cursor);
+        long elapsed = System.currentTimeMillis() - start;
         log.info("tenant={} found={} new={} skipped={} elapsed={}ms",
-                tenantId, listings.size(), notified, listings.size() - notified,
-                System.currentTimeMillis() - start);
+                tenantId, listings.size(), notified, listings.size() - notified, elapsed);
+        metricsPublisher.recordPollDuration(tenantId, elapsed);
         backoff.reset();
     }
 
@@ -93,6 +91,8 @@ class ScannerJob {
         if (listing.publishDate() <= cursor.lastPostedAt()) {
             return false;
         }
+        log.info("tenant={} new listing id={} title=\"{}\" price=\"{}\" path={}",
+                tenantId, listing.id(), listing.title(), listing.price(), listing.seoFriendlyPath());
         return emailGuard.tryNotify(tenant, listing);
     }
 
@@ -107,9 +107,15 @@ class ScannerJob {
 
     private void handleError(String tenantId, Exception e, long start) {
         BlockStatus status = blockDetector.classify(e);
+        metricsPublisher.recordPollError(tenantId, status.name());
         switch (status) {
             case BLOCKED -> {
                 backoff.recordBlock();
+                metricsPublisher.recordBlockDetected(tenantId);
+                if (alertThrottle.tryFire(tenantId + ":block_detected")) {
+                    log.warn("tenant={} BLOCK ALERT FIRED backoff-level={} until={}",
+                            tenantId, backoff.level(), backoff.blockedUntil());
+                }
                 log.warn("tenant={} BLOCKED backoff-level={} until={}", tenantId, backoff.level(), backoff.blockedUntil());
             }
             case RATE_LIMITED -> {
@@ -118,6 +124,7 @@ class ScannerJob {
             }
             default -> log.error("tenant={} poll error: {}", tenantId, e.getMessage(), e);
         }
+        metricsPublisher.recordPollDuration(tenantId, System.currentTimeMillis() - start);
         log.info("tenant={} found=0 new=0 skipped=0 elapsed={}ms", tenantId, System.currentTimeMillis() - start);
     }
 }

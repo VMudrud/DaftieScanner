@@ -3,6 +3,7 @@ package com.vmudrud.daftiescanner.store;
 import com.vmudrud.daftiescanner.store.dto.Cursor;
 import com.vmudrud.daftiescanner.store.entity.CursorItem;
 import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
@@ -25,22 +26,21 @@ import java.util.Optional;
 
 @Slf4j
 @Component
+@RequiredArgsConstructor
 @ConditionalOnExpression("!'${daft.dynamo.cursor-table:}'.isBlank()")
 class DynamoCursorStore implements CursorStore {
 
     private final DynamoDbClient rawClient;
-    private final DynamoDbTable<CursorItem> table;
+    private final DynamoDbEnhancedClient enhancedClient;
 
-    public DynamoCursorStore(
-            DynamoDbClient rawClient,
-            DynamoDbEnhancedClient enhancedClient,
-            @Value("${daft.dynamo.cursor-table}") String tableName) {
-        this.rawClient = rawClient;
-        this.table = enhancedClient.table(tableName, TableSchema.fromBean(CursorItem.class));
-    }
+    @Value("${daft.dynamo.cursor-table}")
+    private String tableName;
+
+    private DynamoDbTable<CursorItem> table;
 
     @PostConstruct
-    private void ensureTable() {
+    void init() {
+        table = enhancedClient.table(tableName, TableSchema.fromBean(CursorItem.class));
         if (tableExists()) {
             return;
         }

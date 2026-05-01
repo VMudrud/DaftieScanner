@@ -1,0 +1,15 @@
+[Unit]
+Description=DaftieScanner
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/opt/daftiescanner
+ExecStart=/usr/bin/docker compose -f docker-compose.yml -f docker-compose.aws.yml up -d
+ExecStop=/usr/bin/docker compose -f docker-compose.yml -f docker-compose.aws.yml down
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

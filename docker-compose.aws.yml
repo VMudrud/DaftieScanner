@@ -1,0 +1,13 @@
+Prepservices:
+  app:
+    image: daftiescanner:latest
+    environment:
+      SSM_PARAM_PREFIX: /daftiescanner/prod
+      MANAGEMENT_METRICS_EXPORT_CLOUDWATCH_ENABLED: "true"
+    restart: unless-stopped
+    logging:
+      driver: awslogs
+      options:
+        awslogs-group: /daftiescanner/app
+        awslogs-region: eu-west-1
+        awslogs-stream-prefix: app

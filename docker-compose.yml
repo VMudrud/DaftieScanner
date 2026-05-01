@@ -2,22 +2,35 @@ services:
   dynamodb-local:
     image: amazon/dynamodb-local:2.5.2
     container_name: dynamodb-local
-    command: "-jar DynamoDBLocal.jar -sharedDb -inMemory"
+    user: root
+    working_dir: /home/dynamodblocal
+    # Default: persistent storage in the dynamodb-data volume.
+    # Override DYNAMODB_LOCAL_FLAGS=-inMemory in .env for ephemeral runs.
+    command: "-jar DynamoDBLocal.jar -sharedDb ${DYNAMODB_LOCAL_FLAGS:--dbPath ./data}"
+    volumes:
+      - dynamodb-data:/home/dynamodblocal/data
     ports:
       - "8000:8000"
     healthcheck:
-      test: ["CMD-SHELL", "curl -sf http://localhost:8000 || exit 1"]
+      test: ["CMD-SHELL", "curl -s http://localhost:8000 -o /dev/null"]
       interval: 5s
       timeout: 3s
       retries: 10
 
   app:
     build: .
+    image: daftiescanner:latest
     env_file: .env
     environment:
       DAFT_DYNAMO_ENDPOINT: http://dynamodb-local:8000
+      JAVA_TOOL_OPTIONS: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
     depends_on:
       dynamodb-local:
         condition: service_healthy
     ports:
       - "8080:8080"
+      - "5005:5005"
+    restart: unless-stopped
+
+volumes:
+  dynamodb-data:

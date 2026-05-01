@@ -1,6 +1,6 @@
 package com.vmudrud.daftiescanner.store;
 
-import com.vmudrud.daftiescanner.store.entity.SeenItem;
+import com.vmudrud.daftiescanner.store.entity.AlertItem;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,22 +27,26 @@ import java.time.temporal.ChronoUnit;
 @Component
 @RequiredArgsConstructor
 @ConditionalOnExpression("!'${daft.dynamo.seen-table:}'.isBlank()")
-class DynamoDedupStore implements DedupStore {
+public class AlertThrottle {
 
-    private static final long TTL_DAYS = 30;
-    private static final String EMAIL_KEY_PREFIX = "email:";
+    static final long THROTTLE_WINDOW_SECONDS = 3600L;
+    static final long TTL_HOURS = 24L;
 
     private final DynamoDbClient rawClient;
     private final DynamoDbEnhancedClient enhancedClient;
 
-    @Value("${daft.dynamo.seen-table}")
+    @Value("${daft.dynamo.alerts-table:daftiescanner_alerts}")
     private String tableName;
 
-    private DynamoDbTable<SeenItem> table;
+    private DynamoDbTable<AlertItem> table;
 
     @PostConstruct
     void init() {
-        table = enhancedClient.table(tableName, TableSchema.fromBean(SeenItem.class));
+        table = enhancedClient.table(tableName, TableSchema.fromBean(AlertItem.class));
+        ensureTable();
+    }
+
+    void ensureTable() {
         if (tableExists()) {
             return;
         }
@@ -50,12 +54,10 @@ class DynamoDedupStore implements DedupStore {
             rawClient.createTable(r -> r
                 .tableName(table.tableName())
                 .keySchema(
-                    KeySchemaElement.builder().attributeName(SeenItem.COL_TENANT_ID).keyType(KeyType.HASH).build(),
-                    KeySchemaElement.builder().attributeName(SeenItem.COL_LISTING_ID).keyType(KeyType.RANGE).build()
+                    KeySchemaElement.builder().attributeName(AlertItem.COL_ALERT_KEY).keyType(KeyType.HASH).build()
                 )
                 .attributeDefinitions(
-                    AttributeDefinition.builder().attributeName(SeenItem.COL_TENANT_ID).attributeType(ScalarAttributeType.S).build(),
-                    AttributeDefinition.builder().attributeName(SeenItem.COL_LISTING_ID).attributeType(ScalarAttributeType.N).build()
+                    AttributeDefinition.builder().attributeName(AlertItem.COL_ALERT_KEY).attributeType(ScalarAttributeType.S).build()
                 )
                 .billingMode(BillingMode.PAY_PER_REQUEST)
             );
@@ -74,33 +76,20 @@ class DynamoDedupStore implements DedupStore {
         }
     }
 
-    @Override
-    public boolean seen(String tenantId, long listingId) {
-        return table.getItem(Key.builder()
-            .partitionValue(tenantId)
-            .sortValue(listingId)
-            .build()) != null;
-    }
-
-    @Override
-    public boolean notifiedByEmail(String email, long listingId) {
-        return seen(EMAIL_KEY_PREFIX + email, listingId);
-    }
-
-    @Override
-    public void markNotifiedByEmail(String email, long listingId) {
-        markSeen(EMAIL_KEY_PREFIX + email, listingId, Instant.now());
-    }
-
-    @Override
-    public void markSeen(String tenantId, long listingId, Instant postedAt) {
+    public boolean tryFire(String alertKey) {
         var now = Instant.now();
-        var item = new SeenItem();
-        item.setTenantId(tenantId);
-        item.setListingId(listingId);
-        item.setPostedAt(postedAt.toEpochMilli());
-        item.setFirstSeenAt(now.toEpochMilli());
-        item.setTtl(now.plus(TTL_DAYS, ChronoUnit.DAYS).getEpochSecond());
+        var existing = table.getItem(Key.builder().partitionValue(alertKey).build());
+        if (existing != null && existing.getLastFiredAt() != null) {
+            long secondsSinceLast = now.getEpochSecond() - (existing.getLastFiredAt() / 1000);
+            if (secondsSinceLast < THROTTLE_WINDOW_SECONDS) {
+                return false;
+            }
+        }
+        var item = new AlertItem();
+        item.setAlertKey(alertKey);
+        item.setLastFiredAt(now.toEpochMilli());
+        item.setTtl(now.plus(TTL_HOURS, ChronoUnit.HOURS).getEpochSecond());
         table.putItem(item);
+        return true;
     }
 }

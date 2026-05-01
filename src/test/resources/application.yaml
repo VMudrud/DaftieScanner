@@ -7,6 +7,7 @@ daft:
     endpoint: ""
     seen-table: ""
     cursor-table: ""
+    alerts-table: ""
 
 tenant:
   "1":

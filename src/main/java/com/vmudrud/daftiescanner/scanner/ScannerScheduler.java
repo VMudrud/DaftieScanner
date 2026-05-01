@@ -3,10 +3,13 @@ package com.vmudrud.daftiescanner.scanner;
 import com.vmudrud.daftiescanner.client.BlockDetector;
 import com.vmudrud.daftiescanner.client.DaftClient;
 import com.vmudrud.daftiescanner.config.dto.Tenant;
+import com.vmudrud.daftiescanner.store.AlertThrottle;
 import com.vmudrud.daftiescanner.store.CursorStore;
 import com.vmudrud.daftiescanner.store.DedupStore;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.scheduling.Trigger;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
@@ -21,13 +24,18 @@ import java.util.Random;
 
 @Slf4j
 @Component
+@RequiredArgsConstructor
 @ConditionalOnExpression("!'${daft.dynamo.seen-table:}'.isBlank()")
 class ScannerScheduler implements SchedulingConfigurer {
 
-    private static final int BASE_DELAY_SECONDS = 60;
-    private static final int JITTER_MIN_SECONDS = 40;
-    private static final int JITTER_RANGE_SECONDS = 40; // 40–80s range
+    @Value("${daft.scanner.base-delay-seconds:60}")
+    private int baseDelaySeconds;
+    @Value("${daft.scanner.jitter-min-seconds:40}")
+    private int jitterMinSeconds;
+    @Value("${daft.scanner.jitter-range-seconds:40}")
+    private int jitterRangeSeconds;
 
+    @Qualifier("tenants")
     private final List<Tenant> tenants;
     private final DaftClient daftClient;
     private final CursorStore cursorStore;
@@ -35,23 +43,8 @@ class ScannerScheduler implements SchedulingConfigurer {
     private final BlockDetector blockDetector;
     private final EmailNotificationGuard emailGuard;
     private final ThreadPoolTaskScheduler scannerTaskScheduler;
-
-    ScannerScheduler(
-            @Qualifier("tenants") List<Tenant> tenants,
-            DaftClient daftClient,
-            CursorStore cursorStore,
-            DedupStore dedupStore,
-            BlockDetector blockDetector,
-            EmailNotificationGuard emailGuard,
-            ThreadPoolTaskScheduler scannerTaskScheduler) {
-        this.tenants = tenants;
-        this.daftClient = daftClient;
-        this.cursorStore = cursorStore;
-        this.dedupStore = dedupStore;
-        this.blockDetector = blockDetector;
-        this.emailGuard = emailGuard;
-        this.scannerTaskScheduler = scannerTaskScheduler;
-    }
+    private final MetricsPublisher metricsPublisher;
+    private final AlertThrottle alertThrottle;
 
     @Override
     public void configureTasks(ScheduledTaskRegistrar registrar) {
@@ -59,7 +52,7 @@ class ScannerScheduler implements SchedulingConfigurer {
         tenants.forEach(tenant -> {
             var backoff = new TenantBackoff();
             var job = new ScannerJob(tenant, daftClient, cursorStore, dedupStore,
-                    blockDetector, emailGuard, backoff);
+                    blockDetector, emailGuard, backoff, metricsPublisher, alertThrottle);
             registrar.addTriggerTask(job::poll, buildTrigger(backoff));
             log.info("Scheduled scanner for tenant={}", tenant.id());
         });
@@ -69,11 +62,11 @@ class ScannerScheduler implements SchedulingConfigurer {
         var rng = new Random();
         return ctx -> {
             var base = Optional.ofNullable(ctx.lastCompletion()).orElse(Instant.now());
-            long jitter = JITTER_MIN_SECONDS + rng.nextInt(JITTER_RANGE_SECONDS);
+            long jitter = jitterMinSeconds + rng.nextInt(jitterRangeSeconds);
             if (backoff.isBlocked()) {
                 return backoff.blockedUntil().plusSeconds(jitter);
             }
-            return base.plusSeconds(BASE_DELAY_SECONDS + jitter);
+            return base.plusSeconds(baseDelaySeconds + jitter);
         };
     }
 }

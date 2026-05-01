@@ -16,16 +16,27 @@ management:
   endpoint:
     health:
       show-details: when-authorized
+  metrics:
+    export:
+      cloudwatch:
+        namespace: DaftieScanner
+        step: 1m
+        enabled: ${MANAGEMENT_METRICS_EXPORT_CLOUDWATCH_ENABLED:false}
 
 daft:
   dynamo:
     endpoint: ${DAFT_DYNAMO_ENDPOINT:}
     seen-table: ${DAFT_DYNAMO_SEEN_TABLE:daftiescanner_seen}
     cursor-table: ${DAFT_DYNAMO_CURSOR_TABLE:daftiescanner_cursor}
+  scanner:
+    base-delay-seconds: 60
+    jitter-min-seconds: 40
+    jitter-range-seconds: 40
 
 logging:
   level:
     root: INFO
-    com.vmudrud.daftiescanner: INFO
+    # Set to DEBUG to log every received listing (id, title, price, path)
+    com.vmudrud.daftiescanner.client.DaftClient: INFO
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n"
