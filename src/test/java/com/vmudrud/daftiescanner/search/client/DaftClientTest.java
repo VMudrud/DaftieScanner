@@ -28,7 +28,7 @@ class DaftClientTest {
             "residential-to-rent",
             new FilterSpec.Range(1200, 2300),
             new FilterSpec.Range(1, 2),
-            List.of("42", "43")
+            List.of("42", "43"), List.of()
     );
 
     @BeforeEach

@@ -4,6 +4,7 @@ import com.vmudrud.daftiescanner.common.event.NewListingsFoundEvent;
 import com.vmudrud.daftiescanner.search.client.BlockDetector;
 import com.vmudrud.daftiescanner.search.client.BlockStatus;
 import com.vmudrud.daftiescanner.search.client.DaftClient;
+import com.vmudrud.daftiescanner.common.listing.BerRating;
 import com.vmudrud.daftiescanner.common.listing.ListingResult;
 import com.vmudrud.daftiescanner.common.listing.SearchResult;
 import com.vmudrud.daftiescanner.common.tenant.Tenant;
@@ -48,6 +49,7 @@ class ScannerJob {
                     .toList();
 
             metricsPublisher.recordListingsFound(tenantId, listings.size());
+            warnUnknownBerRatings(tenantId, listings);
 
             if (cursorOpt.isEmpty() || forceColdStart.getAndSet(false)) {
                 coldStart(tenantId, listings, start);
@@ -93,6 +95,7 @@ class ScannerJob {
     }
 
     private List<ListingResult> collectNewListings(String tenantId, List<ListingResult> listings, Cursor cursor) {
+        List<BerRating> berFilter = tenant.filter().berRatings();
         List<ListingResult> result = new ArrayList<>();
         listings.forEach(listing -> {
             if (dedupStore.seen(tenantId, listing.id())) {
@@ -102,11 +105,36 @@ class ScannerJob {
             if (listing.publishDate() <= cursor.lastPostedAt()) {
                 return;
             }
-            log.info("tenant={} new listing id={} title=\"{}\" price=\"{}\" path={}",
-                    tenantId, listing.id(), listing.title(), listing.price(), listing.seoFriendlyPath());
+            if (!berFilter.isEmpty() && !passedBerFilter(listing, berFilter)) {
+                log.info("tenant={} skipped by BER filter id={} title=\"{}\" price=\"{}\" ber={} path={}",
+                        tenantId, listing.id(), listing.title(), listing.price(), berCode(listing), listing.seoFriendlyPath());
+                return;
+            }
+            log.info("tenant={} new listing id={} title=\"{}\" price=\"{}\" ber={} path={}",
+                    tenantId, listing.id(), listing.title(), listing.price(), berCode(listing), listing.seoFriendlyPath());
             result.add(listing);
         });
         return result;
+    }
+
+    private static String berCode(ListingResult listing) {
+        return listing.ber() != null ? listing.ber().rating() : "none";
+    }
+
+    private boolean passedBerFilter(ListingResult listing, List<BerRating> berFilter) {
+        if (listing.ber() == null) return false;
+        return BerRating.fromCode(listing.ber().rating())
+                .map(berFilter::contains)
+                .orElse(false);
+    }
+
+    private void warnUnknownBerRatings(String tenantId, List<ListingResult> listings) {
+        listings.stream()
+                .filter(l -> l.ber() != null)
+                .map(l -> l.ber().rating())
+                .filter(code -> BerRating.fromCode(code).isEmpty())
+                .distinct()
+                .forEach(code -> log.warn("tenant={} unknown BER rating code={}", tenantId, code));
     }
 
     private void advanceCursor(String tenantId, List<ListingResult> listings, Cursor cursor) {

@@ -62,6 +62,7 @@ tenant:
     num-beds-max: ${TENANT_1_NUM_BEDS_MAX:0}
     stored-shape-ids: ${TENANT_1_STORED_SHAPE_IDS:}
     notifiers: ${TENANT_1_NOTIFIERS:email}
+    ber-ratings: ${TENANT_1_BER_RATINGS:}
 
 logging:
   level:

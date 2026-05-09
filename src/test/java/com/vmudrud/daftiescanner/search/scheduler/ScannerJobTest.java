@@ -1,6 +1,7 @@
 package com.vmudrud.daftiescanner.search.scheduler;
 
 import com.vmudrud.daftiescanner.common.event.NewListingsFoundEvent;
+import com.vmudrud.daftiescanner.common.listing.BerRating;
 import com.vmudrud.daftiescanner.search.client.BlockDetector;
 import com.vmudrud.daftiescanner.search.client.BlockStatus;
 import com.vmudrud.daftiescanner.search.client.DaftClient;
@@ -28,6 +29,7 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
@@ -58,7 +60,7 @@ class ScannerJobTest {
                 new FilterSpec("residential-to-rent",
                         new FilterSpec.Range(1200, 2300),
                         new FilterSpec.Range(1, 3),
-                        List.of("42")),
+                        List.of("42"), List.of()),
                 List.of("email"));
         job = new ScannerJob(tenant, daftClient, cursorStore, dedupStore, blockDetector,
                 eventPublisher, backoff, metricsPublisher, alertThrottle, new AtomicBoolean(false));
@@ -277,11 +279,90 @@ class ScannerJobTest {
         assertThat(captor.getValue().listings()).hasSize(1);
     }
 
+    @Test
+    void poll_berFilter_matchingRating_notifies() {
+        var berJob = jobWithBerFilter(List.of(BerRating.B1, BerRating.B2));
+        var cursor = new Cursor(CURSOR_DATE, 999L, System.currentTimeMillis());
+        when(cursorStore.load(TENANT_ID)).thenReturn(Optional.of(cursor));
+        when(daftClient.search(any())).thenReturn(searchResult(listingWithBer(1001L, NEW_DATE, "B1")));
+        when(dedupStore.seen(TENANT_ID, 1001L)).thenReturn(false);
+
+        berJob.poll();
+
+        verify(eventPublisher).publishEvent(any(NewListingsFoundEvent.class));
+    }
+
+    @Test
+    void poll_berFilter_nonMatchingRating_doesNotNotify() {
+        var berJob = jobWithBerFilter(List.of(BerRating.A1, BerRating.A2));
+        var cursor = new Cursor(CURSOR_DATE, 999L, System.currentTimeMillis());
+        when(cursorStore.load(TENANT_ID)).thenReturn(Optional.of(cursor));
+        when(daftClient.search(any())).thenReturn(searchResult(listingWithBer(1001L, NEW_DATE, "C1")));
+        when(dedupStore.seen(TENANT_ID, 1001L)).thenReturn(false);
+
+        berJob.poll();
+
+        verify(eventPublisher, never()).publishEvent(any());
+    }
+
+    @Test
+    void poll_berFilter_nullBer_doesNotNotify() {
+        var berJob = jobWithBerFilter(List.of(BerRating.A1));
+        var cursor = new Cursor(CURSOR_DATE, 999L, System.currentTimeMillis());
+        when(cursorStore.load(TENANT_ID)).thenReturn(Optional.of(cursor));
+        when(daftClient.search(any())).thenReturn(searchResult(listing(1001L, NEW_DATE)));
+        when(dedupStore.seen(TENANT_ID, 1001L)).thenReturn(false);
+
+        berJob.poll();
+
+        verify(eventPublisher, never()).publishEvent(any());
+    }
+
+    @Test
+    void poll_berFilter_exemptBerViaSI666_matchesExempt() {
+        var berJob = jobWithBerFilter(List.of(BerRating.EXEMPT));
+        var cursor = new Cursor(CURSOR_DATE, 999L, System.currentTimeMillis());
+        when(cursorStore.load(TENANT_ID)).thenReturn(Optional.of(cursor));
+        when(daftClient.search(any())).thenReturn(searchResult(listingWithBer(1001L, NEW_DATE, "SI_666")));
+        when(dedupStore.seen(TENANT_ID, 1001L)).thenReturn(false);
+
+        berJob.poll();
+
+        verify(eventPublisher).publishEvent(any(NewListingsFoundEvent.class));
+    }
+
+    @Test
+    void poll_unknownBerCode_logsWarnDoesNotThrow() {
+        var cursor = new Cursor(CURSOR_DATE, 999L, System.currentTimeMillis());
+        when(cursorStore.load(TENANT_ID)).thenReturn(Optional.of(cursor));
+        when(daftClient.search(any())).thenReturn(searchResult(listingWithBer(1001L, OLD_DATE, "ZZ_UNKNOWN")));
+        when(dedupStore.seen(TENANT_ID, 1001L)).thenReturn(false);
+
+        assertThatNoException().isThrownBy(job::poll);
+    }
+
     // --- helpers ---
+
+    private ScannerJob jobWithBerFilter(List<BerRating> berRatings) {
+        var filteredTenant = new Tenant(TENANT_ID, true, "test@example.com",
+                new FilterSpec("residential-to-rent",
+                        new FilterSpec.Range(1200, 2300),
+                        new FilterSpec.Range(1, 3),
+                        List.of("42"), berRatings),
+                List.of("email"));
+        return new ScannerJob(filteredTenant, daftClient, cursorStore, dedupStore, blockDetector,
+                eventPublisher, backoff, metricsPublisher, alertThrottle, new AtomicBoolean(false));
+    }
 
     private ListingResult listing(long id, long publishDate) {
         return new ListingResult(id, "Test Apt", publishDate, "€2,000 per month",
                 null, null, null, "/listing/" + id, null, null, null, null, null, null, null);
+    }
+
+    private ListingResult listingWithBer(long id, long publishDate, String berCode) {
+        return new ListingResult(id, "Test Apt", publishDate, "€2,000 per month",
+                null, null, null, "/listing/" + id, null, null, null,
+                new ListingResult.BerInfo(berCode), null, null, null);
     }
 
     private SearchResult searchResult(ListingResult... listings) {

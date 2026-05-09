@@ -1,5 +1,6 @@
 package com.vmudrud.daftiescanner.common.tenant;
 
+import com.vmudrud.daftiescanner.common.listing.BerRating;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.bind.Bindable;
@@ -46,11 +47,16 @@ class TenantConfiguration {
     }
 
     private FilterSpec toFilterSpec(TenantSlot slot) {
+        List<BerRating> berRatings = slot.getBerRatings().stream()
+                .map(code -> BerRating.fromCode(code)
+                        .orElseThrow(() -> new IllegalStateException("Unknown BER rating in config: " + code)))
+                .toList();
         return new FilterSpec(
                 slot.getSection(),
                 new FilterSpec.Range(slot.getRentalPriceMin(), slot.getRentalPriceMax()),
                 new FilterSpec.Range(slot.getNumBedsMin(), slot.getNumBedsMax()),
-                slot.getStoredShapeIds()
+                slot.getStoredShapeIds(),
+                berRatings
         );
     }
 
@@ -86,5 +92,6 @@ class TenantConfiguration {
         private int numBedsMax;
         private List<String> storedShapeIds = List.of();
         private List<String> notifiers = List.of();
+        private List<String> berRatings = List.of();
     }
 }
