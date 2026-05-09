@@ -1,9 +1,17 @@
 spring:
   application:
     name: daftiescanner
-
-tenants:
-  active: []
+  mail:
+    host: ${SMTP_HOST:localhost}
+    port: ${SMTP_PORT:1025}
+    username: ${SMTP_USER:}
+    password: ${SMTP_PASS:}
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enable: false
 
 server:
   port: 8080
@@ -32,11 +40,33 @@ daft:
     base-delay-seconds: 60
     jitter-min-seconds: 40
     jitter-range-seconds: 40
+    force-cold-start: ${DAFT_FORCE_COLD_START:false}
+  mail:
+    from: ${DAFT_MAIL_FROM:noreply@daftie.scanner}
+
+# Tenant configuration example.
+# Override TENANTS_ACTIVE and TENANT_N_* via environment variables or .env file.
+# TENANT_N_NOTIFIERS is a comma-separated list; supported values: email, logging
+tenants:
+  active: ${TENANTS_ACTIVE:}
+
+# Sample tenant — override all TENANT_1_* via environment or .env
+tenant:
+  "1":
+    enabled: ${TENANT_1_ENABLED:false}
+    email: ${TENANT_1_EMAIL:noreply@example.com}
+    section: ${TENANT_1_SECTION:residential-to-rent}
+    rental-price-min: ${TENANT_1_RENTAL_PRICE_MIN:0}
+    rental-price-max: ${TENANT_1_RENTAL_PRICE_MAX:0}
+    num-beds-min: ${TENANT_1_NUM_BEDS_MIN:0}
+    num-beds-max: ${TENANT_1_NUM_BEDS_MAX:0}
+    stored-shape-ids: ${TENANT_1_STORED_SHAPE_IDS:}
+    notifiers: ${TENANT_1_NOTIFIERS:email}
 
 logging:
   level:
     root: INFO
     # Set to DEBUG to log every received listing (id, title, price, path)
-    com.vmudrud.daftiescanner.client.DaftClient: INFO
+    com.vmudrud.daftiescanner.search.client.DaftClient: INFO
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n"

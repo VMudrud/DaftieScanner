@@ -31,7 +31,7 @@ RUN apt-get update \
 
 WORKDIR /app
 
-COPY --from=builder /build/target/daftiescanner-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=builder /build/target/daftiescanner-*.jar app.jar
 COPY entrypoint.sh ./
 RUN chmod +x entrypoint.sh
 

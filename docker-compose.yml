@@ -17,16 +17,28 @@ services:
       timeout: 3s
       retries: 10
 
+  mailhog:
+    image: mailhog/mailhog:v1.0.1
+    container_name: mailhog
+    ports:
+      - "1025:1025"   # SMTP
+      - "8025:8025"   # Web UI (http://localhost:8025)
+
   app:
     build: .
     image: daftiescanner:latest
     env_file: .env
     environment:
       DAFT_DYNAMO_ENDPOINT: http://dynamodb-local:8000
+      SMTP_HOST: mailhog
+      SMTP_PORT: 1025
+      DAFT_MAIL_FROM: noreply@daftie.scanner
       JAVA_TOOL_OPTIONS: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
     depends_on:
       dynamodb-local:
         condition: service_healthy
+      mailhog:
+        condition: service_started
     ports:
       - "8080:8080"
       - "5005:5005"
