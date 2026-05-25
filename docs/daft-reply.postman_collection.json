@@ -1,0 +1,97 @@
+{
+  "info": {
+    "_postman_id": "b1f7c0e2-4d3a-4f7b-9c8a-1a2b3c4d5e6f",
+    "name": "Daft.ie - Reply (Enquiry)",
+    "description": "Manual probe for POST /old/v4/reply without recaptcha headers. Set {{bearerToken}} to a fresh JWT captured from a logged-in browser session (DevTools -> Network -> any gateway.daft.ie call -> Authorization header, drop the 'Bearer ' prefix).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "bearerToken",
+      "value": "",
+      "type": "string",
+      "description": "JWT from auth.daft.ie, without the 'Bearer ' prefix. Expires every 5 minutes."
+    },
+    {
+      "key": "adId",
+      "value": "6306464",
+      "type": "string"
+    },
+    {
+      "key": "firstName",
+      "value": "Test",
+      "type": "string"
+    },
+    {
+      "key": "lastName",
+      "value": "Test",
+      "type": "string"
+    },
+    {
+      "key": "email",
+      "value": "vladyslavmudrud1@gmail.com",
+      "type": "string"
+    },
+    {
+      "key": "phone",
+      "value": "0851850535",
+      "type": "string"
+    },
+    {
+      "key": "message",
+      "value": "Test Message",
+      "type": "string"
+    },
+    {
+      "key": "moveInDateMillis",
+      "value": "1780700400000",
+      "type": "string",
+      "description": "Unix epoch milliseconds for the desired move-in date."
+    }
+  ],
+  "item": [
+    {
+      "name": "POST /old/v4/reply (no recaptcha)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Accept", "value": "application/json" },
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Origin", "value": "https://www.daft.ie" },
+          { "key": "Referer", "value": "https://www.daft.ie/" },
+          { "key": "brand", "value": "daft" },
+          { "key": "platform", "value": "web" },
+          { "key": "version", "value": "0" },
+          { "key": "Cache-Control", "value": "no-cache, no-store" },
+          { "key": "Pragma", "value": "no-cache" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"adId\": {{adId}},\n  \"firstName\": \"{{firstName}}\",\n  \"lastName\": \"{{lastName}}\",\n  \"email\": \"{{email}}\",\n  \"phone\": \"{{phone}}\",\n  \"message\": \"{{message}}\",\n  \"moveInDate\": {{moveInDateMillis}},\n  \"pets\": { \"hasPets\": false, \"petDescription\": \"\" },\n  \"saveReply\": true,\n  \"tenants\": { \"adultTenants\": 1 }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://gateway.daft.ie/old/v4/reply",
+          "protocol": "https",
+          "host": ["gateway", "daft", "ie"],
+          "path": ["old", "v4", "reply"]
+        },
+        "description": "Same body as the captured browser request, with recaptcha-action and recaptcha-token headers deliberately omitted. If the server enforces reCAPTCHA, expect 400/401/403."
+      }
+    }
+  ]
+}

@@ -11,10 +11,10 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-@ConditionalOnBean(EmailNotificationGuard.class)
+@ConditionalOnBean(NotificationGuard.class)
 public class ListingApprovedListener {
 
-    private final EmailNotificationGuard emailGuard;
+    private final NotificationGuard guard;
 
     @Async
     @EventListener
@@ -22,8 +22,7 @@ public class ListingApprovedListener {
         if (event.listings().isEmpty()) {
             return;
         }
-        int notified = emailGuard.tryNotify(event.tenant(), event.listings());
-        log.debug("tenant={} notified={} of {} listings",
-                event.tenant().id(), notified, event.listings().size());
+        guard.notify(event.tenant(), event.listings());
+        log.debug("tenant={} routed {} listings", event.tenant().id(), event.listings().size());
     }
 }

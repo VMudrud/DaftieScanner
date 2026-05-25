@@ -12,8 +12,6 @@ public class TenantSlotValidator {
         String prefix = ENV_PREFIX + id.toUpperCase() + "_";
         require(slot.getEmail() != null && !slot.getEmail().isBlank(), prefix + "EMAIL");
         require(slot.getRentalPriceMax() > 0, prefix + "RENTAL_PRICE_MAX");
-        require(slot.getNumBedsMax() > 0, prefix + "NUM_BEDS_MAX");
-        require(!slot.getStoredShapeIds().isEmpty(), prefix + "STORED_SHAPE_IDS");
     }
 
     private void require(boolean condition, String field) {

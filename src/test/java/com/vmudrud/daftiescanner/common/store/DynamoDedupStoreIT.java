@@ -89,31 +89,40 @@ class DynamoDedupStoreIT {
     }
 
     @Test
-    void notifiedByEmail_returnsFalse_whenNotMarked() {
-        assertThat(store.notifiedByEmail("user@example.com", listing1)).isFalse();
+    void notifiedBy_returnsFalse_whenNotMarked() {
+        assertThat(store.notifiedBy("email", "user@example.com", listing1)).isFalse();
     }
 
     @Test
-    void markNotifiedByEmail_thenNotifiedByEmail_returnsTrue() {
-        store.markNotifiedByEmail("user@example.com", listing1);
-        assertThat(store.notifiedByEmail("user@example.com", listing1)).isTrue();
+    void markNotifiedBy_thenNotifiedBy_returnsTrue() {
+        store.markNotifiedBy("email", "user@example.com", listing1);
+        assertThat(store.notifiedBy("email", "user@example.com", listing1)).isTrue();
     }
 
     @Test
-    void notifiedByEmail_isIndependentFromSeenByTenant() {
-        // marking tenant as seen does not affect email notification dedup, and vice versa
+    void notifiedBy_isIndependentFromSeenByTenant() {
+        // marking tenant as seen does not affect channel notification dedup, and vice versa
         store.markSeen(TENANT_A, listing1, Instant.now());
-        assertThat(store.notifiedByEmail(TENANT_A, listing1)).isFalse();
+        assertThat(store.notifiedBy("email", TENANT_A, listing1)).isFalse();
 
-        store.markNotifiedByEmail("other@example.com", listing2);
+        store.markNotifiedBy("email", "other@example.com", listing2);
         assertThat(store.seen(TENANT_A, listing2)).isFalse();
     }
 
     @Test
-    void notifiedByEmail_sharedAcrossTenantsWithSameEmail() {
+    void notifiedBy_sharedAcrossTenantsWithSameDestination() {
         // simulates two tenants sharing the same email — only one notification should fire
         String sharedEmail = "shared@example.com";
-        store.markNotifiedByEmail(sharedEmail, listing1);
-        assertThat(store.notifiedByEmail(sharedEmail, listing1)).isTrue();
+        store.markNotifiedBy("email", sharedEmail, listing1);
+        assertThat(store.notifiedBy("email", sharedEmail, listing1)).isTrue();
+    }
+
+    @Test
+    void notifiedBy_isolatedAcrossChannels() {
+        // same destination, different channels — marking one does not affect the other
+        String chatId = "12345";
+        store.markNotifiedBy("telegram", chatId, listing1);
+        assertThat(store.notifiedBy("telegram", chatId, listing1)).isTrue();
+        assertThat(store.notifiedBy("email", chatId, listing1)).isFalse();
     }
 }

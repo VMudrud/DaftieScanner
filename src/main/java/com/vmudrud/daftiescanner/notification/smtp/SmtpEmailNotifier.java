@@ -1,6 +1,7 @@
 package com.vmudrud.daftiescanner.notification.smtp;
 
 import com.vmudrud.daftiescanner.common.listing.ListingResult;
+import com.vmudrud.daftiescanner.common.store.DedupStore;
 import com.vmudrud.daftiescanner.common.tenant.Tenant;
 import com.vmudrud.daftiescanner.notification.router.Notifier;
 import jakarta.mail.internet.MimeMessage;
@@ -12,6 +13,8 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.locks.ReentrantLock;
 
 @Slf4j
 @Component
@@ -22,11 +25,15 @@ public class SmtpEmailNotifier implements Notifier {
     private static final String DAFT_BASE = "https://www.daft.ie";
 
     private final JavaMailSender mailSender;
+    private final DedupStore dedupStore;
     private final String fromAddress;
+    private final ConcurrentHashMap<String, ReentrantLock> emailLocks = new ConcurrentHashMap<>();
 
     public SmtpEmailNotifier(JavaMailSender mailSender,
+                             DedupStore dedupStore,
                              @Value("${daft.mail.from:noreply@daftie.scanner}") String fromAddress) {
         this.mailSender = mailSender;
+        this.dedupStore = dedupStore;
         this.fromAddress = fromAddress;
     }
 
@@ -40,6 +47,39 @@ public class SmtpEmailNotifier implements Notifier {
         if (listings.isEmpty()) {
             return;
         }
+        withLockOn(tenant.email(), () -> sendUnsent(tenant, listings));
+    }
+
+    private void sendUnsent(Tenant tenant, List<ListingResult> listings) {
+        var unsent = filterUnsent(tenant.email(), listings);
+        if (unsent.isEmpty()) {
+            return;
+        }
+        sendEmail(tenant, unsent);
+        markSent(tenant.email(), unsent);
+    }
+
+    private List<ListingResult> filterUnsent(String email, List<ListingResult> listings) {
+        return listings.stream()
+                .filter(l -> !dedupStore.notifiedBy(CHANNEL, email, l.id()))
+                .toList();
+    }
+
+    private void markSent(String email, List<ListingResult> listings) {
+        listings.forEach(l -> dedupStore.markNotifiedBy(CHANNEL, email, l.id()));
+    }
+
+    private void withLockOn(String key, Runnable action) {
+        var lock = emailLocks.computeIfAbsent(key, k -> new ReentrantLock());
+        lock.lock();
+        try {
+            action.run();
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    private void sendEmail(Tenant tenant, List<ListingResult> listings) {
         try {
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");

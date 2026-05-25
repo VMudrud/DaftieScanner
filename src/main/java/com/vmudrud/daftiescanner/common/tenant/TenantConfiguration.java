@@ -54,10 +54,17 @@ class TenantConfiguration {
         return new FilterSpec(
                 slot.getSection(),
                 new FilterSpec.Range(slot.getRentalPriceMin(), slot.getRentalPriceMax()),
-                new FilterSpec.Range(slot.getNumBedsMin(), slot.getNumBedsMax()),
+                new FilterSpec.Range(parseOptionalInt(slot.getNumBedsMin()), parseOptionalInt(slot.getNumBedsMax())),
                 slot.getStoredShapeIds(),
                 berRatings
         );
+    }
+
+    private Integer parseOptionalInt(String value) {
+        if (value == null || value.isBlank()) {
+            return null;
+        }
+        return Integer.parseInt(value.trim());
     }
 
     private void assertActiveConfigured(List<String> activeIds) {
@@ -88,8 +95,8 @@ class TenantConfiguration {
         private String section = DEFAULT_SECTION;
         private int rentalPriceMin;
         private int rentalPriceMax;
-        private int numBedsMin;
-        private int numBedsMax;
+        private String numBedsMin;
+        private String numBedsMax;
         private List<String> storedShapeIds = List.of();
         private List<String> notifiers = List.of();
         private List<String> berRatings = List.of();

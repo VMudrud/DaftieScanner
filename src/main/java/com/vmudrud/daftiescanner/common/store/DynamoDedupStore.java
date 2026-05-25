@@ -30,7 +30,7 @@ import java.time.temporal.ChronoUnit;
 class DynamoDedupStore implements DedupStore {
 
     private static final long TTL_DAYS = 30;
-    private static final String EMAIL_KEY_PREFIX = "email:";
+    private static final String CHANNEL_KEY_SEPARATOR = ":";
 
     private final DynamoDbClient rawClient;
     private final DynamoDbEnhancedClient enhancedClient;
@@ -83,13 +83,17 @@ class DynamoDedupStore implements DedupStore {
     }
 
     @Override
-    public boolean notifiedByEmail(String email, long listingId) {
-        return seen(EMAIL_KEY_PREFIX + email, listingId);
+    public boolean notifiedBy(String channel, String destination, long listingId) {
+        return seen(channelKey(channel, destination), listingId);
     }
 
     @Override
-    public void markNotifiedByEmail(String email, long listingId) {
-        markSeen(EMAIL_KEY_PREFIX + email, listingId, Instant.now());
+    public void markNotifiedBy(String channel, String destination, long listingId) {
+        markSeen(channelKey(channel, destination), listingId, Instant.now());
+    }
+
+    private String channelKey(String channel, String destination) {
+        return channel + CHANNEL_KEY_SEPARATOR + destination;
     }
 
     @Override

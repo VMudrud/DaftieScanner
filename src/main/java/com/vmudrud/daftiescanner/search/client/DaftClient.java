@@ -18,6 +18,7 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClient;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -71,18 +72,33 @@ public class DaftClient {
                 filter.section(),
                 List.of(new NameValues(FILTER_AD_STATE, List.of(AD_STATE))),
                 List.of(),
-                List.of(
-                        new RangeParam(str(filter.rentalPrice().from()), str(filter.rentalPrice().to()), RANGE_RENTAL_PRICE),
-                        new RangeParam(str(filter.numBeds().from()), str(filter.numBeds().to()), RANGE_NUM_BEDS)
-                ),
+                toRanges(filter),
                 new PagingParam(PAGE_FROM, PAGE_SIZE),
-                new GeoFilter(filter.storedShapeIds(), GEO_SEARCH_TYPE),
+                toGeoFilter(filter.storedShapeIds()),
                 StringUtils.EMPTY,
                 SORT
         );
     }
 
-    private static String str(int value) {
-        return String.valueOf(value);
+    private static List<RangeParam> toRanges(FilterSpec filter) {
+        var ranges = new ArrayList<RangeParam>(2);
+        ranges.add(rangeParam(filter.rentalPrice(), RANGE_RENTAL_PRICE));
+        if (filter.numBeds().isFullyBound()) {
+            ranges.add(rangeParam(filter.numBeds(), RANGE_NUM_BEDS));
+        }
+        return ranges;
+    }
+
+    private static RangeParam rangeParam(FilterSpec.Range range, String name) {
+        return new RangeParam(String.valueOf(range.from()), String.valueOf(range.to()), name);
+    }
+
+    private static GeoFilter toGeoFilter(List<String> storedShapeIds) {
+        var cleaned = storedShapeIds.stream()
+                .filter(id -> id != null && !id.isBlank())
+                .toList();
+        return cleaned.isEmpty()
+                ? new GeoFilter(List.of(), null)
+                : new GeoFilter(cleaned, GEO_SEARCH_TYPE);
     }
 }

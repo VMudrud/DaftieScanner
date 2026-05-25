@@ -23,6 +23,7 @@ Polls daft.ie for new rental listings matching per-tenant filters. Runs on AWS E
 | M9 | Block detection metrics + CloudWatch alerting + AlertThrottle + Lambda IP recycle | done |
 | M10 | Docker + EC2 deployment | done |
 | M11 | Real notifier impls (SES / Daft form / SNS-SMS) | pending |
+| M12 | Telegram bot notifier (long-poll, /subscribe / /change / /unsubscribe, atomic email claim) | done |
 
 ## Configuration
 
@@ -32,6 +33,8 @@ Polls daft.ie for new rental listings matching per-tenant filters. Runs on AWS E
 | `DAFT_DYNAMO_SEEN_TABLE` | `daftiescanner_seen` | DynamoDB dedup table name |
 | `DAFT_DYNAMO_CURSOR_TABLE` | `daftiescanner_cursor` | DynamoDB cursor table name |
 | `DAFT_DYNAMO_ALERTS_TABLE` | `daftiescanner_alerts` | DynamoDB alert-throttle table name |
+| `DAFT_TELEGRAM_TOKEN` | _(blank — disables bot)_ | Telegram Bot API token from @BotFather. When blank, all Telegram beans are skipped. |
+| `DAFT_TELEGRAM_API_BASE` | `https://api.telegram.org` | Telegram Bot API base URL (override for tests) |
 | `AWS_REGION` | `eu-west-1` | AWS region |
 | `MANAGEMENT_METRICS_EXPORT_CLOUDWATCH_ENABLED` | `false` | Set `true` in production to push metrics to CloudWatch |
 
@@ -88,6 +91,39 @@ PK: `alertKey` (e.g. `tenant1:block_detected`). Attrs: `lastFiredAt` (epoch ms),
 | `alertKey` | String | Partition key (e.g. `tenant1:block_detected`) |
 | `lastFiredAt` | Number (ms) | Last time this alert fired |
 | `ttl` | Number (s) | DynamoDB TTL — 24 hours |
+
+### `daftiescanner_tg_claim`
+
+| Attribute | Type | Role |
+|-----------|------|------|
+| `email` | String | Partition key — tenant email |
+| `chatId` | String | Telegram chat owning this email |
+| `createdAt` | Number (ms) | Claim time |
+
+### `daftiescanner_tg_subscription`
+
+| Attribute | Type | Role |
+|-----------|------|------|
+| `chatId` | String | Partition key — Telegram chat |
+| `email` | String | Linked tenant email |
+| `createdAt` | Number (ms) | Subscription time |
+| `updatedAt` | Number (ms) | Last email-change time |
+
+The pair is updated atomically via DynamoDB `TransactWriteItems` with conditional puts/deletes, so each email maps to at most one chat and each chat to at most one email.
+
+## Telegram bot
+
+When `DAFT_TELEGRAM_TOKEN` is set, the app long-polls the Telegram Bot API and exposes:
+
+| Command | Behavior |
+|---------|----------|
+| `/start`, `/help` | Show usage |
+| `/subscribe <email>` | Link this chat to a configured tenant email. Rejects unknown, malformed, or already-claimed emails. |
+| `/change <email>` | Atomically rebind to a different tenant email |
+| `/email` | Show the currently linked email |
+| `/unsubscribe` | Release the claim |
+
+Tenants opt into the channel by including `telegram` in their `TENANT_N_NOTIFIERS` list. Notifications are sent as MarkdownV2 with clickable daft.ie links. If the user blocks the bot, the claim is auto-released on the next send attempt (403). Per-channel dedup keys (`telegram:<chatId>`) live in the existing `daftiescanner_seen` table.
 
 ## Local development
 

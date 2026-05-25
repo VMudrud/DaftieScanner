@@ -1,5 +1,7 @@
 package com.vmudrud.daftiescanner.search.client.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.util.List;
 
 public record SearchRequest(
@@ -18,5 +20,6 @@ public record SearchRequest(
 
     public record PagingParam(String from, String pageSize) {}
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public record GeoFilter(List<String> storedShapeIds, String geoSearchType) {}
 }

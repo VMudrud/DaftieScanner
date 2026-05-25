@@ -43,10 +43,15 @@ daft:
     force-cold-start: ${DAFT_FORCE_COLD_START:false}
   mail:
     from: ${DAFT_MAIL_FROM:noreply@daftie.scanner}
+  telegram:
+    token: ${DAFT_TELEGRAM_TOKEN:}
+    api-base: ${DAFT_TELEGRAM_API_BASE:https://api.telegram.org}
+    poll-timeout-seconds: 25
+    admin-contact: ${DAFT_TELEGRAM_ADMIN_CONTACT:Unknown}
 
 # Tenant configuration example.
 # Override TENANTS_ACTIVE and TENANT_N_* via environment variables or .env file.
-# TENANT_N_NOTIFIERS is a comma-separated list; supported values: email, logging
+# TENANT_N_NOTIFIERS is a comma-separated list; supported values: email, telegram, logging
 tenants:
   active: ${TENANTS_ACTIVE:}
 
@@ -58,8 +63,8 @@ tenant:
     section: ${TENANT_1_SECTION:residential-to-rent}
     rental-price-min: ${TENANT_1_RENTAL_PRICE_MIN:0}
     rental-price-max: ${TENANT_1_RENTAL_PRICE_MAX:0}
-    num-beds-min: ${TENANT_1_NUM_BEDS_MIN:0}
-    num-beds-max: ${TENANT_1_NUM_BEDS_MAX:0}
+    num-beds-min: ${TENANT_1_NUM_BEDS_MIN:}
+    num-beds-max: ${TENANT_1_NUM_BEDS_MAX:}
     stored-shape-ids: ${TENANT_1_STORED_SHAPE_IDS:}
     notifiers: ${TENANT_1_NOTIFIERS:email}
     ber-ratings: ${TENANT_1_BER_RATINGS:}

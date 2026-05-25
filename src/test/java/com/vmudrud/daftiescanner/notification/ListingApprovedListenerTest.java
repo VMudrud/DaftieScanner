@@ -13,21 +13,21 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 class ListingApprovedListenerTest {
 
     @Mock
-    EmailNotificationGuard emailGuard;
+    NotificationGuard guard;
 
     private ListingApprovedListener listener;
     private Tenant tenant;
 
     @BeforeEach
     void setUp() {
-        listener = new ListingApprovedListener(emailGuard);
+        listener = new ListingApprovedListener(guard);
         tenant = new Tenant("1", true, "test@example.com",
                 new FilterSpec("residential-to-rent",
                         new FilterSpec.Range(1200, 2300),
@@ -42,28 +42,17 @@ class ListingApprovedListenerTest {
                 listing(1001L, "Apt A"),
                 listing(1002L, "Apt B")
         );
-        when(emailGuard.tryNotify(eq(tenant), eq(listings))).thenReturn(2);
 
         listener.onNewListings(new NewListingsFoundEvent(tenant, listings));
 
-        verify(emailGuard).tryNotify(tenant, listings);
+        verify(guard).notify(tenant, listings);
     }
 
     @Test
     void onNewListings_emptyList_guardNotCalled() {
         listener.onNewListings(new NewListingsFoundEvent(tenant, List.of()));
 
-        verify(emailGuard, never()).tryNotify(any(), any());
-    }
-
-    @Test
-    void onNewListings_alreadyDeduped_guardReturnZero_noException() {
-        var listings = List.of(listing(1001L, "Apt A"));
-        when(emailGuard.tryNotify(eq(tenant), eq(listings))).thenReturn(0);
-
-        listener.onNewListings(new NewListingsFoundEvent(tenant, listings));
-
-        verify(emailGuard).tryNotify(tenant, listings);
+        verify(guard, never()).notify(any(), any());
     }
 
     private ListingResult listing(long id, String title) {

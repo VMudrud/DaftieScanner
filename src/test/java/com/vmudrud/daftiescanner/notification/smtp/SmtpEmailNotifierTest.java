@@ -1,6 +1,7 @@
 package com.vmudrud.daftiescanner.notification.smtp;
 
 import com.vmudrud.daftiescanner.common.listing.ListingResult;
+import com.vmudrud.daftiescanner.common.store.DedupStore;
 import com.vmudrud.daftiescanner.common.tenant.FilterSpec;
 import com.vmudrud.daftiescanner.common.tenant.Tenant;
 import jakarta.mail.BodyPart;
@@ -26,12 +27,15 @@ class SmtpEmailNotifierTest {
     @Mock
     JavaMailSender mailSender;
 
+    @Mock
+    DedupStore dedupStore;
+
     private SmtpEmailNotifier notifier;
     private Tenant tenant;
 
     @BeforeEach
     void setUp() {
-        notifier = new SmtpEmailNotifier(mailSender, "noreply@daftie.scanner");
+        notifier = new SmtpEmailNotifier(mailSender, dedupStore, "noreply@daftie.scanner");
         tenant = new Tenant("1", true, "test@example.com",
                 new FilterSpec("residential-to-rent",
                         new FilterSpec.Range(1200, 2300),
@@ -73,6 +77,29 @@ class SmtpEmailNotifierTest {
         notifier.notify(tenant, List.of());
 
         verifyNoInteractions(mailSender);
+    }
+
+    @Test
+    void notify_allListingsAlreadyDeduped_noEmailSent() {
+        var listing = listing(2001L, "Already Notified", "/listing/2001");
+        when(dedupStore.notifiedBy("email", tenant.email(), 2001L)).thenReturn(true);
+
+        notifier.notify(tenant, List.of(listing));
+
+        verifyNoInteractions(mailSender);
+        verify(dedupStore, never()).markNotifiedBy(anyString(), anyString(), anyLong());
+    }
+
+    @Test
+    void notify_marksDedupAfterSuccessfulSend() throws Exception {
+        var session = Session.getDefaultInstance(new Properties());
+        var realMessage = new MimeMessage(session);
+        when(mailSender.createMimeMessage()).thenReturn(realMessage);
+
+        var listing = listing(3001L, "Fresh Listing", "/listing/3001");
+        notifier.notify(tenant, List.of(listing));
+
+        verify(dedupStore).markNotifiedBy("email", tenant.email(), 3001L);
     }
 
     private String findHtmlPart(Object part) throws Exception {

@@ -11,5 +11,9 @@ public record FilterSpec(
         List<String> storedShapeIds,
         List<BerRating> berRatings
 ) {
-    public record Range(int from, int to) {}
+    public record Range(Integer from, Integer to) {
+        public boolean isFullyBound() {
+            return from != null && to != null;
+        }
+    }
 }
