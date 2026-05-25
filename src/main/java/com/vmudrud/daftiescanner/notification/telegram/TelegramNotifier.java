@@ -21,6 +21,7 @@ public class TelegramNotifier implements Notifier {
 
     public static final String CHANNEL = "telegram";
     private static final String DAFT_BASE = "https://www.daft.ie";
+    private static final String DETAIL_SEPARATOR = " — ";
 
     private final TelegramBotClient bot;
     private final SubscriptionStore subscriptionStore;
@@ -90,8 +91,30 @@ public class TelegramNotifier implements Notifier {
                     .append(TelegramReplyFormatter.escapeMarkdownV2(url))
                     .append(") — ")
                     .append(TelegramReplyFormatter.escapeMarkdownV2(l.price()))
+                    .append(TelegramReplyFormatter.escapeMarkdownV2(extras(l)))
                     .append("\n");
         });
         return sb.toString();
+    }
+
+    private static String extras(ListingResult l) {
+        var sb = new StringBuilder();
+        if (l.numBedrooms() != null && !l.numBedrooms().isBlank()) {
+            sb.append(DETAIL_SEPARATOR).append(l.numBedrooms());
+        }
+        String ber = berRating(l);
+        if (ber != null) {
+            sb.append(DETAIL_SEPARATOR).append("BER ").append(ber);
+        }
+        return sb.toString();
+    }
+
+    private static String berRating(ListingResult l) {
+        var ber = l.ber();
+        if (ber == null) {
+            return null;
+        }
+        String rating = ber.rating();
+        return (rating == null || rating.isBlank()) ? null : rating;
     }
 }

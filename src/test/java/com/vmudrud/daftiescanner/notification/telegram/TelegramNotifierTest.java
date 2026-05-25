@@ -71,8 +71,8 @@ class TelegramNotifierTest {
     void notify_happyPath_sendsMarkdownAndMarksDedup() {
         when(subscriptionStore.chatIdByEmail(EMAIL)).thenReturn(Optional.of(CHAT_ID));
         var listings = List.of(
-                listing(1001L, "Bright Studio", "/listing/1001"),
-                listing(1002L, "Cosy 1-Bed", "/listing/1002"));
+                listing(1001L, "Bright Studio", "/listing/1001", "1 Bed", "B2"),
+                listing(1002L, "Cosy 1-Bed", "/listing/1002", "2 Bed", "A3"));
 
         notifier.notify(tenant, listings);
 
@@ -82,8 +82,25 @@ class TelegramNotifierTest {
         assertThat(body).contains("Bright Studio");
         assertThat(body).contains("Cosy 1\\-Bed");
         assertThat(body).contains("/listing/1001");
+        assertThat(body).contains("1 Bed");
+        assertThat(body).contains("BER B2");
+        assertThat(body).contains("2 Bed");
+        assertThat(body).contains("BER A3");
         verify(dedupStore).markNotifiedBy("telegram", CHAT_ID, 1001L);
         verify(dedupStore).markNotifiedBy("telegram", CHAT_ID, 1002L);
+    }
+
+    @Test
+    void notify_missingBedsAndBer_omitsDetailsGracefully() {
+        when(subscriptionStore.chatIdByEmail(EMAIL)).thenReturn(Optional.of(CHAT_ID));
+
+        notifier.notify(tenant, List.of(listing(1L, "No Details", "/listing/1", null, null)));
+
+        var bodyCaptor = ArgumentCaptor.forClass(String.class);
+        verify(bot).sendMarkdown(eq(CHAT_ID), bodyCaptor.capture());
+        String body = bodyCaptor.getValue();
+        assertThat(body).contains("No Details");
+        assertThat(body).doesNotContain("BER");
     }
 
     @Test
@@ -122,7 +139,12 @@ class TelegramNotifierTest {
     }
 
     private ListingResult listing(long id, String title, String path) {
+        return listing(id, title, path, null, null);
+    }
+
+    private ListingResult listing(long id, String title, String path, String numBedrooms, String berRating) {
+        var ber = berRating == null ? null : new ListingResult.BerInfo(berRating);
         return new ListingResult(id, title, 1_700_000_000_000L, "€2,000 per month",
-                null, null, null, path, null, null, null, null, null, null, null);
+                numBedrooms, null, null, path, null, null, null, ber, null, null, null);
     }
 }
