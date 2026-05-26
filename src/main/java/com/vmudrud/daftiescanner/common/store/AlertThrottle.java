@@ -4,8 +4,7 @@ import com.vmudrud.daftiescanner.common.store.entity.AlertItem;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable;
@@ -26,7 +25,7 @@ import java.time.temporal.ChronoUnit;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-@ConditionalOnExpression("!'${daft.dynamo.seen-table:}'.isBlank()")
+@ConditionalOnProperty(name = "daft.dynamo.enabled", havingValue = "true", matchIfMissing = true)
 public class AlertThrottle {
 
     static final long THROTTLE_WINDOW_SECONDS = 3600L;
@@ -35,14 +34,11 @@ public class AlertThrottle {
     private final DynamoDbClient rawClient;
     private final DynamoDbEnhancedClient enhancedClient;
 
-    @Value("${daft.dynamo.alerts-table:daftiescanner_alerts}")
-    private String tableName;
-
     private DynamoDbTable<AlertItem> table;
 
     @PostConstruct
     void init() {
-        table = enhancedClient.table(tableName, TableSchema.fromBean(AlertItem.class));
+        table = enhancedClient.table(DynamoTables.ALERTS, TableSchema.fromBean(AlertItem.class));
         ensureTable();
     }
 

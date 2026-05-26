@@ -30,15 +30,13 @@ Polls daft.ie for new rental listings matching per-tenant filters. Runs on AWS E
 | Env var | Default | Description |
 |---------|---------|-------------|
 | `DAFT_DYNAMO_ENDPOINT` | _(blank — uses IAM role)_ | Local DynamoDB override, e.g. `http://localhost:8000` |
-| `DAFT_DYNAMO_SEEN_TABLE` | `daftiescanner_seen` | DynamoDB dedup table name |
-| `DAFT_DYNAMO_CURSOR_TABLE` | `daftiescanner_cursor` | DynamoDB cursor table name |
-| `DAFT_DYNAMO_ALERTS_TABLE` | `daftiescanner_alerts` | DynamoDB alert-throttle table name |
 | `DAFT_TELEGRAM_TOKEN` | _(blank — disables bot)_ | Telegram Bot API token from @BotFather. When blank, all Telegram beans are skipped. |
 | `DAFT_TELEGRAM_API_BASE` | `https://api.telegram.org` | Telegram Bot API base URL (override for tests) |
 | `AWS_REGION` | `eu-west-1` | AWS region |
 | `MANAGEMENT_METRICS_EXPORT_CLOUDWATCH_ENABLED` | `false` | Set `true` in production to push metrics to CloudWatch |
 
-When `DAFT_DYNAMO_SEEN_TABLE` is blank, all DynamoDB beans are skipped (used in unit tests).
+DynamoDB table names (`daftiescanner_seen`, `daftiescanner_cursor`, `daftiescanner_alerts`) are hardcoded
+in `DynamoTables`. Set `daft.dynamo.enabled=false` to skip all DynamoDB beans (used in unit tests).
 CloudWatch metrics export is disabled by default; enable it in production via the env var above.
 
 ## Metrics published (Micrometer → CloudWatch namespace `DaftieScanner`)

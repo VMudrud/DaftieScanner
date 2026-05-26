@@ -17,9 +17,6 @@ class DynamoCursorStoreIT {
 
     private static final int DYNAMO_PORT = 8000;
     private static final String DYNAMO_IMAGE = "amazon/dynamodb-local:2.5.2";
-    private static final String SEEN_TABLE = "daftiescanner_seen_cursor_it";
-    private static final String CURSOR_TABLE = "daftiescanner_cursor_it";
-    private static final String ALERTS_TABLE = "daftiescanner_alerts_it";
     private static final String TENANT_A = "tenantA";
     private static final String TENANT_B = "tenantB";
     private static final long POSTED_AT_1 = 1_700_000_000_000L;
@@ -35,11 +32,9 @@ class DynamoCursorStoreIT {
 
     @DynamicPropertySource
     private static void dynamoProperties(DynamicPropertyRegistry registry) {
+        registry.add("daft.dynamo.enabled", () -> "true");
         registry.add("daft.dynamo.endpoint",
             () -> "http://localhost:" + dynamo.getMappedPort(DYNAMO_PORT));
-        registry.add("daft.dynamo.seen-table", () -> SEEN_TABLE);
-        registry.add("daft.dynamo.cursor-table", () -> CURSOR_TABLE);
-        registry.add("daft.dynamo.alerts-table", () -> ALERTS_TABLE);
     }
 
     @Autowired

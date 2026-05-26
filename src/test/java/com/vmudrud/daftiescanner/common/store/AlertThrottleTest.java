@@ -23,7 +23,6 @@ import java.time.Instant;
 import java.util.function.Consumer;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import org.springframework.test.util.ReflectionTestUtils;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
@@ -33,7 +32,7 @@ import static org.mockito.Mockito.*;
 @SuppressWarnings("unchecked")
 class AlertThrottleTest {
 
-    private static final String TABLE_NAME = "daftiescanner_alerts";
+    private static final String TABLE_NAME = DynamoTables.ALERTS;
     private static final String ALERT_KEY  = "tenant1:block_detected";
 
     @Mock DynamoDbClient rawClient;
@@ -51,7 +50,6 @@ class AlertThrottleTest {
                 .when(rawClient).describeTable(any(Consumer.class));
 
         throttle = new AlertThrottle(rawClient, enhancedClient);
-        ReflectionTestUtils.setField(throttle, "tableName", TABLE_NAME);
         throttle.init();
     }
 

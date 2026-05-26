@@ -4,10 +4,8 @@ tenants:
 
 daft:
   dynamo:
+    enabled: false
     endpoint: ""
-    seen-table: ""
-    cursor-table: ""
-    alerts-table: ""
 
 tenant:
   "1":

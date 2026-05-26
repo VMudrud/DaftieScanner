@@ -1,7 +1,7 @@
 package com.vmudrud.daftiescanner.common.store;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
@@ -13,7 +13,7 @@ import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 import java.net.URI;
 
 @Configuration
-@ConditionalOnExpression("!'${daft.dynamo.seen-table:}'.isBlank()")
+@ConditionalOnProperty(name = "daft.dynamo.enabled", havingValue = "true", matchIfMissing = true)
 class DynamoDbConfiguration {
 
     private static final String LOCAL_KEY = "local";

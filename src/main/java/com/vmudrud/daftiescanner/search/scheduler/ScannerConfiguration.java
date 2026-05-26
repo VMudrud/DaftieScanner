@@ -2,7 +2,7 @@ package com.vmudrud.daftiescanner.search.scheduler;
 
 import com.vmudrud.daftiescanner.common.tenant.Tenant;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -12,7 +12,7 @@ import java.util.List;
 
 @Configuration
 @EnableScheduling
-@ConditionalOnExpression("!'${daft.dynamo.seen-table:}'.isBlank()")
+@ConditionalOnProperty(name = "daft.dynamo.enabled", havingValue = "true", matchIfMissing = true)
 class ScannerConfiguration {
 
     @Bean(destroyMethod = "shutdown")

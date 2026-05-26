@@ -34,8 +34,6 @@ management:
 daft:
   dynamo:
     endpoint: ${DAFT_DYNAMO_ENDPOINT:}
-    seen-table: ${DAFT_DYNAMO_SEEN_TABLE:daftiescanner_seen}
-    cursor-table: ${DAFT_DYNAMO_CURSOR_TABLE:daftiescanner_cursor}
   scanner:
     base-delay-seconds: 60
     jitter-min-seconds: 40

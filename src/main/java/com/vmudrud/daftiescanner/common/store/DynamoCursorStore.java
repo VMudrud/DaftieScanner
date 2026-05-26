@@ -5,8 +5,7 @@ import com.vmudrud.daftiescanner.common.store.entity.CursorItem;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable;
@@ -27,20 +26,17 @@ import java.util.Optional;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-@ConditionalOnExpression("!'${daft.dynamo.cursor-table:}'.isBlank()")
+@ConditionalOnProperty(name = "daft.dynamo.enabled", havingValue = "true", matchIfMissing = true)
 class DynamoCursorStore implements CursorStore {
 
     private final DynamoDbClient rawClient;
     private final DynamoDbEnhancedClient enhancedClient;
 
-    @Value("${daft.dynamo.cursor-table}")
-    private String tableName;
-
     private DynamoDbTable<CursorItem> table;
 
     @PostConstruct
     void init() {
-        table = enhancedClient.table(tableName, TableSchema.fromBean(CursorItem.class));
+        table = enhancedClient.table(DynamoTables.CURSOR, TableSchema.fromBean(CursorItem.class));
         if (tableExists()) {
             return;
         }
