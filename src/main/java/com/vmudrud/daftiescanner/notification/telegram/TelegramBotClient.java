@@ -33,7 +33,7 @@ public class TelegramBotClient {
     }
 
     public void sendMarkdown(String chatId, String markdownText) {
-        send(new SendMessageRequest(chatId, markdownText, PARSE_MODE_MARKDOWN_V2, true));
+        send(new SendMessageRequest(chatId, markdownText, PARSE_MODE_MARKDOWN_V2, false));
     }
 
     private void send(SendMessageRequest body) {

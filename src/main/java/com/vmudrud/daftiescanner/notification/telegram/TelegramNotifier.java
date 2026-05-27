@@ -20,8 +20,6 @@ import java.util.concurrent.locks.ReentrantLock;
 public class TelegramNotifier implements Notifier {
 
     public static final String CHANNEL = "telegram";
-    private static final String DAFT_BASE = "https://www.daft.ie";
-    private static final String DETAIL_SEPARATOR = " — ";
 
     private final TelegramBotClient bot;
     private final SubscriptionStore subscriptionStore;
@@ -53,68 +51,35 @@ public class TelegramNotifier implements Notifier {
             if (unsent.isEmpty()) {
                 return;
             }
-            sendMarkdown(chatId, tenant, unsent);
+            sendEach(chatId, tenant, unsent);
         } finally {
             lock.unlock();
         }
     }
 
-    private void sendMarkdown(String chatId, Tenant tenant, List<ListingResult> listings) {
-        try {
-            bot.sendMarkdown(chatId, buildMarkdownBody(listings));
-            listings.forEach(l -> dedupStore.markNotifiedBy(CHANNEL, chatId, l.id()));
-            log.info("Telegram sent tenant={} chatId={} count={}", tenant.id(), chatId, listings.size());
-        } catch (TelegramApiException e) {
-            if (e.isForbidden()) {
-                log.warn("Telegram bot blocked by chatId={}; releasing claim for email={}", chatId, tenant.email());
-                try {
-                    subscriptionStore.release(chatId, tenant.email());
-                } catch (Exception releaseError) {
-                    log.warn("Failed to release blocked subscription chatId={}: {}", chatId, releaseError.getMessage());
+    private void sendEach(String chatId, Tenant tenant, List<ListingResult> listings) {
+        for (var listing : listings) {
+            try {
+                bot.sendMarkdown(chatId, TelegramListingFormatter.format(listing));
+                dedupStore.markNotifiedBy(CHANNEL, chatId, listing.id());
+                log.info("Telegram sent tenant={} chatId={} listingId={}", tenant.id(), chatId, listing.id());
+            } catch (TelegramApiException e) {
+                if (e.isForbidden()) {
+                    releaseBlockedSubscription(chatId, tenant);
+                    return;
                 }
-                return;
+                log.error("Telegram send failed tenant={} chatId={} listingId={} status={}: {}",
+                        tenant.id(), chatId, listing.id(), e.statusCode(), e.getMessage());
             }
-            log.error("Telegram send failed tenant={} chatId={} status={}: {}",
-                    tenant.id(), chatId, e.statusCode(), e.getMessage());
         }
     }
 
-    private String buildMarkdownBody(List<ListingResult> listings) {
-        var sb = new StringBuilder();
-        sb.append(TelegramReplyFormatter.escapeMarkdownV2(
-                "%d new rental listing(s):".formatted(listings.size()))).append("\n\n");
-        listings.forEach(l -> {
-            String url = DAFT_BASE + l.seoFriendlyPath();
-            sb.append("• [")
-                    .append(TelegramReplyFormatter.escapeMarkdownV2(l.title()))
-                    .append("](")
-                    .append(TelegramReplyFormatter.escapeMarkdownV2(url))
-                    .append(") — ")
-                    .append(TelegramReplyFormatter.escapeMarkdownV2(l.price()))
-                    .append(TelegramReplyFormatter.escapeMarkdownV2(extras(l)))
-                    .append("\n");
-        });
-        return sb.toString();
-    }
-
-    private static String extras(ListingResult l) {
-        var sb = new StringBuilder();
-        if (l.numBedrooms() != null && !l.numBedrooms().isBlank()) {
-            sb.append(DETAIL_SEPARATOR).append(l.numBedrooms());
+    private void releaseBlockedSubscription(String chatId, Tenant tenant) {
+        log.warn("Telegram bot blocked by chatId={}; releasing claim for email={}", chatId, tenant.email());
+        try {
+            subscriptionStore.release(chatId, tenant.email());
+        } catch (Exception releaseError) {
+            log.warn("Failed to release blocked subscription chatId={}: {}", chatId, releaseError.getMessage());
         }
-        String ber = berRating(l);
-        if (ber != null) {
-            sb.append(DETAIL_SEPARATOR).append("BER ").append(ber);
-        }
-        return sb.toString();
-    }
-
-    private static String berRating(ListingResult l) {
-        var ber = l.ber();
-        if (ber == null) {
-            return null;
-        }
-        String rating = ber.rating();
-        return (rating == null || rating.isBlank()) ? null : rating;
     }
 }

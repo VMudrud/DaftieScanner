@@ -68,24 +68,42 @@ class TelegramNotifierTest {
     }
 
     @Test
-    void notify_happyPath_sendsMarkdownAndMarksDedup() {
+    void notify_happyPath_sendsOneMessagePerListingAndMarksDedup() {
         when(subscriptionStore.chatIdByEmail(EMAIL)).thenReturn(Optional.of(CHAT_ID));
         var listings = List.of(
-                listing(1001L, "Bright Studio", "/listing/1001", "1 Bed", "B2"),
-                listing(1002L, "Cosy 1-Bed", "/listing/1002", "2 Bed", "A3"));
+                listing(1001L, "Bright Studio", "/listing/1001", "1 Bed", "B2", "Apartment"),
+                listing(1002L, "Cosy 1-Bed", "/listing/1002", "2 Bed", "A3", "House"));
 
         notifier.notify(tenant, listings);
 
         var bodyCaptor = ArgumentCaptor.forClass(String.class);
-        verify(bot).sendMarkdown(eq(CHAT_ID), bodyCaptor.capture());
-        String body = bodyCaptor.getValue();
-        assertThat(body).contains("Bright Studio");
-        assertThat(body).contains("Cosy 1\\-Bed");
-        assertThat(body).contains("/listing/1001");
-        assertThat(body).contains("1 Bed");
-        assertThat(body).contains("BER B2");
-        assertThat(body).contains("2 Bed");
-        assertThat(body).contains("BER A3");
+        verify(bot, times(2)).sendMarkdown(eq(CHAT_ID), bodyCaptor.capture());
+        var bodies = bodyCaptor.getAllValues();
+
+        String first = bodies.get(0);
+        assertThat(first).contains("Bright Studio");
+        assertThat(first).contains("/listing/1001");
+        assertThat(first).contains("```\n");
+        assertThat(first).contains("💶 Price");
+        assertThat(first).contains("│ €2,000/month");
+        assertThat(first).contains("🏠 Type");
+        assertThat(first).contains("│ Apartment");
+        assertThat(first).contains("🛏 Beds");
+        assertThat(first).contains("│ 1\n");
+        assertThat(first).contains("BER");
+        assertThat(first).contains("│ B2\n");
+        assertThat(first).doesNotContain("Cosy");
+        // Type row sits between Price and Beds.
+        assertThat(first.indexOf("Price")).isLessThan(first.indexOf("Type"));
+        assertThat(first.indexOf("Type")).isLessThan(first.indexOf("Beds"));
+
+        String second = bodies.get(1);
+        assertThat(second).contains("Cosy 1\\-Bed");
+        assertThat(second).contains("/listing/1002");
+        assertThat(second).contains("│ House");
+        assertThat(second).contains("│ 2\n");
+        assertThat(second).contains("│ A3\n");
+
         verify(dedupStore).markNotifiedBy("telegram", CHAT_ID, 1001L);
         verify(dedupStore).markNotifiedBy("telegram", CHAT_ID, 1002L);
     }
@@ -101,6 +119,10 @@ class TelegramNotifierTest {
         String body = bodyCaptor.getValue();
         assertThat(body).contains("No Details");
         assertThat(body).doesNotContain("BER");
+        assertThat(body).doesNotContain("Beds");
+        assertThat(body).doesNotContain("Type");
+        assertThat(body).contains("💶 Price");
+        assertThat(body).contains("│ €2,000/month");
     }
 
     @Test
@@ -139,12 +161,16 @@ class TelegramNotifierTest {
     }
 
     private ListingResult listing(long id, String title, String path) {
-        return listing(id, title, path, null, null);
+        return listing(id, title, path, null, null, null);
     }
 
     private ListingResult listing(long id, String title, String path, String numBedrooms, String berRating) {
+        return listing(id, title, path, numBedrooms, berRating, null);
+    }
+
+    private ListingResult listing(long id, String title, String path, String numBedrooms, String berRating, String propertyType) {
         var ber = berRating == null ? null : new ListingResult.BerInfo(berRating);
         return new ListingResult(id, title, 1_700_000_000_000L, "€2,000 per month",
-                numBedrooms, null, null, path, null, null, null, ber, null, null, null);
+                numBedrooms, null, propertyType, path, null, null, null, ber, null, null, null);
     }
 }
