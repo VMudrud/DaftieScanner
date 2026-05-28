@@ -20,7 +20,7 @@ data "aws_ami" "al2023_arm64" {
 
 resource "aws_security_group" "daftiescanner" {
   name        = "daftiescanner"
-  description = "DaftieScanner EC2 — no inbound; egress only (SSM Session Manager + outbound scraping)"
+  description = "DaftieScanner EC2 - no inbound; egress only (SSM Session Manager + outbound scraping)"
 
   # No ingress rules: shell access is via SSM Session Manager (outbound to SSM),
   # so port 22 stays closed and there is no IP to whitelist.
@@ -130,14 +130,14 @@ locals {
 
 resource "aws_instance" "daftiescanner" {
   ami                         = data.aws_ami.al2023_arm64.id
-  instance_type               = "t4g.nano"
+  instance_type               = "t4g.micro"
   iam_instance_profile        = aws_iam_instance_profile.daftiescanner.name
   vpc_security_group_ids      = [aws_security_group.daftiescanner.id]
   associate_public_ip_address = true
 
   root_block_device {
     volume_type = "gp3"
-    volume_size = 8
+    volume_size = 30
   }
 
   # Allow the Docker container (one network hop from the host) to reach IMDSv2

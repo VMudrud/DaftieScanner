@@ -31,7 +31,7 @@ if [ -n "${SSM_PARAM_PREFIX}" ]; then
   echo "SSM config loaded."
 fi
 
-# Launch the JVM — tuned for t4g.nano (512 MB RAM, ARM64)
+# Launch the JVM — container-memory-aware (t4g.micro, 1 GB RAM, ARM64)
 exec java \
   -XX:+UseContainerSupport \
   -XX:MaxRAMPercentage=75.0 \

@@ -6,8 +6,9 @@ locals {
     "TENANT_1_SECTION"                = "REPLACE_ME"
     "TENANT_1_RENTAL_PRICE_MIN"       = "REPLACE_ME"
     "TENANT_1_RENTAL_PRICE_MAX"       = "REPLACE_ME"
-    "TENANT_1_NUM_BEDS_MIN"           = "REPLACE_ME"
-    "TENANT_1_NUM_BEDS_MAX"           = "REPLACE_ME"
+    # num-beds min/max omitted on purpose: they must be blank (no filter) and SSM
+    # rejects empty values. application.yaml defaults them to "" → null. Add a
+    # parameter here manually only if you want an actual bed filter.
     "TENANT_1_STORED_SHAPE_IDS"       = "REPLACE_ME"
     "AWS_REGION"                      = "eu-west-1"
     "DAFT_DYNAMO_ALERTS_TABLE"        = "daftiescanner_alerts"

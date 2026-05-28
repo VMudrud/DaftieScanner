@@ -187,7 +187,7 @@ Integration tests use Testcontainers with `amazon/dynamodb-local:2.5.2`.
 
 ## Terraform (infra/)
 
-Provisions: EC2 t4g.nano (ARM64, Amazon Linux 2023), IAM role, 3 DynamoDB tables,
+Provisions: EC2 t4g.micro (ARM64, Amazon Linux 2023), IAM role, 3 DynamoDB tables,
 SSM Parameter Store entries, SNS topic, CloudWatch alarms, Lambda IP-recycle function.
 
 ```bash
@@ -199,3 +199,5 @@ terraform apply \
   -var="alert_email=you@example.com" \
   -var="instance_id=$(terraform output -raw instance_id)"
 ```
+
+See [`DEPLOYMENT.md`](DEPLOYMENT.md) for the full end-to-end procedure (SSM parameters, image build via SSM Session Manager, and verification).

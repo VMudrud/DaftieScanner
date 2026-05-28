@@ -1,72 +1,43 @@
 # DaftieScanner — Infrastructure
 
-Terraform configuration for the EC2 + DynamoDB + SSM + CloudWatch deployment.
+Terraform configuration for the AWS deployment (EC2 + DynamoDB + SSM + CloudWatch).
 
-## Prerequisites
+> **For the full deployment procedure, see [`../DEPLOYMENT.md`](../DEPLOYMENT.md).**
+> This README is an infra reference only — what's defined here and how to operate Terraform.
 
-- Terraform >= 1.5
-- AWS credentials configured (`aws configure` or env vars `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY`)
-- Docker with buildx installed (for multi-platform builds)
+## Files
 
-## Building the Docker image
+| File | Defines |
+|------|---------|
+| `ec2.tf` | EC2 `t4g.micro` (AL2023 ARM64), security group (**egress only — no inbound**), IAM role + instance profile, `AmazonSSMManagedInstanceCore` attachment, AMI lookup |
+| `dynamo.tf` | DynamoDB tables `daftiescanner_seen`, `_cursor`, `_alerts` (PAY_PER_REQUEST, TTL) |
+| `ssm.tf` | SSM parameters under `/daftiescanner/prod/*` (created as `REPLACE_ME`; `ignore_changes` keeps your values) |
+| `cloudwatch.tf` | Block-detection alarm + SNS topic |
+| `lambda_ip_recycle.tf`, `lambda/ip_recycle.py` | Lambda that stops/starts the instance to recycle the public IP on alarm |
+| `user_data.sh.tpl` | Instance bootstrap: installs Docker + Compose, writes compose files, installs/enables the systemd unit |
+| `systemd/daftiescanner.service` | `systemd` unit that runs `docker compose ... up -d` |
+| `variables.tf` | Input variables (below) |
 
-The EC2 instance pulls the image by name (`daftiescanner:latest`). Since there is no ECR in this setup, choose one of:
+## Variables
 
-**Option A — build directly on EC2 (simplest)**
+| Variable | Default | Notes |
+|----------|---------|-------|
+| `aws_region` | `eu-west-1` | Used in IAM ARNs. Provider region comes from your AWS CLI/env config. |
+| `alert_email` | _(required)_ | Recipient for CloudWatch alarm notifications. |
+| `instance_id` | `""` | Populate after first apply to wire the IP-recycle Lambda (two-pass apply). |
+| `ssm_prefix` | `/daftiescanner/prod` | SSM path prefix the app loads config from. |
+
+## Access & state
+
+- **Shell access is via SSM Session Manager** — `aws ssm start-session --target $(terraform output -raw instance_id)`. There is no inbound SSH.
+- **State is local** (`terraform.tfstate` in this dir, gitignored) — no remote backend configured. Provider versions are pinned in `.terraform.lock.hcl` (committed).
+
+## Quick reference
 
 ```bash
-# SSH to the instance after terraform apply
-ssh ec2-user@<public_ip>
-git clone <repo> /opt/src
-cd /opt/src
-docker build --platform linux/arm64 -t daftiescanner:latest .
-```
-
-**Option B — build locally and scp the image**
-
-```bash
-docker buildx build --platform linux/arm64 -t daftiescanner:latest --load .
-docker save daftiescanner:latest | gzip > daftiescanner.tar.gz
-scp daftiescanner.tar.gz ec2-user@<public_ip>:/opt/daftiescanner/
-ssh ec2-user@<public_ip> "docker load < /opt/daftiescanner/daftiescanner.tar.gz"
-```
-
-## Deploy infrastructure
-
-```bash
-cd infra
 terraform init
-terraform apply -var="alert_email=you@example.com"
+terraform apply                                                     # first pass
+terraform apply -var="instance_id=$(terraform output -raw instance_id)"   # wire IP-recycle Lambda
 ```
 
-The `instance_id` variable defaults to `""` on first apply. After apply, note the `instance_id` output and re-apply to wire the Lambda IP recycle:
-
-```bash
-terraform apply \
-  -var="alert_email=you@example.com" \
-  -var="instance_id=$(terraform output -raw instance_id)"
-```
-
-## Fill in SSM parameters
-
-All parameters are created with value `REPLACE_ME`. Set real values via console or CLI:
-
-```bash
-aws ssm put-parameter --name /daftiescanner/prod/TENANT_1_EMAIL \
-  --value "your@email.com" --type String --overwrite
-# repeat for each parameter
-```
-
-Terraform will not overwrite values you have set (`lifecycle { ignore_changes = [value] }`).
-
-## Start the application
-
-```bash
-ssh ec2-user@<public_ip>
-# Ensure image is loaded (see Building section above)
-sudo systemctl start daftiescanner
-sudo systemctl status daftiescanner
-# Follow logs
-sudo docker compose -f /opt/daftiescanner/docker-compose.yml \
-  -f /opt/daftiescanner/docker-compose.aws.yml logs -f
-```
+See [`../DEPLOYMENT.md`](../DEPLOYMENT.md) for prerequisites, SSM parameter population, building the image, starting the app, and verification.
