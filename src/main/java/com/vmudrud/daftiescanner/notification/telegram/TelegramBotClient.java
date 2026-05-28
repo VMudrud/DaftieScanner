@@ -8,11 +8,13 @@ import com.vmudrud.daftiescanner.notification.telegram.dto.TelegramUpdate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.Recover;
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClient;
+import org.springframework.web.client.RestClientException;
 
 import java.util.List;
 
@@ -25,6 +27,7 @@ public class TelegramBotClient {
     private static final String METHOD_GET_UPDATES = "/getUpdates";
     private static final String PARSE_MODE_MARKDOWN_V2 = "MarkdownV2";
     private static final List<String> ALLOWED_MESSAGE_UPDATES = List.of("message");
+    private static final int TRANSPORT_ERROR_STATUS = 0;
 
     private final RestClient restClient;
 
@@ -44,6 +47,19 @@ public class TelegramBotClient {
         send(new SendMessageRequest(chatId, markdownText, PARSE_MODE_MARKDOWN_V2, false, replyMarkup));
     }
 
+    // When retries are exhausted, the ResourceAccessException message carries the
+    // token-bearing request URI; convert it to a redacted TelegramApiException so
+    // callers never log the raw transport error.
+    @Recover
+    void recoverSendPlainText(ResourceAccessException e, String chatId, String text) {
+        throw transportError(e);
+    }
+
+    @Recover
+    void recoverSendMarkdown(ResourceAccessException e, String chatId, String markdownText, InlineKeyboardMarkup replyMarkup) {
+        throw transportError(e);
+    }
+
     private void send(SendMessageRequest body) {
         try {
             restClient.post()
@@ -53,7 +69,7 @@ public class TelegramBotClient {
                     .toBodilessEntity();
         } catch (HttpStatusCodeException e) {
             throw new TelegramApiException(e.getStatusCode().value(),
-                    "sendMessage failed: " + e.getResponseBodyAsString());
+                    TelegramLogSafe.redact("sendMessage failed: " + e.getResponseBodyAsString()));
         }
     }
 
@@ -71,7 +87,14 @@ public class TelegramBotClient {
             return response.result();
         } catch (HttpStatusCodeException e) {
             throw new TelegramApiException(e.getStatusCode().value(),
-                    "getUpdates failed: " + e.getResponseBodyAsString());
+                    TelegramLogSafe.redact("getUpdates failed: " + e.getResponseBodyAsString()));
+        } catch (RestClientException e) {
+            throw transportError(e);
         }
+    }
+
+    private static TelegramApiException transportError(RestClientException e) {
+        return new TelegramApiException(TRANSPORT_ERROR_STATUS,
+                TelegramLogSafe.redact("transport error: " + e.getMessage()));
     }
 }

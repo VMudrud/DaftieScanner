@@ -49,10 +49,12 @@ class TelegramUpdatePoller implements SchedulingConfigurer {
             }
             nextRunAfter = Instant.EPOCH;
         } catch (TelegramApiException e) {
-            log.warn("Telegram getUpdates failed status={}: {}", e.statusCode(), e.getMessage());
+            log.warn("Telegram getUpdates failed status={}: {}", e.statusCode(), TelegramLogSafe.redact(e.getMessage()));
             nextRunAfter = Instant.now().plus(FAIL_BACKOFF);
         } catch (Exception e) {
-            log.error("Unexpected error polling Telegram updates: {}", e.getMessage(), e);
+            // Don't pass the raw throwable: its message/stack trace can carry the token-bearing URI.
+            log.error("Unexpected error polling Telegram updates ({}): {}",
+                    e.getClass().getSimpleName(), TelegramLogSafe.redact(e.getMessage()));
             nextRunAfter = Instant.now().plus(FAIL_BACKOFF);
         }
     }
