@@ -8,5 +8,6 @@ public record SendMessageRequest(
         @JsonProperty("chat_id") String chatId,
         String text,
         @JsonProperty("parse_mode") String parseMode,
-        @JsonProperty("disable_web_page_preview") Boolean disableWebPagePreview
+        @JsonProperty("disable_web_page_preview") Boolean disableWebPagePreview,
+        @JsonProperty("reply_markup") InlineKeyboardMarkup replyMarkup
 ) {}

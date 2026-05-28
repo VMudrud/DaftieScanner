@@ -4,6 +4,7 @@ import com.vmudrud.daftiescanner.common.listing.ListingResult;
 import com.vmudrud.daftiescanner.common.store.DedupStore;
 import com.vmudrud.daftiescanner.common.tenant.FilterSpec;
 import com.vmudrud.daftiescanner.common.tenant.Tenant;
+import com.vmudrud.daftiescanner.notification.telegram.dto.InlineKeyboardMarkup;
 import com.vmudrud.daftiescanner.notification.telegram.store.SubscriptionStore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -77,22 +78,19 @@ class TelegramNotifierTest {
         notifier.notify(tenant, listings);
 
         var bodyCaptor = ArgumentCaptor.forClass(String.class);
-        verify(bot, times(2)).sendMarkdown(eq(CHAT_ID), bodyCaptor.capture());
+        var markupCaptor = ArgumentCaptor.forClass(InlineKeyboardMarkup.class);
+        verify(bot, times(2)).sendMarkdown(eq(CHAT_ID), bodyCaptor.capture(), markupCaptor.capture());
         var bodies = bodyCaptor.getAllValues();
 
         String first = bodies.get(0);
         assertThat(first).contains("Bright Studio");
         assertThat(first).contains("/listing/1001");
-        assertThat(first).contains("```\n");
-        assertThat(first).contains("💶 Price");
-        assertThat(first).contains("│ €2,000/month");
-        assertThat(first).contains("🏠 Type");
-        assertThat(first).contains("│ Apartment");
-        assertThat(first).contains("🛏 Beds");
-        assertThat(first).contains("│ 1\n");
-        assertThat(first).contains("BER");
-        assertThat(first).contains("│ B2\n");
-        assertThat(first).contains("🔗 Open / Share");
+        assertThat(first).doesNotContain("```"); // blockquoted inline code, no fenced block
+        assertThat(first).contains(">`💶 Price │ €2,000/month`");
+        assertThat(first).contains(">`🏠 Type  │ Apartment`");
+        assertThat(first).contains(">`🛏 Beds  │ 1`");
+        assertThat(first).contains(">`⚡️ BER   │ B2`");
+        assertThat(first).doesNotContain("Open / Share");
         assertThat(first).doesNotContain("Cosy");
         // Type row sits between Price and Beds.
         assertThat(first.indexOf("Price")).isLessThan(first.indexOf("Type"));
@@ -101,10 +99,15 @@ class TelegramNotifierTest {
         String second = bodies.get(1);
         assertThat(second).contains("Cosy 1\\-Bed");
         assertThat(second).contains("/listing/1002");
-        assertThat(second).contains("│ House");
-        assertThat(second).contains("│ 2\n");
-        assertThat(second).contains("│ A3\n");
-        assertThat(second).contains("🔗 Open / Share");
+        assertThat(second).contains(">`🏠 Type  │ House`");
+        assertThat(second).contains(">`🛏 Beds  │ 2`");
+        assertThat(second).contains(">`⚡️ BER   │ A3`");
+        assertThat(second).doesNotContain("Open / Share");
+
+        // Copy button carries the listing URL as native Telegram copy_text.
+        var firstButton = markupCaptor.getAllValues().get(0).inlineKeyboard().get(0).get(0);
+        assertThat(firstButton.copyText().text()).isEqualTo("https://www.daft.ie/listing/1001");
+        assertThat(firstButton.text()).contains("Copy");
 
         verify(dedupStore).markNotifiedBy("telegram", CHAT_ID, 1001L);
         verify(dedupStore).markNotifiedBy("telegram", CHAT_ID, 1002L);
@@ -117,9 +120,9 @@ class TelegramNotifierTest {
         notifier.notify(tenant, List.of(listing(1L, "Mall House", "/listing/1", "1 Bed", "SI_666", "Apartment")));
 
         var bodyCaptor = ArgumentCaptor.forClass(String.class);
-        verify(bot).sendMarkdown(eq(CHAT_ID), bodyCaptor.capture());
+        verify(bot).sendMarkdown(eq(CHAT_ID), bodyCaptor.capture(), any());
         String body = bodyCaptor.getValue();
-        assertThat(body).contains("│ EXEMPT");
+        assertThat(body).contains("⚡️ BER   │ EXEMPT");
         assertThat(body).doesNotContain("SI_666");
     }
 
@@ -130,14 +133,13 @@ class TelegramNotifierTest {
         notifier.notify(tenant, List.of(listing(1L, "No Details", "/listing/1", null, null)));
 
         var bodyCaptor = ArgumentCaptor.forClass(String.class);
-        verify(bot).sendMarkdown(eq(CHAT_ID), bodyCaptor.capture());
+        verify(bot).sendMarkdown(eq(CHAT_ID), bodyCaptor.capture(), any());
         String body = bodyCaptor.getValue();
         assertThat(body).contains("No Details");
         assertThat(body).doesNotContain("BER");
         assertThat(body).doesNotContain("Beds");
         assertThat(body).doesNotContain("Type");
-        assertThat(body).contains("💶 Price");
-        assertThat(body).contains("│ €2,000/month");
+        assertThat(body).contains("💶 Price │ €2,000/month");
     }
 
     @Test
@@ -147,7 +149,7 @@ class TelegramNotifierTest {
 
         notifier.notify(tenant, List.of(listing(1001L, "Already", "/listing/1001")));
 
-        verify(bot, never()).sendMarkdown(any(), any());
+        verify(bot, never()).sendMarkdown(any(), any(), any());
         verify(dedupStore, never()).markNotifiedBy(any(), any(), anyLong());
     }
 
@@ -155,7 +157,7 @@ class TelegramNotifierTest {
     void notify_botBlocked403_releasesClaimAndDoesNotMark() {
         when(subscriptionStore.chatIdByEmail(EMAIL)).thenReturn(Optional.of(CHAT_ID));
         doThrow(new TelegramApiException(403, "bot was blocked"))
-                .when(bot).sendMarkdown(eq(CHAT_ID), any());
+                .when(bot).sendMarkdown(eq(CHAT_ID), any(), any());
 
         notifier.notify(tenant, List.of(listing(1L, "Apt", "/listing/1")));
 
@@ -167,7 +169,7 @@ class TelegramNotifierTest {
     void notify_otherApiError_doesNotMarkOrRelease() {
         when(subscriptionStore.chatIdByEmail(EMAIL)).thenReturn(Optional.of(CHAT_ID));
         doThrow(new TelegramApiException(500, "server error"))
-                .when(bot).sendMarkdown(eq(CHAT_ID), any());
+                .when(bot).sendMarkdown(eq(CHAT_ID), any(), any());
 
         notifier.notify(tenant, List.of(listing(1L, "Apt", "/listing/1")));
 

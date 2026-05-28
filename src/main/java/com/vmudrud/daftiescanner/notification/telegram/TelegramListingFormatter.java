@@ -1,6 +1,8 @@
 package com.vmudrud.daftiescanner.notification.telegram;
 
 import com.vmudrud.daftiescanner.common.listing.ListingResult;
+import com.vmudrud.daftiescanner.notification.telegram.dto.InlineKeyboardButton;
+import com.vmudrud.daftiescanner.notification.telegram.dto.InlineKeyboardMarkup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,15 +14,24 @@ public final class TelegramListingFormatter {
     private static final String PRICE_SUFFIX_SHORT = "/month";
     private static final String BED_SINGULAR_SUFFIX = " Bed";
     private static final String BED_PLURAL_SUFFIX = " Beds";
-    private static final String LABEL_PRICE = "💶 Price";
-    private static final String LABEL_TYPE = "🏠 Type";
-    private static final String LABEL_BEDS = "🛏 Beds";
-    // U+FE0F (VS16) forces emoji-style rendering for ⚡ so it occupies the same
-    // visual cell-width as the other emojis inside the monospace code block.
-    private static final String LABEL_BER = "⚡️ BER";
+    // Each emoji prefixes its label in the first column. Alignment relies on every emoji
+    // occupying two monospace cells; ICON_BER carries U+FE0F (VS16) to force ⚡ into emoji
+    // (2-cell) presentation so its column lines up with the supplementary-plane emoji.
+    private static final String LABEL_PRICE = "Price";
+    private static final String LABEL_TYPE = "Type";
+    private static final String LABEL_BEDS = "Beds";
+    private static final String LABEL_BER = "BER";
+    private static final String ICON_PRICE = "💶";
+    private static final String ICON_TYPE = "🏠";
+    private static final String ICON_BEDS = "🛏";
+    private static final String ICON_BER = "⚡️";
     private static final String COLUMN_SEPARATOR = " │ ";
-    private static final String CODE_FENCE = "```";
-    private static final String SHARE_LINK_LABEL = "🔗 Open / Share";
+    // Per-line inline code inside a blockquote: a grouped container (left bar) with
+    // monospace alignment, and no Telegram "Copy code" affordance — that only appears
+    // on fenced ``` blocks, which mobile renders inconsistently.
+    private static final String INLINE_CODE = "`";
+    private static final String BLOCKQUOTE_PREFIX = ">";
+    private static final String COPY_LINK_LABEL = "🔗 Copy link";
     private static final String BER_EXEMPT_PREFIX = "SI_";
     private static final String BER_EXEMPT_DISPLAY = "EXEMPT";
 
@@ -30,17 +41,12 @@ public final class TelegramListingFormatter {
         var sb = new StringBuilder();
         appendTitleLink(sb, l);
         appendTable(sb, l);
-        appendShareLink(sb, l);
         return sb.toString();
     }
 
-    private static void appendShareLink(StringBuilder sb, ListingResult l) {
+    public static InlineKeyboardMarkup copyLinkMarkup(ListingResult l) {
         String url = DAFT_BASE + l.seoFriendlyPath();
-        sb.append("\n\n[")
-                .append(TelegramReplyFormatter.escapeMarkdownV2(SHARE_LINK_LABEL))
-                .append("](")
-                .append(TelegramReplyFormatter.escapeMarkdownV2(url))
-                .append(")");
+        return InlineKeyboardMarkup.singleButton(InlineKeyboardButton.copy(COPY_LINK_LABEL, url));
     }
 
     private static void appendTitleLink(StringBuilder sb, ListingResult l) {
@@ -54,27 +60,31 @@ public final class TelegramListingFormatter {
 
     private static void appendTable(StringBuilder sb, ListingResult l) {
         var rows = new ArrayList<String[]>();
-        addRow(rows, LABEL_PRICE, priceShort(l.price()));
-        addRow(rows, LABEL_TYPE, l.propertyType());
-        addRow(rows, LABEL_BEDS, bedsValue(l));
-        addRow(rows, LABEL_BER, berRating(l));
+        addRow(rows, LABEL_PRICE, ICON_PRICE, priceShort(l.price()));
+        addRow(rows, LABEL_TYPE, ICON_TYPE, l.propertyType());
+        addRow(rows, LABEL_BEDS, ICON_BEDS, bedsValue(l));
+        addRow(rows, LABEL_BER, ICON_BER, berRating(l));
         if (rows.isEmpty()) {
             return;
         }
         int maxLabel = widestLabel(rows);
-        sb.append(CODE_FENCE).append("\n");
-        for (var r : rows) {
-            sb.append(padRight(r[0], maxLabel))
+        for (int i = 0; i < rows.size(); i++) {
+            var r = rows.get(i);
+            if (i > 0) {
+                sb.append("\n");
+            }
+            sb.append(BLOCKQUOTE_PREFIX)
+                    .append(INLINE_CODE)
+                    .append(padRight(r[0], maxLabel))
                     .append(COLUMN_SEPARATOR)
                     .append(escapeForCodeBlock(r[1]))
-                    .append("\n");
+                    .append(INLINE_CODE);
         }
-        sb.append(CODE_FENCE);
     }
 
-    private static void addRow(List<String[]> rows, String label, String value) {
+    private static void addRow(List<String[]> rows, String label, String icon, String value) {
         if (value != null && !value.isBlank()) {
-            rows.add(new String[]{label, value});
+            rows.add(new String[]{icon + " " + label, value});
         }
     }
 

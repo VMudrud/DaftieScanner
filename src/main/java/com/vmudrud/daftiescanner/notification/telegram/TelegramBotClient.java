@@ -2,6 +2,7 @@ package com.vmudrud.daftiescanner.notification.telegram;
 
 import com.vmudrud.daftiescanner.notification.telegram.dto.GetUpdatesRequest;
 import com.vmudrud.daftiescanner.notification.telegram.dto.GetUpdatesResponse;
+import com.vmudrud.daftiescanner.notification.telegram.dto.InlineKeyboardMarkup;
 import com.vmudrud.daftiescanner.notification.telegram.dto.SendMessageRequest;
 import com.vmudrud.daftiescanner.notification.telegram.dto.TelegramUpdate;
 import lombok.extern.slf4j.Slf4j;
@@ -34,13 +35,13 @@ public class TelegramBotClient {
     @Retryable(retryFor = ResourceAccessException.class, maxAttempts = 3,
             backoff = @Backoff(delay = 500, multiplier = 2))
     public void sendPlainText(String chatId, String text) {
-        send(new SendMessageRequest(chatId, text, null, true));
+        send(new SendMessageRequest(chatId, text, null, true, null));
     }
 
     @Retryable(retryFor = ResourceAccessException.class, maxAttempts = 3,
             backoff = @Backoff(delay = 500, multiplier = 2))
-    public void sendMarkdown(String chatId, String markdownText) {
-        send(new SendMessageRequest(chatId, markdownText, PARSE_MODE_MARKDOWN_V2, false));
+    public void sendMarkdown(String chatId, String markdownText, InlineKeyboardMarkup replyMarkup) {
+        send(new SendMessageRequest(chatId, markdownText, PARSE_MODE_MARKDOWN_V2, false, replyMarkup));
     }
 
     private void send(SendMessageRequest body) {

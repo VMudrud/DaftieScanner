@@ -121,7 +121,7 @@ When `DAFT_TELEGRAM_TOKEN` is set, the app long-polls the Telegram Bot API and e
 | `/email` | Show the currently linked email |
 | `/unsubscribe` | Release the claim |
 
-Tenants opt into the channel by including `telegram` in their `TENANT_N_NOTIFIERS` list. Notifications are sent as MarkdownV2 with clickable daft.ie links. If the user blocks the bot, the claim is auto-released on the next send attempt (403). Per-channel dedup keys (`telegram:<chatId>`) live in the existing `daftiescanner_seen` table.
+Tenants opt into the channel by including `telegram` in their `TENANT_N_NOTIFIERS` list. Notifications are sent as MarkdownV2: a clickable daft.ie title link, aligned monospace detail lines (price/type/beds/BER) rendered as a blockquote of inline-code rows (grouped, no auto "Copy code" button), and a one-tap **Copy link** button (Telegram `copy_text`). If the user blocks the bot, the claim is auto-released on the next send attempt (403). Per-channel dedup keys (`telegram:<chatId>`) live in the existing `daftiescanner_seen` table.
 
 ## Local development
 

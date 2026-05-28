@@ -60,7 +60,8 @@ public class TelegramNotifier implements Notifier {
     private void sendEach(String chatId, Tenant tenant, List<ListingResult> listings) {
         for (var listing : listings) {
             try {
-                bot.sendMarkdown(chatId, TelegramListingFormatter.format(listing));
+                bot.sendMarkdown(chatId, TelegramListingFormatter.format(listing),
+                        TelegramListingFormatter.copyLinkMarkup(listing));
                 dedupStore.markNotifiedBy(CHANNEL, chatId, listing.id());
                 log.info("Telegram sent tenant={} chatId={} listingId={}", tenant.id(), chatId, listing.id());
             } catch (TelegramApiException e) {

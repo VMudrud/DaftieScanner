@@ -16,7 +16,7 @@ public class ListingApprovedListener {
 
     private final NotificationGuard guard;
 
-    @Async
+    @Async("notificationTaskExecutor")
     @EventListener
     public void onNewListings(NewListingsFoundEvent event) {
         if (event.listings().isEmpty()) {
