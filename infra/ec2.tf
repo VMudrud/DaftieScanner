@@ -20,15 +20,10 @@ data "aws_ami" "al2023_arm64" {
 
 resource "aws_security_group" "daftiescanner" {
   name        = "daftiescanner"
-  description = "DaftieScanner EC2 — SSH inbound only"
+  description = "DaftieScanner EC2 — no inbound; egress only (SSM Session Manager + outbound scraping)"
 
-  ingress {
-    description = "SSH"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = [var.ssh_cidr]
-  }
+  # No ingress rules: shell access is via SSM Session Manager (outbound to SSM),
+  # so port 22 stays closed and there is no IP to whitelist.
 
   egress {
     description = "All outbound"
@@ -112,6 +107,11 @@ resource "aws_iam_role_policy" "daftiescanner_ec2" {
       }
     ]
   })
+}
+
+resource "aws_iam_role_policy_attachment" "ssm_core" {
+  role       = aws_iam_role.daftiescanner_ec2.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 
 resource "aws_iam_instance_profile" "daftiescanner" {

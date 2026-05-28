@@ -15,16 +15,6 @@ variable "alert_email" {
   type        = string
 }
 
-variable "ssh_cidr" {
-  description = "CIDR for SSH inbound rule — your home/VPN IP, e.g. 203.0.113.7/32. No default: must be set explicitly (via terraform.tfvars or -var) to avoid exposing SSH to 0.0.0.0/0."
-  type        = string
-
-  validation {
-    condition     = var.ssh_cidr != "0.0.0.0/0"
-    error_message = "ssh_cidr must not be 0.0.0.0/0 — restrict SSH to a specific address range."
-  }
-}
-
 variable "ssm_prefix" {
   description = "SSM Parameter Store path prefix for application config"
   type        = string
