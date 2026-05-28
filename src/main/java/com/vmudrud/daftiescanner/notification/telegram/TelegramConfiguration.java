@@ -27,7 +27,12 @@ class TelegramConfiguration {
 
     @Bean
     RestClient telegramRestClient() {
-        var httpClient = HttpClient.newBuilder().connectTimeout(CONNECT_TIMEOUT).build();
+        // HTTP/1.1 avoids a JDK HTTP/2 race where a half-closed keep-alive stream
+        // surfaces as EOFException mid-response from api.telegram.org.
+        var httpClient = HttpClient.newBuilder()
+                .version(HttpClient.Version.HTTP_1_1)
+                .connectTimeout(CONNECT_TIMEOUT)
+                .build();
         var factory = new JdkClientHttpRequestFactory(httpClient);
         factory.setReadTimeout(READ_TIMEOUT);
         return RestClient.builder()

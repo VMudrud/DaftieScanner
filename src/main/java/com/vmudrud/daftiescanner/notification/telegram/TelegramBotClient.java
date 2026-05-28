@@ -6,8 +6,11 @@ import com.vmudrud.daftiescanner.notification.telegram.dto.SendMessageRequest;
 import com.vmudrud.daftiescanner.notification.telegram.dto.TelegramUpdate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpStatusCodeException;
+import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClient;
 
 import java.util.List;
@@ -28,10 +31,14 @@ public class TelegramBotClient {
         this.restClient = restClient;
     }
 
+    @Retryable(retryFor = ResourceAccessException.class, maxAttempts = 3,
+            backoff = @Backoff(delay = 500, multiplier = 2))
     public void sendPlainText(String chatId, String text) {
         send(new SendMessageRequest(chatId, text, null, true));
     }
 
+    @Retryable(retryFor = ResourceAccessException.class, maxAttempts = 3,
+            backoff = @Backoff(delay = 500, multiplier = 2))
     public void sendMarkdown(String chatId, String markdownText) {
         send(new SendMessageRequest(chatId, markdownText, PARSE_MODE_MARKDOWN_V2, false));
     }
