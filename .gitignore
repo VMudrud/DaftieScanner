@@ -60,5 +60,6 @@ build/
 .env
 .env.local
 .env.*.local
+.env.aws
 
 .claude/settings.local.json

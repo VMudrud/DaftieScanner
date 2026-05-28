@@ -20,6 +20,9 @@ public final class TelegramListingFormatter {
     private static final String LABEL_BER = "⚡️ BER";
     private static final String COLUMN_SEPARATOR = " │ ";
     private static final String CODE_FENCE = "```";
+    private static final String SHARE_LINK_LABEL = "🔗 Open / Share";
+    private static final String BER_EXEMPT_PREFIX = "SI_";
+    private static final String BER_EXEMPT_DISPLAY = "EXEMPT";
 
     private TelegramListingFormatter() {}
 
@@ -27,7 +30,17 @@ public final class TelegramListingFormatter {
         var sb = new StringBuilder();
         appendTitleLink(sb, l);
         appendTable(sb, l);
+        appendShareLink(sb, l);
         return sb.toString();
+    }
+
+    private static void appendShareLink(StringBuilder sb, ListingResult l) {
+        String url = DAFT_BASE + l.seoFriendlyPath();
+        sb.append("\n\n[")
+                .append(TelegramReplyFormatter.escapeMarkdownV2(SHARE_LINK_LABEL))
+                .append("](")
+                .append(TelegramReplyFormatter.escapeMarkdownV2(url))
+                .append(")");
     }
 
     private static void appendTitleLink(StringBuilder sb, ListingResult l) {
@@ -119,6 +132,10 @@ public final class TelegramListingFormatter {
             return null;
         }
         String rating = ber.rating();
-        return (rating == null || rating.isBlank()) ? null : rating;
+        if (rating == null || rating.isBlank()) {
+            return null;
+        }
+        // daft.ie returns "SI_*" codes for properties exempt from BER assessment.
+        return rating.startsWith(BER_EXEMPT_PREFIX) ? BER_EXEMPT_DISPLAY : rating;
     }
 }

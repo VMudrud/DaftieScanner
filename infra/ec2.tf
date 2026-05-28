@@ -140,6 +140,14 @@ resource "aws_instance" "daftiescanner" {
     volume_size = 8
   }
 
+  # Allow the Docker container (one network hop from the host) to reach IMDSv2
+  # for the EC2 instance-profile credentials. Default hop limit of 1 blocks this.
+  metadata_options {
+    http_tokens                 = "required"
+    http_put_response_hop_limit = 2
+    http_endpoint               = "enabled"
+  }
+
   user_data = local.user_data
 
   tags = {

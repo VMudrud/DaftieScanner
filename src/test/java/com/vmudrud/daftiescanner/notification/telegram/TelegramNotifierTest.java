@@ -92,6 +92,7 @@ class TelegramNotifierTest {
         assertThat(first).contains("│ 1\n");
         assertThat(first).contains("BER");
         assertThat(first).contains("│ B2\n");
+        assertThat(first).contains("🔗 Open / Share");
         assertThat(first).doesNotContain("Cosy");
         // Type row sits between Price and Beds.
         assertThat(first.indexOf("Price")).isLessThan(first.indexOf("Type"));
@@ -103,9 +104,23 @@ class TelegramNotifierTest {
         assertThat(second).contains("│ House");
         assertThat(second).contains("│ 2\n");
         assertThat(second).contains("│ A3\n");
+        assertThat(second).contains("🔗 Open / Share");
 
         verify(dedupStore).markNotifiedBy("telegram", CHAT_ID, 1001L);
         verify(dedupStore).markNotifiedBy("telegram", CHAT_ID, 1002L);
+    }
+
+    @Test
+    void notify_berExemptCode_rendersAsExempt() {
+        when(subscriptionStore.chatIdByEmail(EMAIL)).thenReturn(Optional.of(CHAT_ID));
+
+        notifier.notify(tenant, List.of(listing(1L, "Mall House", "/listing/1", "1 Bed", "SI_666", "Apartment")));
+
+        var bodyCaptor = ArgumentCaptor.forClass(String.class);
+        verify(bot).sendMarkdown(eq(CHAT_ID), bodyCaptor.capture());
+        String body = bodyCaptor.getValue();
+        assertThat(body).contains("│ EXEMPT");
+        assertThat(body).doesNotContain("SI_666");
     }
 
     @Test

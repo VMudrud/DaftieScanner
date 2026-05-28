@@ -1,13 +1,14 @@
-Prepservices:
+services:
   app:
-    image: daftiescanner:latest
     environment:
+      AWS_REGION: eu-west-1
+      DAFT_DYNAMO_ENDPOINT: ""
       SSM_PARAM_PREFIX: /daftiescanner/prod
       MANAGEMENT_METRICS_EXPORT_CLOUDWATCH_ENABLED: "true"
-    restart: unless-stopped
     logging:
       driver: awslogs
       options:
         awslogs-group: /daftiescanner/app
         awslogs-region: eu-west-1
         awslogs-stream-prefix: app
+        awslogs-create-group: "true"

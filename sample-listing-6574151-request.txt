@@ -1,3 +1,0 @@
-GET https://gateway.daft.ie/api/v2/ads/listing/{id}
-
-6574151
