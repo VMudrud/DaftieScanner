@@ -65,7 +65,11 @@ resource "aws_iam_role_policy" "daftiescanner_ec2" {
         Resource = [
           "arn:aws:dynamodb:${var.aws_region}:*:table/daftiescanner_seen",
           "arn:aws:dynamodb:${var.aws_region}:*:table/daftiescanner_cursor",
-          "arn:aws:dynamodb:${var.aws_region}:*:table/daftiescanner_alerts"
+          "arn:aws:dynamodb:${var.aws_region}:*:table/daftiescanner_alerts",
+          # Telegram subscription tables are auto-created by the app on startup
+          # (DynamoSubscriptionStore.init); the role needs DescribeTable/CreateTable + item ops here.
+          "arn:aws:dynamodb:${var.aws_region}:*:table/daftiescanner_tg_claim",
+          "arn:aws:dynamodb:${var.aws_region}:*:table/daftiescanner_tg_subscription"
         ]
       },
       {
