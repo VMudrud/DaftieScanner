@@ -10,5 +10,5 @@ services:
       options:
         awslogs-group: /daftiescanner/app
         awslogs-region: eu-west-1
-        awslogs-stream-prefix: app
+        awslogs-stream: daftiescanner
         awslogs-create-group: "true"
