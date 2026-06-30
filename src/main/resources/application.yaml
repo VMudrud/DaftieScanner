@@ -63,6 +63,24 @@ tenant:
     rental-price-max: ${TENANT_1_RENTAL_PRICE_MAX:0}
     num-beds-min: ${TENANT_1_NUM_BEDS_MIN:}
     num-beds-max: ${TENANT_1_NUM_BEDS_MAX:}
+    # stored-shape-ids: daft.ie geo location IDs (a list). Sent as
+    # GeoFilter.storedShapeIds in the search request. Each ID maps to a named area;
+    # combine several to scan multiple areas at once, e.g. ["42","43"] = North + South Co. Dublin.
+    # Full id -> location mapping: docs/aucocomplete.json. Common IDs:
+    #
+    #   Region / city level
+    #     1    Dublin (County)        33   Dublin City        4410 Dublin City Centre
+    #     40   North Dublin City      41   South Dublin City
+    #     42   North Co. Dublin       43   South Co. Dublin
+    #     44   West Co. Dublin        45   Dublin Commuter Towns
+    #
+    #   Dublin postal districts
+    #     65 D1   66 D2   67 D3   68 D4   69 D5   70 D6   71 D6W  72 D7
+    #     73 D8   74 D9   75 D10  76 D11  77 D12  78 D13  79 D14  80 D15
+    #     81 D16  82 D17  83 D18  84 D20  85 D22  86 D24
+    #
+    #   Neighbourhoods (e.g. 2135 Tallaght, 2068 Blanchardstown, 2164 Lucan, 2107 Clondalkin,
+    #     2261 Rathfarnham, ...) -> see docs/aucocomplete.json for the complete list.
     stored-shape-ids: ${TENANT_1_STORED_SHAPE_IDS:}
     notifiers: ${TENANT_1_NOTIFIERS:email}
     ber-ratings: ${TENANT_1_BER_RATINGS:}

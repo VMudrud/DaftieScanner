@@ -126,7 +126,28 @@ On start, `entrypoint.sh` fetches SSM params via the instance-profile credential
 
 ## Phase 7 — Operations
 
-- **Redeploy after a code change**: in an SSM session, `cd /opt/src && sudo git pull && sudo docker build -t daftiescanner:latest .`, then `sudo systemctl restart daftiescanner`.
+- **Redeploy a config-only change** (e.g. `TENANT_1_STORED_SHAPE_IDS`, price bounds, notifiers): the app reads runtime config from **SSM**, not from `.env.aws` (that file is local-Docker only). Update the param, then restart so `entrypoint.sh` reloads it — no image rebuild. From your machine (region `eu-west-1`):
+
+  ```powershell
+  # 1. Push the new value (use --type String; SSM won't change an existing param's type)
+  aws ssm put-parameter --name /daftiescanner/prod/TENANT_1_STORED_SHAPE_IDS `
+      --value "65,66,67,68,70,71,72,73,74,75,77,79,2067" --type String --overwrite
+
+  # 2. Restart non-interactively via Run Command (no SSM shell needed)
+  $cmd = aws ssm send-command --instance-ids i-030fb9095316345c5 `
+      --document-name AWS-RunShellScript `
+      --parameters 'commands=["systemctl restart daftiescanner"]' `
+      --query Command.CommandId --output text
+
+  # 3. Verify config reloaded + app started
+  aws ssm send-command --instance-ids i-030fb9095316345c5 --document-name AWS-RunShellScript `
+      --parameters 'commands=["sleep 40","docker logs --tail 30 daftiescanner-app-1 2>&1 | grep -iE \"SSM config loaded|enabled tenant|Started Daftie\""]' `
+      --query Command.CommandId --output text
+  # then: aws ssm get-command-invocation --command-id <id> --instance-id i-030fb9095316345c5 --query StandardOutputContent --output text
+  ```
+
+  Notes: from Git Bash, prefix slash-path args with `MSYS_NO_PATHCONV=1` to stop MSYS mangling the SSM name. The systemd `status` output contains a `●` glyph that the AWS CLI on Windows can't encode — read `get-command-invocation` from PowerShell with `[Console]::OutputEncoding=[Text.Encoding]::UTF8` if needed. Instance ID: `terraform output -raw instance_id`.
+- **Redeploy after a code change**: in an SSM session, `cd /opt/src && sudo git pull && sudo docker build -t daftiescanner:latest .`, then `sudo systemctl restart daftiescanner`. (Or run the same `git pull`/`build`/`restart` non-interactively via the Run Command pattern above.)
 - **IP recycle**: on a `block_detected` CloudWatch alarm, SNS triggers the Lambda to stop/start the instance, rotating the public IP (works because no Elastic IP is attached). **The public IP changes on stop/start** — re-fetch with `terraform output public_ip` or the console. SSM access is unaffected (it doesn't depend on the IP).
 - **Pause to save cost**: `sudo systemctl stop daftiescanner`, or stop the instance.
 - **Tear down**: `terraform destroy` (from `infra/`). DynamoDB tables are deleted — export first if you want to keep state.

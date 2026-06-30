@@ -1,0 +1,4902 @@
+[
+  {
+    "id": "1",
+    "displayName": "Dublin (County)",
+    "displayValue": "dublin",
+    "propertyCount": {
+      "residentialForSale": 4129,
+      "residentialForRent": 1291,
+      "sharing": 977,
+      "commercialForSale": 480,
+      "commercialToRent": 2774,
+      "parkingForSale": 3,
+      "parkingToRent": 65,
+      "newHomes": 99,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 1270,
+      "studentAccommodationToShare": 977,
+      "recent": 4129,
+      "sold": 212499
+    }
+  },
+  {
+    "id": "33",
+    "displayName": "Dublin City",
+    "displayValue": "dublin-city",
+    "propertyCount": {
+      "residentialForSale": 3350,
+      "residentialForRent": 1157,
+      "sharing": 820,
+      "commercialForSale": 413,
+      "commercialToRent": 2549,
+      "parkingForSale": 3,
+      "parkingToRent": 64,
+      "newHomes": 60,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 1139,
+      "studentAccommodationToShare": 820,
+      "recent": 3350,
+      "sold": 173153
+    }
+  },
+  {
+    "id": "43",
+    "displayName": "South Co. Dublin, Dublin",
+    "displayValue": "south-co-dublin-dublin",
+    "propertyCount": {
+      "residentialForSale": 2222,
+      "residentialForRent": 849,
+      "sharing": 526,
+      "commercialForSale": 285,
+      "commercialToRent": 1971,
+      "parkingForSale": 2,
+      "parkingToRent": 37,
+      "newHomes": 65,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 838,
+      "studentAccommodationToShare": 526,
+      "recent": 2222,
+      "sold": 115512
+    }
+  },
+  {
+    "id": "41",
+    "displayName": "South Dublin City, Dublin",
+    "displayValue": "south-dublin-city-dublin",
+    "propertyCount": {
+      "residentialForSale": 1984,
+      "residentialForRent": 782,
+      "sharing": 446,
+      "commercialForSale": 259,
+      "commercialToRent": 1869,
+      "parkingForSale": 2,
+      "parkingToRent": 37,
+      "newHomes": 48,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 773,
+      "studentAccommodationToShare": 446,
+      "recent": 1984,
+      "sold": 100995
+    }
+  },
+  {
+    "id": "42",
+    "displayName": "North Co. Dublin, Dublin",
+    "displayValue": "north-co-dublin-dublin",
+    "propertyCount": {
+      "residentialForSale": 1905,
+      "residentialForRent": 442,
+      "sharing": 451,
+      "commercialForSale": 195,
+      "commercialToRent": 803,
+      "parkingForSale": 1,
+      "parkingToRent": 28,
+      "newHomes": 34,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 432,
+      "studentAccommodationToShare": 451,
+      "recent": 1905,
+      "sold": 97001
+    }
+  },
+  {
+    "id": "45",
+    "displayName": "Dublin Commuter Towns, Dublin",
+    "displayValue": "dublin-commuter-towns-dublin",
+    "propertyCount": {
+      "residentialForSale": 1500,
+      "residentialForRent": 239,
+      "sharing": 343,
+      "commercialForSale": 170,
+      "commercialToRent": 399,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 100,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 238,
+      "studentAccommodationToShare": 343,
+      "recent": 1500,
+      "sold": 92174
+    }
+  },
+  {
+    "id": "40",
+    "displayName": "North Dublin City, Dublin",
+    "displayValue": "north-dublin-city-dublin",
+    "propertyCount": {
+      "residentialForSale": 1362,
+      "residentialForRent": 375,
+      "sharing": 374,
+      "commercialForSale": 154,
+      "commercialToRent": 680,
+      "parkingForSale": 1,
+      "parkingToRent": 27,
+      "newHomes": 12,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 366,
+      "studentAccommodationToShare": 374,
+      "recent": 1362,
+      "sold": 72158
+    }
+  },
+  {
+    "id": "44",
+    "displayName": "West Co. Dublin, Dublin",
+    "displayValue": "west-co-dublin-dublin",
+    "propertyCount": {
+      "residentialForSale": 594,
+      "residentialForRent": 162,
+      "sharing": 207,
+      "commercialForSale": 60,
+      "commercialToRent": 254,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 16,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 160,
+      "studentAccommodationToShare": 207,
+      "recent": 594,
+      "sold": 35785
+    }
+  },
+  {
+    "id": "4410",
+    "displayName": "Dublin City Centre, Dublin",
+    "displayValue": "dublin-city-centre-dublin",
+    "propertyCount": {
+      "residentialForSale": 448,
+      "residentialForRent": 308,
+      "sharing": 137,
+      "commercialForSale": 144,
+      "commercialToRent": 1448,
+      "parkingForSale": 2,
+      "parkingToRent": 40,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 302,
+      "studentAccommodationToShare": 137,
+      "recent": 448,
+      "sold": 22113
+    }
+  },
+  {
+    "id": "80",
+    "displayName": "Dublin 15, Dublin",
+    "displayValue": "dublin-15-dublin",
+    "propertyCount": {
+      "residentialForSale": 329,
+      "residentialForRent": 74,
+      "sharing": 96,
+      "commercialForSale": 24,
+      "commercialToRent": 115,
+      "parkingForSale": 0,
+      "parkingToRent": 2,
+      "newHomes": 9,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 74,
+      "studentAccommodationToShare": 96,
+      "recent": 329,
+      "sold": 19497
+    }
+  },
+  {
+    "id": "86",
+    "displayName": "Dublin 24, Dublin",
+    "displayValue": "dublin-24-dublin",
+    "propertyCount": {
+      "residentialForSale": 232,
+      "residentialForRent": 101,
+      "sharing": 70,
+      "commercialForSale": 27,
+      "commercialToRent": 164,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 4,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 101,
+      "studentAccommodationToShare": 70,
+      "recent": 232,
+      "sold": 14091
+    }
+  },
+  {
+    "id": "83",
+    "displayName": "Dublin 18, Dublin",
+    "displayValue": "dublin-18-dublin",
+    "propertyCount": {
+      "residentialForSale": 260,
+      "residentialForRent": 54,
+      "sharing": 67,
+      "commercialForSale": 29,
+      "commercialToRent": 164,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 22,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 52,
+      "studentAccommodationToShare": 67,
+      "recent": 260,
+      "sold": 13025
+    }
+  },
+  {
+    "id": "72",
+    "displayName": "Dublin 7, Dublin",
+    "displayValue": "dublin-7-dublin",
+    "propertyCount": {
+      "residentialForSale": 171,
+      "residentialForRent": 85,
+      "sharing": 59,
+      "commercialForSale": 41,
+      "commercialToRent": 63,
+      "parkingForSale": 0,
+      "parkingToRent": 3,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 84,
+      "studentAccommodationToShare": 59,
+      "recent": 171,
+      "sold": 10219
+    }
+  },
+  {
+    "id": "73",
+    "displayName": "Dublin 8, Dublin",
+    "displayValue": "dublin-8-dublin",
+    "propertyCount": {
+      "residentialForSale": 196,
+      "residentialForRent": 133,
+      "sharing": 48,
+      "commercialForSale": 30,
+      "commercialToRent": 143,
+      "parkingForSale": 1,
+      "parkingToRent": 17,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 133,
+      "studentAccommodationToShare": 48,
+      "recent": 196,
+      "sold": 9759
+    }
+  },
+  {
+    "id": "78",
+    "displayName": "Dublin 13, Dublin",
+    "displayValue": "dublin-13-dublin",
+    "propertyCount": {
+      "residentialForSale": 205,
+      "residentialForRent": 19,
+      "sharing": 27,
+      "commercialForSale": 6,
+      "commercialToRent": 32,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 4,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 18,
+      "studentAccommodationToShare": 27,
+      "recent": 205,
+      "sold": 9848
+    }
+  },
+  {
+    "id": "68",
+    "displayName": "Dublin 4, Dublin",
+    "displayValue": "dublin-4-dublin",
+    "propertyCount": {
+      "residentialForSale": 238,
+      "residentialForRent": 127,
+      "sharing": 33,
+      "commercialForSale": 22,
+      "commercialToRent": 159,
+      "parkingForSale": 1,
+      "parkingToRent": 5,
+      "newHomes": 11,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 127,
+      "studentAccommodationToShare": 33,
+      "recent": 238,
+      "sold": 9098
+    }
+  },
+  {
+    "id": "74",
+    "displayName": "Dublin 9, Dublin",
+    "displayValue": "dublin-9-dublin",
+    "propertyCount": {
+      "residentialForSale": 162,
+      "residentialForRent": 52,
+      "sharing": 53,
+      "commercialForSale": 4,
+      "commercialToRent": 56,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 50,
+      "studentAccommodationToShare": 53,
+      "recent": 162,
+      "sold": 8808
+    }
+  },
+  {
+    "id": "76",
+    "displayName": "Dublin 11, Dublin",
+    "displayValue": "dublin-11-dublin",
+    "propertyCount": {
+      "residentialForSale": 178,
+      "residentialForRent": 19,
+      "sharing": 27,
+      "commercialForSale": 21,
+      "commercialToRent": 114,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 19,
+      "studentAccommodationToShare": 27,
+      "recent": 178,
+      "sold": 7962
+    }
+  },
+  {
+    "id": "77",
+    "displayName": "Dublin 12, Dublin",
+    "displayValue": "dublin-12-dublin",
+    "propertyCount": {
+      "residentialForSale": 176,
+      "residentialForRent": 37,
+      "sharing": 44,
+      "commercialForSale": 39,
+      "commercialToRent": 110,
+      "parkingForSale": 1,
+      "parkingToRent": 2,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 37,
+      "studentAccommodationToShare": 44,
+      "recent": 176,
+      "sold": 7867
+    }
+  },
+  {
+    "id": "79",
+    "displayName": "Dublin 14, Dublin",
+    "displayValue": "dublin-14-dublin",
+    "propertyCount": {
+      "residentialForSale": 141,
+      "residentialForRent": 31,
+      "sharing": 21,
+      "commercialForSale": 10,
+      "commercialToRent": 26,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 2,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 30,
+      "studentAccommodationToShare": 21,
+      "recent": 141,
+      "sold": 7888
+    }
+  },
+  {
+    "id": "2135",
+    "displayName": "Tallaght, Dublin",
+    "displayValue": "tallaght-dublin",
+    "propertyCount": {
+      "residentialForSale": 160,
+      "residentialForRent": 85,
+      "sharing": 42,
+      "commercialForSale": 21,
+      "commercialToRent": 157,
+      "parkingForSale": 1,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 85,
+      "studentAccommodationToShare": 42,
+      "recent": 160,
+      "sold": 10946
+    }
+  },
+  {
+    "id": "2068",
+    "displayName": "Blanchardstown, Dublin",
+    "displayValue": "blanchardstown-dublin",
+    "propertyCount": {
+      "residentialForSale": 189,
+      "residentialForRent": 44,
+      "sharing": 53,
+      "commercialForSale": 15,
+      "commercialToRent": 105,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 44,
+      "studentAccommodationToShare": 53,
+      "recent": 189,
+      "sold": 10807
+    }
+  },
+  {
+    "id": "81",
+    "displayName": "Dublin 16, Dublin",
+    "displayValue": "dublin-16-dublin",
+    "propertyCount": {
+      "residentialForSale": 108,
+      "residentialForRent": 23,
+      "sharing": 37,
+      "commercialForSale": 1,
+      "commercialToRent": 8,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 4,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 23,
+      "studentAccommodationToShare": 37,
+      "recent": 108,
+      "sold": 7260
+    }
+  },
+  {
+    "id": "67",
+    "displayName": "Dublin 3, Dublin",
+    "displayValue": "dublin-3-dublin",
+    "propertyCount": {
+      "residentialForSale": 158,
+      "residentialForRent": 46,
+      "sharing": 49,
+      "commercialForSale": 23,
+      "commercialToRent": 67,
+      "parkingForSale": 0,
+      "parkingToRent": 2,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 44,
+      "studentAccommodationToShare": 49,
+      "recent": 158,
+      "sold": 6996
+    }
+  },
+  {
+    "id": "70",
+    "displayName": "Dublin 6, Dublin",
+    "displayValue": "dublin-6-dublin",
+    "propertyCount": {
+      "residentialForSale": 162,
+      "residentialForRent": 91,
+      "sharing": 21,
+      "commercialForSale": 28,
+      "commercialToRent": 47,
+      "parkingForSale": 0,
+      "parkingToRent": 3,
+      "newHomes": 2,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 89,
+      "studentAccommodationToShare": 21,
+      "recent": 162,
+      "sold": 6720
+    }
+  },
+  {
+    "id": "85",
+    "displayName": "Dublin 22, Dublin",
+    "displayValue": "dublin-22-dublin",
+    "propertyCount": {
+      "residentialForSale": 131,
+      "residentialForRent": 39,
+      "sharing": 38,
+      "commercialForSale": 15,
+      "commercialToRent": 54,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 4,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 39,
+      "studentAccommodationToShare": 38,
+      "recent": 131,
+      "sold": 6702
+    }
+  },
+  {
+    "id": "69",
+    "displayName": "Dublin 5, Dublin",
+    "displayValue": "dublin-5-dublin",
+    "propertyCount": {
+      "residentialForSale": 116,
+      "residentialForRent": 14,
+      "sharing": 26,
+      "commercialForSale": 5,
+      "commercialToRent": 19,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 13,
+      "studentAccommodationToShare": 26,
+      "recent": 116,
+      "sold": 6665
+    }
+  },
+  {
+    "id": "65",
+    "displayName": "Dublin 1, Dublin",
+    "displayValue": "dublin-1-dublin",
+    "propertyCount": {
+      "residentialForSale": 119,
+      "residentialForRent": 78,
+      "sharing": 43,
+      "commercialForSale": 49,
+      "commercialToRent": 222,
+      "parkingForSale": 1,
+      "parkingToRent": 14,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 76,
+      "studentAccommodationToShare": 43,
+      "recent": 119,
+      "sold": 5335
+    }
+  },
+  {
+    "id": "823",
+    "displayName": "Clonsilla, Dublin",
+    "displayValue": "clonsilla-dublin",
+    "propertyCount": {
+      "residentialForSale": 140,
+      "residentialForRent": 32,
+      "sharing": 36,
+      "commercialForSale": 7,
+      "commercialToRent": 8,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 32,
+      "studentAccommodationToShare": 36,
+      "recent": 140,
+      "sold": 8450
+    }
+  },
+  {
+    "id": "2164",
+    "displayName": "Lucan, Dublin",
+    "displayValue": "lucan-dublin",
+    "propertyCount": {
+      "residentialForSale": 111,
+      "residentialForRent": 33,
+      "sharing": 42,
+      "commercialForSale": 1,
+      "commercialToRent": 10,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 7,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 31,
+      "studentAccommodationToShare": 42,
+      "recent": 111,
+      "sold": 8453
+    }
+  },
+  {
+    "id": "4171",
+    "displayName": "Swords (& Surrounds), Dublin",
+    "displayValue": "swords-and-surrounds-dublin",
+    "propertyCount": {
+      "residentialForSale": 152,
+      "residentialForRent": 27,
+      "sharing": 34,
+      "commercialForSale": 9,
+      "commercialToRent": 95,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 4,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 26,
+      "studentAccommodationToShare": 34,
+      "recent": 152,
+      "sold": 7718
+    }
+  },
+  {
+    "id": "2261",
+    "displayName": "Rathfarnham, Dublin",
+    "displayValue": "rathfarnham-dublin",
+    "propertyCount": {
+      "residentialForSale": 107,
+      "residentialForRent": 20,
+      "sharing": 26,
+      "commercialForSale": 5,
+      "commercialToRent": 16,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 5,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 20,
+      "studentAccommodationToShare": 26,
+      "recent": 107,
+      "sold": 7584
+    }
+  },
+  {
+    "id": "66",
+    "displayName": "Dublin 2, Dublin",
+    "displayValue": "dublin-2-dublin",
+    "propertyCount": {
+      "residentialForSale": 63,
+      "residentialForRent": 73,
+      "sharing": 25,
+      "commercialForSale": 56,
+      "commercialToRent": 1064,
+      "parkingForSale": 0,
+      "parkingToRent": 11,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 72,
+      "studentAccommodationToShare": 25,
+      "recent": 63,
+      "sold": 3743
+    }
+  },
+  {
+    "id": "2134",
+    "displayName": "Swords, Dublin",
+    "displayValue": "swords-dublin",
+    "propertyCount": {
+      "residentialForSale": 134,
+      "residentialForRent": 26,
+      "sharing": 33,
+      "commercialForSale": 3,
+      "commercialToRent": 60,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 4,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 25,
+      "studentAccommodationToShare": 33,
+      "recent": 134,
+      "sold": 7321
+    }
+  },
+  {
+    "id": "71",
+    "displayName": "Dublin 6W, Dublin",
+    "displayValue": "dublin-6w-dublin",
+    "propertyCount": {
+      "residentialForSale": 88,
+      "residentialForRent": 37,
+      "sharing": 20,
+      "commercialForSale": 6,
+      "commercialToRent": 5,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 36,
+      "studentAccommodationToShare": 20,
+      "recent": 88,
+      "sold": 4643
+    }
+  },
+  {
+    "id": "2067",
+    "displayName": "Blackrock, Dublin",
+    "displayValue": "blackrock-dublin",
+    "propertyCount": {
+      "residentialForSale": 156,
+      "residentialForRent": 54,
+      "sharing": 28,
+      "commercialForSale": 14,
+      "commercialToRent": 66,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 3,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 53,
+      "studentAccommodationToShare": 28,
+      "recent": 156,
+      "sold": 6750
+    }
+  },
+  {
+    "id": "1881",
+    "displayName": "Dundrum, Dublin",
+    "displayValue": "dundrum-dublin",
+    "propertyCount": {
+      "residentialForSale": 120,
+      "residentialForRent": 40,
+      "sharing": 35,
+      "commercialForSale": 13,
+      "commercialToRent": 47,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 39,
+      "studentAccommodationToShare": 35,
+      "recent": 120,
+      "sold": 6784
+    }
+  },
+  {
+    "id": "2223",
+    "displayName": "Perrystown, Dublin",
+    "displayValue": "perrystown-dublin",
+    "propertyCount": {
+      "residentialForSale": 128,
+      "residentialForRent": 30,
+      "sharing": 36,
+      "commercialForSale": 20,
+      "commercialToRent": 56,
+      "parkingForSale": 1,
+      "parkingToRent": 1,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 30,
+      "studentAccommodationToShare": 36,
+      "recent": 128,
+      "sold": 6438
+    }
+  },
+  {
+    "id": "2127",
+    "displayName": "Finglas, Dublin",
+    "displayValue": "finglas-dublin",
+    "propertyCount": {
+      "residentialForSale": 139,
+      "residentialForRent": 13,
+      "sharing": 19,
+      "commercialForSale": 3,
+      "commercialToRent": 41,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 13,
+      "studentAccommodationToShare": 19,
+      "recent": 139,
+      "sold": 6313
+    }
+  },
+  {
+    "id": "2051",
+    "displayName": "Ballsbridge, Dublin",
+    "displayValue": "ballsbridge-dublin",
+    "propertyCount": {
+      "residentialForSale": 159,
+      "residentialForRent": 102,
+      "sharing": 23,
+      "commercialForSale": 19,
+      "commercialToRent": 154,
+      "parkingForSale": 1,
+      "parkingToRent": 4,
+      "newHomes": 7,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 102,
+      "studentAccommodationToShare": 23,
+      "recent": 159,
+      "sold": 5779
+    }
+  },
+  {
+    "id": "2107",
+    "displayName": "Clondalkin, Dublin",
+    "displayValue": "clondalkin-dublin",
+    "propertyCount": {
+      "residentialForSale": 118,
+      "residentialForRent": 41,
+      "sharing": 29,
+      "commercialForSale": 25,
+      "commercialToRent": 58,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 3,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 41,
+      "studentAccommodationToShare": 29,
+      "recent": 118,
+      "sold": 5958
+    }
+  },
+  {
+    "id": "2077",
+    "displayName": "Castleknock, Dublin",
+    "displayValue": "castleknock-dublin",
+    "propertyCount": {
+      "residentialForSale": 116,
+      "residentialForRent": 26,
+      "sharing": 18,
+      "commercialForSale": 1,
+      "commercialToRent": 6,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 5,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 26,
+      "studentAccommodationToShare": 18,
+      "recent": 116,
+      "sold": 6018
+    }
+  },
+  {
+    "id": "1363",
+    "displayName": "Glasnevin, Dublin",
+    "displayValue": "glasnevin-dublin",
+    "propertyCount": {
+      "residentialForSale": 112,
+      "residentialForRent": 19,
+      "sharing": 25,
+      "commercialForSale": 4,
+      "commercialToRent": 21,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 19,
+      "studentAccommodationToShare": 25,
+      "recent": 112,
+      "sold": 5988
+    }
+  },
+  {
+    "id": "1882",
+    "displayName": "Dun Laoghaire, Dublin",
+    "displayValue": "dun-laoghaire-dublin",
+    "propertyCount": {
+      "residentialForSale": 102,
+      "residentialForRent": 34,
+      "sharing": 20,
+      "commercialForSale": 15,
+      "commercialToRent": 40,
+      "parkingForSale": 0,
+      "parkingToRent": 2,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 34,
+      "studentAccommodationToShare": 20,
+      "recent": 102,
+      "sold": 5837
+    }
+  },
+  {
+    "id": "2315",
+    "displayName": "Sandyford, Dublin",
+    "displayValue": "sandyford-dublin",
+    "propertyCount": {
+      "residentialForSale": 75,
+      "residentialForRent": 31,
+      "sharing": 34,
+      "commercialForSale": 11,
+      "commercialToRent": 108,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 3,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 30,
+      "studentAccommodationToShare": 34,
+      "recent": 75,
+      "sold": 5257
+    }
+  },
+  {
+    "id": "2321",
+    "displayName": "South Circular Road, Dublin",
+    "displayValue": "south-circular-road-dublin",
+    "propertyCount": {
+      "residentialForSale": 105,
+      "residentialForRent": 60,
+      "sharing": 23,
+      "commercialForSale": 9,
+      "commercialToRent": 39,
+      "parkingForSale": 1,
+      "parkingToRent": 8,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 60,
+      "studentAccommodationToShare": 23,
+      "recent": 105,
+      "sold": 5059
+    }
+  },
+  {
+    "id": "2323",
+    "displayName": "Stillorgan, Dublin",
+    "displayValue": "stillorgan-dublin",
+    "propertyCount": {
+      "residentialForSale": 71,
+      "residentialForRent": 39,
+      "sharing": 25,
+      "commercialForSale": 8,
+      "commercialToRent": 63,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 4,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 38,
+      "studentAccommodationToShare": 25,
+      "recent": 71,
+      "sold": 4860
+    }
+  },
+  {
+    "id": "2105",
+    "displayName": "Clarehall, Dublin",
+    "displayValue": "clarehall-dublin",
+    "propertyCount": {
+      "residentialForSale": 83,
+      "residentialForRent": 10,
+      "sharing": 18,
+      "commercialForSale": 4,
+      "commercialToRent": 27,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 9,
+      "studentAccommodationToShare": 18,
+      "recent": 83,
+      "sold": 4902
+    }
+  },
+  {
+    "id": "2317",
+    "displayName": "Santry, Dublin",
+    "displayValue": "santry-dublin",
+    "propertyCount": {
+      "residentialForSale": 101,
+      "residentialForRent": 22,
+      "sharing": 30,
+      "commercialForSale": 7,
+      "commercialToRent": 81,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 21,
+      "studentAccommodationToShare": 30,
+      "recent": 101,
+      "sold": 4566
+    }
+  },
+  {
+    "id": "2224",
+    "displayName": "Phibsborough, Dublin",
+    "displayValue": "phibsborough-dublin",
+    "propertyCount": {
+      "residentialForSale": 60,
+      "residentialForRent": 41,
+      "sharing": 23,
+      "commercialForSale": 13,
+      "commercialToRent": 5,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 40,
+      "studentAccommodationToShare": 23,
+      "recent": 60,
+      "sold": 4469
+    }
+  },
+  {
+    "id": "1848",
+    "displayName": "Crumlin, Dublin",
+    "displayValue": "crumlin-dublin",
+    "propertyCount": {
+      "residentialForSale": 95,
+      "residentialForRent": 18,
+      "sharing": 22,
+      "commercialForSale": 15,
+      "commercialToRent": 17,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 18,
+      "studentAccommodationToShare": 22,
+      "recent": 95,
+      "sold": 4430
+    }
+  },
+  {
+    "id": "1875",
+    "displayName": "Drumcondra, Dublin",
+    "displayValue": "drumcondra-dublin",
+    "propertyCount": {
+      "residentialForSale": 90,
+      "residentialForRent": 28,
+      "sharing": 31,
+      "commercialForSale": 7,
+      "commercialToRent": 14,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 27,
+      "studentAccommodationToShare": 31,
+      "recent": 90,
+      "sold": 4283
+    }
+  },
+  {
+    "id": "2166",
+    "displayName": "Malahide, Dublin",
+    "displayValue": "malahide-dublin",
+    "propertyCount": {
+      "residentialForSale": 105,
+      "residentialForRent": 23,
+      "sharing": 9,
+      "commercialForSale": 1,
+      "commercialToRent": 7,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 6,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 23,
+      "studentAccommodationToShare": 9,
+      "recent": 105,
+      "sold": 4306
+    }
+  },
+  {
+    "id": "1893",
+    "displayName": "Terenure, Dublin",
+    "displayValue": "terenure-dublin",
+    "propertyCount": {
+      "residentialForSale": 87,
+      "residentialForRent": 23,
+      "sharing": 13,
+      "commercialForSale": 5,
+      "commercialToRent": 2,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 23,
+      "studentAccommodationToShare": 13,
+      "recent": 87,
+      "sold": 4266
+    }
+  },
+  {
+    "id": "2264",
+    "displayName": "Rathmines, Dublin",
+    "displayValue": "rathmines-dublin",
+    "propertyCount": {
+      "residentialForSale": 86,
+      "residentialForRent": 62,
+      "sharing": 15,
+      "commercialForSale": 15,
+      "commercialToRent": 20,
+      "parkingForSale": 0,
+      "parkingToRent": 2,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 60,
+      "studentAccommodationToShare": 15,
+      "recent": 86,
+      "sold": 4043
+    }
+  },
+  {
+    "id": "2106",
+    "displayName": "Cloghran, Dublin",
+    "displayValue": "cloghran-dublin",
+    "propertyCount": {
+      "residentialForSale": 98,
+      "residentialForRent": 23,
+      "sharing": 13,
+      "commercialForSale": 9,
+      "commercialToRent": 98,
+      "parkingForSale": 0,
+      "parkingToRent": 3,
+      "newHomes": 3,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 22,
+      "studentAccommodationToShare": 13,
+      "recent": 98,
+      "sold": 3887
+    }
+  },
+  {
+    "id": "1871",
+    "displayName": "Donaghmede, Dublin",
+    "displayValue": "donaghmede-dublin",
+    "propertyCount": {
+      "residentialForSale": 63,
+      "residentialForRent": 6,
+      "sharing": 16,
+      "commercialForSale": 2,
+      "commercialToRent": 10,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 5,
+      "studentAccommodationToShare": 16,
+      "recent": 63,
+      "sold": 4002
+    }
+  },
+  {
+    "id": "2074",
+    "displayName": "Cabra, Dublin",
+    "displayValue": "cabra-dublin",
+    "propertyCount": {
+      "residentialForSale": 74,
+      "residentialForRent": 26,
+      "sharing": 23,
+      "commercialForSale": 7,
+      "commercialToRent": 13,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 26,
+      "studentAccommodationToShare": 23,
+      "recent": 74,
+      "sold": 3882
+    }
+  },
+  {
+    "id": "2147",
+    "displayName": "Whitehall, Dublin",
+    "displayValue": "whitehall-dublin",
+    "propertyCount": {
+      "residentialForSale": 69,
+      "residentialForRent": 7,
+      "sharing": 25,
+      "commercialForSale": 0,
+      "commercialToRent": 15,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 6,
+      "studentAccommodationToShare": 25,
+      "recent": 69,
+      "sold": 3900
+    }
+  },
+  {
+    "id": "4063",
+    "displayName": "Balbriggan (& Surrounds), Dublin",
+    "displayValue": "balbriggan-and-surrounds-dublin",
+    "propertyCount": {
+      "residentialForSale": 77,
+      "residentialForRent": 6,
+      "sharing": 10,
+      "commercialForSale": 3,
+      "commercialToRent": 10,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 2,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 6,
+      "studentAccommodationToShare": 10,
+      "recent": 77,
+      "sold": 3762
+    }
+  },
+  {
+    "id": "2174",
+    "displayName": "Navan Road (D7), Dublin",
+    "displayValue": "navan-road-d7-dublin",
+    "propertyCount": {
+      "residentialForSale": 68,
+      "residentialForRent": 12,
+      "sharing": 16,
+      "commercialForSale": 0,
+      "commercialToRent": 1,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 4,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 12,
+      "studentAccommodationToShare": 16,
+      "recent": 68,
+      "sold": 3748
+    }
+  },
+  {
+    "id": "1884",
+    "displayName": "Glenageary, Dublin",
+    "displayValue": "glenageary-dublin",
+    "propertyCount": {
+      "residentialForSale": 61,
+      "residentialForRent": 20,
+      "sharing": 12,
+      "commercialForSale": 4,
+      "commercialToRent": 1,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 20,
+      "studentAccommodationToShare": 12,
+      "recent": 61,
+      "sold": 3754
+    }
+  },
+  {
+    "id": "819",
+    "displayName": "Clonee, Dublin",
+    "displayValue": "clonee-dublin",
+    "propertyCount": {
+      "residentialForSale": 76,
+      "residentialForRent": 12,
+      "sharing": 25,
+      "commercialForSale": 2,
+      "commercialToRent": 4,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 12,
+      "studentAccommodationToShare": 25,
+      "recent": 76,
+      "sold": 3693
+    }
+  },
+  {
+    "id": "2047",
+    "displayName": "Baldoyle, Dublin",
+    "displayValue": "baldoyle-dublin",
+    "propertyCount": {
+      "residentialForSale": 64,
+      "residentialForRent": 5,
+      "sharing": 9,
+      "commercialForSale": 2,
+      "commercialToRent": 18,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 5,
+      "studentAccommodationToShare": 9,
+      "recent": 64,
+      "sold": 3617
+    }
+  },
+  {
+    "id": "2311",
+    "displayName": "Saggart, Dublin",
+    "displayValue": "saggart-dublin",
+    "propertyCount": {
+      "residentialForSale": 73,
+      "residentialForRent": 29,
+      "sharing": 30,
+      "commercialForSale": 4,
+      "commercialToRent": 15,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 29,
+      "studentAccommodationToShare": 30,
+      "recent": 73,
+      "sold": 3469
+    }
+  },
+  {
+    "id": "2045",
+    "displayName": "Balbriggan, Dublin",
+    "displayValue": "balbriggan-dublin",
+    "propertyCount": {
+      "residentialForSale": 72,
+      "residentialForRent": 6,
+      "sharing": 10,
+      "commercialForSale": 3,
+      "commercialToRent": 10,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 2,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 6,
+      "studentAccommodationToShare": 10,
+      "recent": 72,
+      "sold": 3482
+    }
+  },
+  {
+    "id": "349",
+    "displayName": "Adamstown, Dublin",
+    "displayValue": "adamstown-dublin",
+    "propertyCount": {
+      "residentialForSale": 43,
+      "residentialForRent": 18,
+      "sharing": 21,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 6,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 16,
+      "studentAccommodationToShare": 21,
+      "recent": 43,
+      "sold": 3448
+    }
+  },
+  {
+    "id": "825",
+    "displayName": "Clontarf, Dublin",
+    "displayValue": "clontarf-dublin",
+    "propertyCount": {
+      "residentialForSale": 56,
+      "residentialForRent": 24,
+      "sharing": 14,
+      "commercialForSale": 9,
+      "commercialToRent": 15,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 24,
+      "studentAccommodationToShare": 14,
+      "recent": 56,
+      "sold": 3294
+    }
+  },
+  {
+    "id": "2258",
+    "displayName": "Raheny, Dublin",
+    "displayValue": "raheny-dublin",
+    "propertyCount": {
+      "residentialForSale": 51,
+      "residentialForRent": 11,
+      "sharing": 8,
+      "commercialForSale": 2,
+      "commercialToRent": 6,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 10,
+      "studentAccommodationToShare": 8,
+      "recent": 51,
+      "sold": 3333
+    }
+  },
+  {
+    "id": "1863",
+    "displayName": "Artane, Dublin",
+    "displayValue": "artane-dublin",
+    "propertyCount": {
+      "residentialForSale": 54,
+      "residentialForRent": 3,
+      "sharing": 18,
+      "commercialForSale": 4,
+      "commercialToRent": 11,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 3,
+      "studentAccommodationToShare": 18,
+      "recent": 54,
+      "sold": 3312
+    }
+  },
+  {
+    "id": "75",
+    "displayName": "Dublin 10, Dublin",
+    "displayValue": "dublin-10-dublin",
+    "propertyCount": {
+      "residentialForSale": 38,
+      "residentialForRent": 12,
+      "sharing": 9,
+      "commercialForSale": 5,
+      "commercialToRent": 10,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 12,
+      "studentAccommodationToShare": 9,
+      "recent": 38,
+      "sold": 2166
+    }
+  },
+  {
+    "id": "82",
+    "displayName": "Dublin 17, Dublin",
+    "displayValue": "dublin-17-dublin",
+    "propertyCount": {
+      "residentialForSale": 54,
+      "residentialForRent": 6,
+      "sharing": 6,
+      "commercialForSale": 11,
+      "commercialToRent": 48,
+      "parkingForSale": 0,
+      "parkingToRent": 3,
+      "newHomes": 3,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 5,
+      "studentAccommodationToShare": 6,
+      "recent": 54,
+      "sold": 2095
+    }
+  },
+  {
+    "id": "2048",
+    "displayName": "Balgriffin, Dublin",
+    "displayValue": "balgriffin-dublin",
+    "propertyCount": {
+      "residentialForSale": 67,
+      "residentialForRent": 5,
+      "sharing": 11,
+      "commercialForSale": 6,
+      "commercialToRent": 30,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 4,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 4,
+      "studentAccommodationToShare": 11,
+      "recent": 67,
+      "sold": 3176
+    }
+  },
+  {
+    "id": "1897",
+    "displayName": "Walkinstown, Dublin",
+    "displayValue": "walkinstown-dublin",
+    "propertyCount": {
+      "residentialForSale": 70,
+      "residentialForRent": 7,
+      "sharing": 15,
+      "commercialForSale": 13,
+      "commercialToRent": 48,
+      "parkingForSale": 1,
+      "parkingToRent": 1,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 7,
+      "studentAccommodationToShare": 15,
+      "recent": 70,
+      "sold": 3081
+    }
+  },
+  {
+    "id": "2103",
+    "displayName": "Citywest, Dublin",
+    "displayValue": "citywest-dublin",
+    "propertyCount": {
+      "residentialForSale": 48,
+      "residentialForRent": 24,
+      "sharing": 31,
+      "commercialForSale": 13,
+      "commercialToRent": 47,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 24,
+      "studentAccommodationToShare": 31,
+      "recent": 48,
+      "sold": 3009
+    }
+  },
+  {
+    "id": "1872",
+    "displayName": "Donnybrook, Dublin",
+    "displayValue": "donnybrook-dublin",
+    "propertyCount": {
+      "residentialForSale": 98,
+      "residentialForRent": 32,
+      "sharing": 11,
+      "commercialForSale": 7,
+      "commercialToRent": 34,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 3,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 32,
+      "studentAccommodationToShare": 11,
+      "recent": 98,
+      "sold": 2897
+    }
+  },
+  {
+    "id": "2161",
+    "displayName": "Leopardstown, Dublin",
+    "displayValue": "leopardstown-dublin",
+    "propertyCount": {
+      "residentialForSale": 31,
+      "residentialForRent": 14,
+      "sharing": 25,
+      "commercialForSale": 3,
+      "commercialToRent": 111,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 4,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 13,
+      "studentAccommodationToShare": 25,
+      "recent": 31,
+      "sold": 2954
+    }
+  },
+  {
+    "id": "2058",
+    "displayName": "Ballycoolin, Dublin",
+    "displayValue": "ballycoolin-dublin",
+    "propertyCount": {
+      "residentialForSale": 45,
+      "residentialForRent": 10,
+      "sharing": 17,
+      "commercialForSale": 19,
+      "commercialToRent": 140,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 10,
+      "studentAccommodationToShare": 17,
+      "recent": 45,
+      "sold": 2866
+    }
+  },
+  {
+    "id": "2076",
+    "displayName": "Carrickmines, Dublin",
+    "displayValue": "carrickmines-dublin",
+    "propertyCount": {
+      "residentialForSale": 48,
+      "residentialForRent": 9,
+      "sharing": 6,
+      "commercialForSale": 7,
+      "commercialToRent": 1,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 11,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 8,
+      "studentAccommodationToShare": 6,
+      "recent": 48,
+      "sold": 2935
+    }
+  },
+  {
+    "id": "84",
+    "displayName": "Dublin 20, Dublin",
+    "displayValue": "dublin-20-dublin",
+    "propertyCount": {
+      "residentialForSale": 30,
+      "residentialForRent": 23,
+      "sharing": 10,
+      "commercialForSale": 1,
+      "commercialToRent": 4,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 23,
+      "studentAccommodationToShare": 10,
+      "recent": 30,
+      "sold": 1895
+    }
+  },
+  {
+    "id": "2157",
+    "displayName": "Kimmage, Dublin",
+    "displayValue": "kimmage-dublin",
+    "propertyCount": {
+      "residentialForSale": 63,
+      "residentialForRent": 19,
+      "sharing": 14,
+      "commercialForSale": 8,
+      "commercialToRent": 12,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 19,
+      "studentAccommodationToShare": 14,
+      "recent": 63,
+      "sold": 2792
+    }
+  },
+  {
+    "id": "2159",
+    "displayName": "Kinsealy, Dublin",
+    "displayValue": "kinsealy-dublin",
+    "propertyCount": {
+      "residentialForSale": 68,
+      "residentialForRent": 14,
+      "sharing": 10,
+      "commercialForSale": 1,
+      "commercialToRent": 17,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 7,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 14,
+      "studentAccommodationToShare": 10,
+      "recent": 68,
+      "sold": 2792
+    }
+  },
+  {
+    "id": "2262",
+    "displayName": "Rathgar, Dublin",
+    "displayValue": "rathgar-dublin",
+    "propertyCount": {
+      "residentialForSale": 67,
+      "residentialForRent": 35,
+      "sharing": 9,
+      "commercialForSale": 7,
+      "commercialToRent": 13,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 2,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 34,
+      "studentAccommodationToShare": 9,
+      "recent": 67,
+      "sold": 2744
+    }
+  },
+  {
+    "id": "2073",
+    "displayName": "Cabinteely, Dublin",
+    "displayValue": "cabinteely-dublin",
+    "propertyCount": {
+      "residentialForSale": 64,
+      "residentialForRent": 11,
+      "sharing": 11,
+      "commercialForSale": 5,
+      "commercialToRent": 22,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 10,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 10,
+      "studentAccommodationToShare": 11,
+      "recent": 64,
+      "sold": 2778
+    }
+  },
+  {
+    "id": "2176",
+    "displayName": "North Circular Road, Dublin",
+    "displayValue": "north-circular-road-dublin",
+    "propertyCount": {
+      "residentialForSale": 55,
+      "residentialForRent": 50,
+      "sharing": 24,
+      "commercialForSale": 18,
+      "commercialToRent": 5,
+      "parkingForSale": 1,
+      "parkingToRent": 1,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 50,
+      "studentAccommodationToShare": 24,
+      "recent": 55,
+      "sold": 2690
+    }
+  },
+  {
+    "id": "2322",
+    "displayName": "Stepaside, Dublin",
+    "displayValue": "stepaside-dublin",
+    "propertyCount": {
+      "residentialForSale": 44,
+      "residentialForRent": 13,
+      "sharing": 21,
+      "commercialForSale": 2,
+      "commercialToRent": 3,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 12,
+      "studentAccommodationToShare": 21,
+      "recent": 44,
+      "sold": 2793
+    }
+  },
+  {
+    "id": "2150",
+    "displayName": "Kilmainham, Dublin",
+    "displayValue": "kilmainham-dublin",
+    "propertyCount": {
+      "residentialForSale": 56,
+      "residentialForRent": 28,
+      "sharing": 13,
+      "commercialForSale": 4,
+      "commercialToRent": 15,
+      "parkingForSale": 0,
+      "parkingToRent": 5,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 28,
+      "studentAccommodationToShare": 13,
+      "recent": 56,
+      "sold": 2702
+    }
+  },
+  {
+    "id": "2160",
+    "displayName": "Knocklyon, Dublin",
+    "displayValue": "knocklyon-dublin",
+    "propertyCount": {
+      "residentialForSale": 42,
+      "residentialForRent": 8,
+      "sharing": 12,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 4,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 8,
+      "studentAccommodationToShare": 12,
+      "recent": 42,
+      "sold": 2740
+    }
+  },
+  {
+    "id": "2040",
+    "displayName": "Ashtown, Dublin",
+    "displayValue": "ashtown-dublin",
+    "propertyCount": {
+      "residentialForSale": 37,
+      "residentialForRent": 10,
+      "sharing": 16,
+      "commercialForSale": 0,
+      "commercialToRent": 1,
+      "parkingForSale": 0,
+      "parkingToRent": 2,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 10,
+      "studentAccommodationToShare": 16,
+      "recent": 37,
+      "sold": 2734
+    }
+  },
+  {
+    "id": "2050",
+    "displayName": "Ballinteer, Dublin",
+    "displayValue": "ballinteer-dublin",
+    "propertyCount": {
+      "residentialForSale": 45,
+      "residentialForRent": 7,
+      "sharing": 19,
+      "commercialForSale": 0,
+      "commercialToRent": 2,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 7,
+      "studentAccommodationToShare": 19,
+      "recent": 45,
+      "sold": 2689
+    }
+  },
+  {
+    "id": "862",
+    "displayName": "Grand Canal Dock, Dublin",
+    "displayValue": "grand-canal-dock-dublin",
+    "propertyCount": {
+      "residentialForSale": 34,
+      "residentialForRent": 38,
+      "sharing": 11,
+      "commercialForSale": 7,
+      "commercialToRent": 151,
+      "parkingForSale": 0,
+      "parkingToRent": 7,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 37,
+      "studentAccommodationToShare": 11,
+      "recent": 34,
+      "sold": 2480
+    }
+  },
+  {
+    "id": "2316",
+    "displayName": "Sandymount, Dublin",
+    "displayValue": "sandymount-dublin",
+    "propertyCount": {
+      "residentialForSale": 67,
+      "residentialForRent": 31,
+      "sharing": 7,
+      "commercialForSale": 9,
+      "commercialToRent": 4,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 4,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 31,
+      "studentAccommodationToShare": 7,
+      "recent": 67,
+      "sold": 2564
+    }
+  },
+  {
+    "id": "2063",
+    "displayName": "Ballymun, Dublin",
+    "displayValue": "ballymun-dublin",
+    "propertyCount": {
+      "residentialForSale": 61,
+      "residentialForRent": 8,
+      "sharing": 10,
+      "commercialForSale": 0,
+      "commercialToRent": 4,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 8,
+      "studentAccommodationToShare": 10,
+      "recent": 61,
+      "sold": 2510
+    }
+  },
+  {
+    "id": "2170",
+    "displayName": "Monkstown, Dublin",
+    "displayValue": "monkstown-dublin",
+    "propertyCount": {
+      "residentialForSale": 48,
+      "residentialForRent": 17,
+      "sharing": 9,
+      "commercialForSale": 4,
+      "commercialToRent": 18,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 17,
+      "studentAccommodationToShare": 9,
+      "recent": 48,
+      "sold": 2499
+    }
+  },
+  {
+    "id": "440",
+    "displayName": "Killiney, Dublin",
+    "displayValue": "killiney-dublin",
+    "propertyCount": {
+      "residentialForSale": 66,
+      "residentialForRent": 14,
+      "sharing": 9,
+      "commercialForSale": 3,
+      "commercialToRent": 1,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 3,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 14,
+      "studentAccommodationToShare": 9,
+      "recent": 66,
+      "sold": 2460
+    }
+  },
+  {
+    "id": "1891",
+    "displayName": "Ringsend, Dublin",
+    "displayValue": "ringsend-dublin",
+    "propertyCount": {
+      "residentialForSale": 37,
+      "residentialForRent": 25,
+      "sharing": 6,
+      "commercialForSale": 1,
+      "commercialToRent": 69,
+      "parkingForSale": 1,
+      "parkingToRent": 4,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 25,
+      "studentAccommodationToShare": 6,
+      "recent": 37,
+      "sold": 2409
+    }
+  },
+  {
+    "id": "1056",
+    "displayName": "Hollystown, Dublin",
+    "displayValue": "hollystown-dublin",
+    "propertyCount": {
+      "residentialForSale": 37,
+      "residentialForRent": 7,
+      "sharing": 19,
+      "commercialForSale": 10,
+      "commercialToRent": 80,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 7,
+      "studentAccommodationToShare": 19,
+      "recent": 37,
+      "sold": 2402
+    }
+  },
+  {
+    "id": "820",
+    "displayName": "Clongriffin, Dublin",
+    "displayValue": "clongriffin-dublin",
+    "propertyCount": {
+      "residentialForSale": 41,
+      "residentialForRent": 8,
+      "sharing": 5,
+      "commercialForSale": 1,
+      "commercialToRent": 6,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 7,
+      "studentAccommodationToShare": 5,
+      "recent": 41,
+      "sold": 2476
+    }
+  },
+  {
+    "id": "2154",
+    "displayName": "Kilshane Cross, Dublin",
+    "displayValue": "kilshane-cross-dublin",
+    "propertyCount": {
+      "residentialForSale": 50,
+      "residentialForRent": 9,
+      "sharing": 9,
+      "commercialForSale": 23,
+      "commercialToRent": 121,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 9,
+      "studentAccommodationToShare": 9,
+      "recent": 50,
+      "sold": 2279
+    }
+  },
+  {
+    "id": "1883",
+    "displayName": "East Wall, Dublin",
+    "displayValue": "east-wall-dublin",
+    "propertyCount": {
+      "residentialForSale": 52,
+      "residentialForRent": 27,
+      "sharing": 19,
+      "commercialForSale": 5,
+      "commercialToRent": 108,
+      "parkingForSale": 0,
+      "parkingToRent": 4,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 24,
+      "studentAccommodationToShare": 19,
+      "recent": 52,
+      "sold": 2138
+    }
+  },
+  {
+    "id": "2259",
+    "displayName": "Ranelagh, Dublin",
+    "displayValue": "ranelagh-dublin",
+    "propertyCount": {
+      "residentialForSale": 66,
+      "residentialForRent": 35,
+      "sharing": 10,
+      "commercialForSale": 10,
+      "commercialToRent": 19,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 34,
+      "studentAccommodationToShare": 10,
+      "recent": 66,
+      "sold": 2165
+    }
+  },
+  {
+    "id": "2113",
+    "displayName": "Coolock, Dublin",
+    "displayValue": "coolock-dublin",
+    "propertyCount": {
+      "residentialForSale": 55,
+      "residentialForRent": 7,
+      "sharing": 6,
+      "commercialForSale": 5,
+      "commercialToRent": 20,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 7,
+      "studentAccommodationToShare": 6,
+      "recent": 55,
+      "sold": 2245
+    }
+  },
+  {
+    "id": "2132",
+    "displayName": "Strawberry Beds, Dublin",
+    "displayValue": "strawberry-beds-dublin",
+    "propertyCount": {
+      "residentialForSale": 47,
+      "residentialForRent": 8,
+      "sharing": 8,
+      "commercialForSale": 1,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 2,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 8,
+      "studentAccommodationToShare": 8,
+      "recent": 47,
+      "sold": 2275
+    }
+  },
+  {
+    "id": "2075",
+    "displayName": "Carpenterstown, Dublin",
+    "displayValue": "carpenterstown-dublin",
+    "propertyCount": {
+      "residentialForSale": 34,
+      "residentialForRent": 5,
+      "sharing": 7,
+      "commercialForSale": 0,
+      "commercialToRent": 1,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 5,
+      "studentAccommodationToShare": 7,
+      "recent": 34,
+      "sold": 2301
+    }
+  },
+  {
+    "id": "1892",
+    "displayName": "Templeogue, Dublin",
+    "displayValue": "templeogue-dublin",
+    "propertyCount": {
+      "residentialForSale": 36,
+      "residentialForRent": 8,
+      "sharing": 13,
+      "commercialForSale": 1,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 8,
+      "studentAccommodationToShare": 13,
+      "recent": 36,
+      "sold": 2253
+    }
+  },
+  {
+    "id": "2099",
+    "displayName": "Churchtown, Dublin",
+    "displayValue": "churchtown-dublin",
+    "propertyCount": {
+      "residentialForSale": 36,
+      "residentialForRent": 6,
+      "sharing": 9,
+      "commercialForSale": 2,
+      "commercialToRent": 12,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 6,
+      "studentAccommodationToShare": 9,
+      "recent": 36,
+      "sold": 2246
+    }
+  },
+  {
+    "id": "2129",
+    "displayName": "Foxrock, Dublin",
+    "displayValue": "foxrock-dublin",
+    "propertyCount": {
+      "residentialForSale": 68,
+      "residentialForRent": 7,
+      "sharing": 3,
+      "commercialForSale": 4,
+      "commercialToRent": 16,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 3,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 7,
+      "studentAccommodationToShare": 3,
+      "recent": 68,
+      "sold": 2169
+    }
+  },
+  {
+    "id": "1870",
+    "displayName": "Donabate, Dublin",
+    "displayValue": "donabate-dublin",
+    "propertyCount": {
+      "residentialForSale": 37,
+      "residentialForRent": 0,
+      "sharing": 8,
+      "commercialForSale": 1,
+      "commercialToRent": 1,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 3,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 8,
+      "recent": 37,
+      "sold": 2200
+    }
+  },
+  {
+    "id": "2198",
+    "displayName": "North Wall, Dublin",
+    "displayValue": "north-wall-dublin",
+    "propertyCount": {
+      "residentialForSale": 42,
+      "residentialForRent": 31,
+      "sharing": 15,
+      "commercialForSale": 4,
+      "commercialToRent": 107,
+      "parkingForSale": 0,
+      "parkingToRent": 6,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 27,
+      "studentAccommodationToShare": 15,
+      "recent": 42,
+      "sold": 1961
+    }
+  },
+  {
+    "id": "2318",
+    "displayName": "Shankill, Dublin",
+    "displayValue": "shankill-dublin",
+    "propertyCount": {
+      "residentialForSale": 54,
+      "residentialForRent": 4,
+      "sharing": 5,
+      "commercialForSale": 4,
+      "commercialToRent": 14,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 5,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 4,
+      "studentAccommodationToShare": 5,
+      "recent": 54,
+      "sold": 2088
+    }
+  },
+  {
+    "id": "2172",
+    "displayName": "Mulhuddart, Dublin",
+    "displayValue": "mulhuddart-dublin",
+    "propertyCount": {
+      "residentialForSale": 36,
+      "residentialForRent": 10,
+      "sharing": 21,
+      "commercialForSale": 3,
+      "commercialToRent": 23,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 10,
+      "studentAccommodationToShare": 21,
+      "recent": 36,
+      "sold": 2047
+    }
+  },
+  {
+    "id": "2199",
+    "displayName": "Oldbawn, Dublin",
+    "displayValue": "oldbawn-dublin",
+    "propertyCount": {
+      "residentialForSale": 18,
+      "residentialForRent": 9,
+      "sharing": 8,
+      "commercialForSale": 0,
+      "commercialToRent": 10,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 9,
+      "studentAccommodationToShare": 8,
+      "recent": 18,
+      "sold": 2110
+    }
+  },
+  {
+    "id": "2226",
+    "displayName": "Porterstown, Dublin",
+    "displayValue": "porterstown-dublin",
+    "propertyCount": {
+      "residentialForSale": 38,
+      "residentialForRent": 9,
+      "sharing": 8,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 9,
+      "studentAccommodationToShare": 8,
+      "recent": 38,
+      "sold": 2080
+    }
+  },
+  {
+    "id": "1096",
+    "displayName": "Firhouse, Dublin",
+    "displayValue": "firhouse-dublin",
+    "propertyCount": {
+      "residentialForSale": 30,
+      "residentialForRent": 5,
+      "sharing": 9,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 5,
+      "studentAccommodationToShare": 9,
+      "recent": 30,
+      "sold": 2088
+    }
+  },
+  {
+    "id": "1849",
+    "displayName": "Dalkey, Dublin",
+    "displayValue": "dalkey-dublin",
+    "propertyCount": {
+      "residentialForSale": 39,
+      "residentialForRent": 7,
+      "sharing": 2,
+      "commercialForSale": 2,
+      "commercialToRent": 4,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 3,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 6,
+      "studentAccommodationToShare": 2,
+      "recent": 39,
+      "sold": 2034
+    }
+  },
+  {
+    "id": "2046",
+    "displayName": "Baldonnell, Dublin",
+    "displayValue": "baldonnell-dublin",
+    "propertyCount": {
+      "residentialForSale": 47,
+      "residentialForRent": 12,
+      "sharing": 11,
+      "commercialForSale": 9,
+      "commercialToRent": 41,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 12,
+      "studentAccommodationToShare": 11,
+      "recent": 47,
+      "sold": 1945
+    }
+  },
+  {
+    "id": "2070",
+    "displayName": "Bohernabreena, Dublin",
+    "displayValue": "bohernabreena-dublin",
+    "propertyCount": {
+      "residentialForSale": 39,
+      "residentialForRent": 15,
+      "sharing": 10,
+      "commercialForSale": 3,
+      "commercialToRent": 5,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 2,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 15,
+      "studentAccommodationToShare": 10,
+      "recent": 39,
+      "sold": 1973
+    }
+  },
+  {
+    "id": "2061",
+    "displayName": "Ballyfermot, Dublin",
+    "displayValue": "ballyfermot-dublin",
+    "propertyCount": {
+      "residentialForSale": 36,
+      "residentialForRent": 12,
+      "sharing": 9,
+      "commercialForSale": 5,
+      "commercialToRent": 9,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 12,
+      "studentAccommodationToShare": 9,
+      "recent": 36,
+      "sold": 1979
+    }
+  },
+  {
+    "id": "2227",
+    "displayName": "Portmarnock, Dublin",
+    "displayValue": "portmarnock-dublin",
+    "propertyCount": {
+      "residentialForSale": 46,
+      "residentialForRent": 4,
+      "sharing": 2,
+      "commercialForSale": 1,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 2,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 4,
+      "studentAccommodationToShare": 2,
+      "recent": 46,
+      "sold": 1993
+    }
+  },
+  {
+    "id": "2126",
+    "displayName": "Fairview, Dublin",
+    "displayValue": "fairview-dublin",
+    "propertyCount": {
+      "residentialForSale": 41,
+      "residentialForRent": 8,
+      "sharing": 13,
+      "commercialForSale": 7,
+      "commercialToRent": 15,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 8,
+      "studentAccommodationToShare": 13,
+      "recent": 41,
+      "sold": 1947
+    }
+  },
+  {
+    "id": "2320",
+    "displayName": "Smithfield, Dublin",
+    "displayValue": "smithfield-dublin",
+    "propertyCount": {
+      "residentialForSale": 38,
+      "residentialForRent": 14,
+      "sharing": 17,
+      "commercialForSale": 20,
+      "commercialToRent": 54,
+      "parkingForSale": 0,
+      "parkingToRent": 3,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 14,
+      "studentAccommodationToShare": 17,
+      "recent": 38,
+      "sold": 1870
+    }
+  },
+  {
+    "id": "824",
+    "displayName": "Clonskeagh, Dublin",
+    "displayValue": "clonskeagh-dublin",
+    "propertyCount": {
+      "residentialForSale": 35,
+      "residentialForRent": 13,
+      "sharing": 11,
+      "commercialForSale": 1,
+      "commercialToRent": 14,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 13,
+      "studentAccommodationToShare": 11,
+      "recent": 35,
+      "sold": 1936
+    }
+  },
+  {
+    "id": "692",
+    "displayName": "Beaumont, Dublin",
+    "displayValue": "beaumont-dublin",
+    "propertyCount": {
+      "residentialForSale": 38,
+      "residentialForRent": 6,
+      "sharing": 11,
+      "commercialForSale": 1,
+      "commercialToRent": 1,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 6,
+      "studentAccommodationToShare": 11,
+      "recent": 38,
+      "sold": 1944
+    }
+  },
+  {
+    "id": "1887",
+    "displayName": "Goatstown, Dublin",
+    "displayValue": "goatstown-dublin",
+    "propertyCount": {
+      "residentialForSale": 37,
+      "residentialForRent": 12,
+      "sharing": 9,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 11,
+      "studentAccommodationToShare": 9,
+      "recent": 37,
+      "sold": 1910
+    }
+  },
+  {
+    "id": "2145",
+    "displayName": "Inchicore, Dublin",
+    "displayValue": "inchicore-dublin",
+    "propertyCount": {
+      "residentialForSale": 30,
+      "residentialForRent": 15,
+      "sharing": 12,
+      "commercialForSale": 3,
+      "commercialToRent": 9,
+      "parkingForSale": 0,
+      "parkingToRent": 4,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 15,
+      "studentAccommodationToShare": 12,
+      "recent": 30,
+      "sold": 1852
+    }
+  },
+  {
+    "id": "2155",
+    "displayName": "Kilternan, Dublin",
+    "displayValue": "kilternan-dublin",
+    "propertyCount": {
+      "residentialForSale": 42,
+      "residentialForRent": 7,
+      "sharing": 9,
+      "commercialForSale": 7,
+      "commercialToRent": 6,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 5,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 7,
+      "studentAccommodationToShare": 9,
+      "recent": 42,
+      "sold": 1848
+    }
+  },
+  {
+    "id": "4160",
+    "displayName": "Rathcoole (& Surrounds), Dublin",
+    "displayValue": "rathcoole-and-surrounds-dublin",
+    "propertyCount": {
+      "residentialForSale": 45,
+      "residentialForRent": 11,
+      "sharing": 9,
+      "commercialForSale": 4,
+      "commercialToRent": 30,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 2,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 11,
+      "studentAccommodationToShare": 9,
+      "recent": 45,
+      "sold": 1807
+    }
+  },
+  {
+    "id": "2319",
+    "displayName": "Skerries, Dublin",
+    "displayValue": "skerries-dublin",
+    "propertyCount": {
+      "residentialForSale": 43,
+      "residentialForRent": 2,
+      "sharing": 2,
+      "commercialForSale": 2,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 2,
+      "studentAccommodationToShare": 2,
+      "recent": 43,
+      "sold": 1857
+    }
+  },
+  {
+    "id": "1030",
+    "displayName": "Harold's Cross, Dublin",
+    "displayValue": "harold-s-cross-dublin",
+    "propertyCount": {
+      "residentialForSale": 39,
+      "residentialForRent": 23,
+      "sharing": 11,
+      "commercialForSale": 2,
+      "commercialToRent": 5,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 22,
+      "studentAccommodationToShare": 11,
+      "recent": 39,
+      "sold": 1788
+    }
+  },
+  {
+    "id": "1874",
+    "displayName": "Drimnagh, Dublin",
+    "displayValue": "drimnagh-dublin",
+    "propertyCount": {
+      "residentialForSale": 45,
+      "residentialForRent": 11,
+      "sharing": 16,
+      "commercialForSale": 2,
+      "commercialToRent": 2,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 11,
+      "studentAccommodationToShare": 16,
+      "recent": 45,
+      "sold": 1786
+    }
+  },
+  {
+    "id": "2130",
+    "displayName": "Stoneybatter, Dublin",
+    "displayValue": "stoneybatter-dublin",
+    "propertyCount": {
+      "residentialForSale": 32,
+      "residentialForRent": 27,
+      "sharing": 11,
+      "commercialForSale": 2,
+      "commercialToRent": 7,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 27,
+      "studentAccommodationToShare": 11,
+      "recent": 32,
+      "sold": 1709
+    }
+  },
+  {
+    "id": "2310",
+    "displayName": "Rush, Dublin",
+    "displayValue": "rush-dublin",
+    "propertyCount": {
+      "residentialForSale": 42,
+      "residentialForRent": 2,
+      "sharing": 3,
+      "commercialForSale": 2,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 3,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 2,
+      "studentAccommodationToShare": 3,
+      "recent": 42,
+      "sold": 1742
+    }
+  },
+  {
+    "id": "2071",
+    "displayName": "Booterstown, Dublin",
+    "displayValue": "booterstown-dublin",
+    "propertyCount": {
+      "residentialForSale": 39,
+      "residentialForRent": 16,
+      "sharing": 8,
+      "commercialForSale": 0,
+      "commercialToRent": 2,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 3,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 16,
+      "studentAccommodationToShare": 8,
+      "recent": 39,
+      "sold": 1696
+    }
+  },
+  {
+    "id": "2175",
+    "displayName": "Newcastle, Dublin",
+    "displayValue": "newcastle-dublin",
+    "propertyCount": {
+      "residentialForSale": 40,
+      "residentialForRent": 5,
+      "sharing": 5,
+      "commercialForSale": 9,
+      "commercialToRent": 42,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 5,
+      "studentAccommodationToShare": 5,
+      "recent": 40,
+      "sold": 1652
+    }
+  },
+  {
+    "id": "4135",
+    "displayName": "Lusk (& Surrounds), Dublin",
+    "displayValue": "lusk-and-surrounds-dublin",
+    "propertyCount": {
+      "residentialForSale": 37,
+      "residentialForRent": 2,
+      "sharing": 8,
+      "commercialForSale": 1,
+      "commercialToRent": 4,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 2,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 2,
+      "studentAccommodationToShare": 8,
+      "recent": 37,
+      "sold": 1702
+    }
+  },
+  {
+    "id": "2165",
+    "displayName": "Lusk, Dublin",
+    "displayValue": "lusk-dublin",
+    "propertyCount": {
+      "residentialForSale": 37,
+      "residentialForRent": 2,
+      "sharing": 7,
+      "commercialForSale": 1,
+      "commercialToRent": 2,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 2,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 2,
+      "studentAccommodationToShare": 7,
+      "recent": 37,
+      "sold": 1684
+    }
+  },
+  {
+    "id": "4400",
+    "displayName": "Sandyhill, Dublin",
+    "displayValue": "sandyhill-dublin",
+    "propertyCount": {
+      "residentialForSale": 27,
+      "residentialForRent": 3,
+      "sharing": 6,
+      "commercialForSale": 10,
+      "commercialToRent": 18,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 2,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 3,
+      "studentAccommodationToShare": 6,
+      "recent": 27,
+      "sold": 1668
+    }
+  },
+  {
+    "id": "2124",
+    "displayName": "St Margaret's, Dublin",
+    "displayValue": "st-margaret-s-dublin",
+    "propertyCount": {
+      "residentialForSale": 27,
+      "residentialForRent": 3,
+      "sharing": 6,
+      "commercialForSale": 10,
+      "commercialToRent": 18,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 2,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 3,
+      "studentAccommodationToShare": 6,
+      "recent": 27,
+      "sold": 1668
+    }
+  },
+  {
+    "id": "2098",
+    "displayName": "Christchurch, Dublin",
+    "displayValue": "christchurch-dublin",
+    "propertyCount": {
+      "residentialForSale": 30,
+      "residentialForRent": 29,
+      "sharing": 6,
+      "commercialForSale": 6,
+      "commercialToRent": 27,
+      "parkingForSale": 0,
+      "parkingToRent": 4,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 29,
+      "studentAccommodationToShare": 6,
+      "recent": 30,
+      "sold": 1572
+    }
+  },
+  {
+    "id": "498",
+    "displayName": "Kilmacud, Dublin",
+    "displayValue": "kilmacud-dublin",
+    "propertyCount": {
+      "residentialForSale": 27,
+      "residentialForRent": 10,
+      "sharing": 4,
+      "commercialForSale": 0,
+      "commercialToRent": 6,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 9,
+      "studentAccommodationToShare": 4,
+      "recent": 27,
+      "sold": 1595
+    }
+  },
+  {
+    "id": "2144",
+    "displayName": "IFSC, Dublin",
+    "displayValue": "ifsc-dublin",
+    "propertyCount": {
+      "residentialForSale": 29,
+      "residentialForRent": 22,
+      "sharing": 9,
+      "commercialForSale": 3,
+      "commercialToRent": 102,
+      "parkingForSale": 1,
+      "parkingToRent": 7,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 20,
+      "studentAccommodationToShare": 9,
+      "recent": 29,
+      "sold": 1441
+    }
+  },
+  {
+    "id": "2133",
+    "displayName": "Sutton, Dublin",
+    "displayValue": "sutton-dublin",
+    "propertyCount": {
+      "residentialForSale": 39,
+      "residentialForRent": 2,
+      "sharing": 2,
+      "commercialForSale": 0,
+      "commercialToRent": 2,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 2,
+      "studentAccommodationToShare": 2,
+      "recent": 39,
+      "sold": 1577
+    }
+  },
+  {
+    "id": "2064",
+    "displayName": "Balrothery, Dublin",
+    "displayValue": "balrothery-dublin",
+    "propertyCount": {
+      "residentialForSale": 20,
+      "residentialForRent": 1,
+      "sharing": 4,
+      "commercialForSale": 2,
+      "commercialToRent": 4,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 1,
+      "studentAccommodationToShare": 4,
+      "recent": 20,
+      "sold": 1493
+    }
+  },
+  {
+    "id": "2060",
+    "displayName": "Ballycullen, Dublin",
+    "displayValue": "ballycullen-dublin",
+    "propertyCount": {
+      "residentialForSale": 20,
+      "residentialForRent": 2,
+      "sharing": 6,
+      "commercialForSale": 1,
+      "commercialToRent": 1,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 2,
+      "studentAccommodationToShare": 6,
+      "recent": 20,
+      "sold": 1473
+    }
+  },
+  {
+    "id": "2267",
+    "displayName": "Rialto, Dublin",
+    "displayValue": "rialto-dublin",
+    "propertyCount": {
+      "residentialForSale": 23,
+      "residentialForRent": 14,
+      "sharing": 12,
+      "commercialForSale": 3,
+      "commercialToRent": 4,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 14,
+      "studentAccommodationToShare": 12,
+      "recent": 23,
+      "sold": 1402
+    }
+  },
+  {
+    "id": "2146",
+    "displayName": "The Coombe, Dublin",
+    "displayValue": "the-coombe-dublin",
+    "propertyCount": {
+      "residentialForSale": 28,
+      "residentialForRent": 13,
+      "sharing": 7,
+      "commercialForSale": 3,
+      "commercialToRent": 26,
+      "parkingForSale": 1,
+      "parkingToRent": 2,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 13,
+      "studentAccommodationToShare": 7,
+      "recent": 28,
+      "sold": 1339
+    }
+  },
+  {
+    "id": "821",
+    "displayName": "Clonshaugh, Dublin",
+    "displayValue": "clonshaugh-dublin",
+    "propertyCount": {
+      "residentialForSale": 32,
+      "residentialForRent": 7,
+      "sharing": 2,
+      "commercialForSale": 7,
+      "commercialToRent": 29,
+      "parkingForSale": 0,
+      "parkingToRent": 3,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 7,
+      "studentAccommodationToShare": 2,
+      "recent": 32,
+      "sold": 1302
+    }
+  },
+  {
+    "id": "2225",
+    "displayName": "Poppintree, Dublin",
+    "displayValue": "poppintree-dublin",
+    "propertyCount": {
+      "residentialForSale": 38,
+      "residentialForRent": 7,
+      "sharing": 6,
+      "commercialForSale": 0,
+      "commercialToRent": 2,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 7,
+      "studentAccommodationToShare": 6,
+      "recent": 38,
+      "sold": 1310
+    }
+  },
+  {
+    "id": "2309",
+    "displayName": "Royal Canal Park, Dublin",
+    "displayValue": "royal-canal-park-dublin",
+    "propertyCount": {
+      "residentialForSale": 16,
+      "residentialForRent": 7,
+      "sharing": 11,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 2,
+      "newHomes": 0,
+      "holidayHomes": 1,
+      "studentAccommodationForRent": 7,
+      "studentAccommodationToShare": 11,
+      "recent": 16,
+      "sold": 1324
+    }
+  },
+  {
+    "id": "693",
+    "displayName": "Ongar, Dublin",
+    "displayValue": "ongar-dublin",
+    "propertyCount": {
+      "residentialForSale": 31,
+      "residentialForRent": 4,
+      "sharing": 4,
+      "commercialForSale": 1,
+      "commercialToRent": 2,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 4,
+      "studentAccommodationToShare": 4,
+      "recent": 31,
+      "sold": 1298
+    }
+  },
+  {
+    "id": "2197",
+    "displayName": "North Strand, Dublin",
+    "displayValue": "north-strand-dublin",
+    "propertyCount": {
+      "residentialForSale": 36,
+      "residentialForRent": 8,
+      "sharing": 13,
+      "commercialForSale": 3,
+      "commercialToRent": 16,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 8,
+      "studentAccommodationToShare": 13,
+      "recent": 36,
+      "sold": 1229
+    }
+  },
+  {
+    "id": "2055",
+    "displayName": "Ballybough, Dublin",
+    "displayValue": "ballybough-dublin",
+    "propertyCount": {
+      "residentialForSale": 44,
+      "residentialForRent": 7,
+      "sharing": 17,
+      "commercialForSale": 4,
+      "commercialToRent": 2,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 7,
+      "studentAccommodationToShare": 17,
+      "recent": 44,
+      "sold": 1207
+    }
+  },
+  {
+    "id": "2035",
+    "displayName": "Arbour Hill, Dublin",
+    "displayValue": "arbour-hill-dublin",
+    "propertyCount": {
+      "residentialForSale": 24,
+      "residentialForRent": 6,
+      "sharing": 6,
+      "commercialForSale": 1,
+      "commercialToRent": 4,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 6,
+      "studentAccommodationToShare": 6,
+      "recent": 24,
+      "sold": 1254
+    }
+  },
+  {
+    "id": "2151",
+    "displayName": "Kilmore, Dublin",
+    "displayValue": "kilmore-dublin",
+    "propertyCount": {
+      "residentialForSale": 28,
+      "residentialForRent": 5,
+      "sharing": 4,
+      "commercialForSale": 2,
+      "commercialToRent": 6,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 5,
+      "studentAccommodationToShare": 4,
+      "recent": 28,
+      "sold": 1244
+    }
+  },
+  {
+    "id": "1057",
+    "displayName": "Howth, Dublin",
+    "displayValue": "howth-dublin",
+    "propertyCount": {
+      "residentialForSale": 39,
+      "residentialForRent": 5,
+      "sharing": 2,
+      "commercialForSale": 0,
+      "commercialToRent": 1,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 5,
+      "studentAccommodationToShare": 2,
+      "recent": 39,
+      "sold": 1213
+    }
+  },
+  {
+    "id": "1097",
+    "displayName": "Grange Castle, Dublin",
+    "displayValue": "grange-castle-dublin",
+    "propertyCount": {
+      "residentialForSale": 20,
+      "residentialForRent": 11,
+      "sharing": 4,
+      "commercialForSale": 4,
+      "commercialToRent": 8,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 11,
+      "studentAccommodationToShare": 4,
+      "recent": 20,
+      "sold": 1207
+    }
+  },
+  {
+    "id": "2152",
+    "displayName": "Kilnamanagh, Dublin",
+    "displayValue": "kilnamanagh-dublin",
+    "propertyCount": {
+      "residentialForSale": 13,
+      "residentialForRent": 6,
+      "sharing": 3,
+      "commercialForSale": 5,
+      "commercialToRent": 77,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 6,
+      "studentAccommodationToShare": 3,
+      "recent": 13,
+      "sold": 1149
+    }
+  },
+  {
+    "id": "2056",
+    "displayName": "Ballyboughal, Dublin",
+    "displayValue": "ballyboughal-dublin",
+    "propertyCount": {
+      "residentialForSale": 25,
+      "residentialForRent": 2,
+      "sharing": 3,
+      "commercialForSale": 3,
+      "commercialToRent": 9,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 3,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 2,
+      "studentAccommodationToShare": 3,
+      "recent": 25,
+      "sold": 1189
+    }
+  },
+  {
+    "id": "2246",
+    "displayName": "Portobello, Dublin",
+    "displayValue": "portobello-dublin",
+    "propertyCount": {
+      "residentialForSale": 25,
+      "residentialForRent": 28,
+      "sharing": 5,
+      "commercialForSale": 7,
+      "commercialToRent": 99,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 28,
+      "studentAccommodationToShare": 5,
+      "recent": 25,
+      "sold": 1039
+    }
+  },
+  {
+    "id": "2162",
+    "displayName": "Loughlinstown, Dublin",
+    "displayValue": "loughlinstown-dublin",
+    "propertyCount": {
+      "residentialForSale": 36,
+      "residentialForRent": 5,
+      "sharing": 9,
+      "commercialForSale": 2,
+      "commercialToRent": 21,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 2,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 5,
+      "studentAccommodationToShare": 9,
+      "recent": 36,
+      "sold": 1120
+    }
+  },
+  {
+    "id": "2169",
+    "displayName": "Milltown, Dublin",
+    "displayValue": "milltown-dublin",
+    "propertyCount": {
+      "residentialForSale": 26,
+      "residentialForRent": 12,
+      "sharing": 2,
+      "commercialForSale": 0,
+      "commercialToRent": 1,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 12,
+      "studentAccommodationToShare": 2,
+      "recent": 26,
+      "sold": 1163
+    }
+  },
+  {
+    "id": "2167",
+    "displayName": "Marino, Dublin",
+    "displayValue": "marino-dublin",
+    "propertyCount": {
+      "residentialForSale": 22,
+      "residentialForRent": 5,
+      "sharing": 7,
+      "commercialForSale": 0,
+      "commercialToRent": 7,
+      "parkingForSale": 1,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 5,
+      "studentAccommodationToShare": 7,
+      "recent": 22,
+      "sold": 1118
+    }
+  },
+  {
+    "id": "2260",
+    "displayName": "Rathcoole, Dublin",
+    "displayValue": "rathcoole-dublin",
+    "propertyCount": {
+      "residentialForSale": 28,
+      "residentialForRent": 3,
+      "sharing": 5,
+      "commercialForSale": 2,
+      "commercialToRent": 2,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 2,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 3,
+      "studentAccommodationToShare": 5,
+      "recent": 28,
+      "sold": 1109
+    }
+  },
+  {
+    "id": "1058",
+    "displayName": "Huntstown, Dublin",
+    "displayValue": "huntstown-dublin",
+    "propertyCount": {
+      "residentialForSale": 19,
+      "residentialForRent": 4,
+      "sharing": 11,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 4,
+      "studentAccommodationToShare": 11,
+      "recent": 19,
+      "sold": 1112
+    }
+  },
+  {
+    "id": "373",
+    "displayName": "Islandbridge, Dublin",
+    "displayValue": "islandbridge-dublin",
+    "propertyCount": {
+      "residentialForSale": 29,
+      "residentialForRent": 13,
+      "sharing": 7,
+      "commercialForSale": 1,
+      "commercialToRent": 9,
+      "parkingForSale": 0,
+      "parkingToRent": 2,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 13,
+      "studentAccommodationToShare": 7,
+      "recent": 29,
+      "sold": 1067
+    }
+  },
+  {
+    "id": "439",
+    "displayName": "Killester, Dublin",
+    "displayValue": "killester-dublin",
+    "propertyCount": {
+      "residentialForSale": 17,
+      "residentialForRent": 3,
+      "sharing": 5,
+      "commercialForSale": 2,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 3,
+      "studentAccommodationToShare": 5,
+      "recent": 17,
+      "sold": 1119
+    }
+  },
+  {
+    "id": "2156",
+    "displayName": "Kiltipper, Dublin",
+    "displayValue": "kiltipper-dublin",
+    "propertyCount": {
+      "residentialForSale": 21,
+      "residentialForRent": 10,
+      "sharing": 3,
+      "commercialForSale": 0,
+      "commercialToRent": 1,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 10,
+      "studentAccommodationToShare": 3,
+      "recent": 21,
+      "sold": 1052
+    }
+  },
+  {
+    "id": "694",
+    "displayName": "Palmerstown, Dublin",
+    "displayValue": "palmerstown-dublin",
+    "propertyCount": {
+      "residentialForSale": 20,
+      "residentialForRent": 18,
+      "sharing": 6,
+      "commercialForSale": 3,
+      "commercialToRent": 6,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 18,
+      "studentAccommodationToShare": 6,
+      "recent": 20,
+      "sold": 1003
+    }
+  },
+  {
+    "id": "2080",
+    "displayName": "Cherrywood, Dublin",
+    "displayValue": "cherrywood-dublin",
+    "propertyCount": {
+      "residentialForSale": 29,
+      "residentialForRent": 5,
+      "sharing": 9,
+      "commercialForSale": 2,
+      "commercialToRent": 21,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 8,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 4,
+      "studentAccommodationToShare": 9,
+      "recent": 29,
+      "sold": 969
+    }
+  },
+  {
+    "id": "2171",
+    "displayName": "Mount Merrion, Dublin",
+    "displayValue": "mount-merrion-dublin",
+    "propertyCount": {
+      "residentialForSale": 18,
+      "residentialForRent": 4,
+      "sharing": 6,
+      "commercialForSale": 1,
+      "commercialToRent": 1,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 3,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 4,
+      "studentAccommodationToShare": 6,
+      "recent": 18,
+      "sold": 1023
+    }
+  },
+  {
+    "id": "861",
+    "displayName": "Corduff, Dublin",
+    "displayValue": "corduff-dublin",
+    "propertyCount": {
+      "residentialForSale": 18,
+      "residentialForRent": 4,
+      "sharing": 5,
+      "commercialForSale": 0,
+      "commercialToRent": 2,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 4,
+      "studentAccommodationToShare": 5,
+      "recent": 18,
+      "sold": 1015
+    }
+  },
+  {
+    "id": "2314",
+    "displayName": "Sandycove, Dublin",
+    "displayValue": "sandycove-dublin",
+    "propertyCount": {
+      "residentialForSale": 22,
+      "residentialForRent": 3,
+      "sharing": 0,
+      "commercialForSale": 2,
+      "commercialToRent": 1,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 3,
+      "studentAccommodationToShare": 0,
+      "recent": 22,
+      "sold": 979
+    }
+  },
+  {
+    "id": "1896",
+    "displayName": "Tyrrelstown, Dublin",
+    "displayValue": "tyrrelstown-dublin",
+    "propertyCount": {
+      "residentialForSale": 22,
+      "residentialForRent": 7,
+      "sharing": 9,
+      "commercialForSale": 1,
+      "commercialToRent": 2,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 7,
+      "studentAccommodationToShare": 9,
+      "recent": 22,
+      "sold": 938
+    }
+  },
+  {
+    "id": "2052",
+    "displayName": "Ballyboden, Dublin",
+    "displayValue": "ballyboden-dublin",
+    "propertyCount": {
+      "residentialForSale": 16,
+      "residentialForRent": 5,
+      "sharing": 5,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 3,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 5,
+      "studentAccommodationToShare": 5,
+      "recent": 16,
+      "sold": 955
+    }
+  },
+  {
+    "id": "2158",
+    "displayName": "Kingswood, Dublin",
+    "displayValue": "kingswood-dublin",
+    "propertyCount": {
+      "residentialForSale": 12,
+      "residentialForRent": 3,
+      "sharing": 13,
+      "commercialForSale": 6,
+      "commercialToRent": 46,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 3,
+      "studentAccommodationToShare": 13,
+      "recent": 12,
+      "sold": 899
+    }
+  },
+  {
+    "id": "2325",
+    "displayName": "Windy Arbour, Dublin",
+    "displayValue": "windy-arbour-dublin",
+    "propertyCount": {
+      "residentialForSale": 18,
+      "residentialForRent": 6,
+      "sharing": 2,
+      "commercialForSale": 2,
+      "commercialToRent": 7,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 6,
+      "studentAccommodationToShare": 2,
+      "recent": 18,
+      "sold": 944
+    }
+  },
+  {
+    "id": "2118",
+    "displayName": "Dartry, Dublin",
+    "displayValue": "dartry-dublin",
+    "propertyCount": {
+      "residentialForSale": 22,
+      "residentialForRent": 10,
+      "sharing": 3,
+      "commercialForSale": 2,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 10,
+      "studentAccommodationToShare": 3,
+      "recent": 22,
+      "sold": 927
+    }
+  },
+  {
+    "id": "1027",
+    "displayName": "Dolphin's Barn, Dublin",
+    "displayValue": "dolphin-s-barn-dublin",
+    "propertyCount": {
+      "residentialForSale": 13,
+      "residentialForRent": 8,
+      "sharing": 6,
+      "commercialForSale": 1,
+      "commercialToRent": 5,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 8,
+      "studentAccommodationToShare": 6,
+      "recent": 13,
+      "sold": 929
+    }
+  },
+  {
+    "id": "2057",
+    "displayName": "Ballybrack, Dublin",
+    "displayValue": "ballybrack-dublin",
+    "propertyCount": {
+      "residentialForSale": 12,
+      "residentialForRent": 10,
+      "sharing": 5,
+      "commercialForSale": 2,
+      "commercialToRent": 1,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 10,
+      "studentAccommodationToShare": 5,
+      "recent": 12,
+      "sold": 887
+    }
+  },
+  {
+    "id": "1894",
+    "displayName": "The Ward, Dublin",
+    "displayValue": "the-ward-dublin",
+    "propertyCount": {
+      "residentialForSale": 17,
+      "residentialForRent": 2,
+      "sharing": 2,
+      "commercialForSale": 24,
+      "commercialToRent": 115,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 2,
+      "studentAccommodationToShare": 2,
+      "recent": 17,
+      "sold": 749
+    }
+  },
+  {
+    "id": "1055",
+    "displayName": "Hartstown, Dublin",
+    "displayValue": "hartstown-dublin",
+    "propertyCount": {
+      "residentialForSale": 14,
+      "residentialForRent": 2,
+      "sharing": 6,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 2,
+      "studentAccommodationToShare": 6,
+      "recent": 14,
+      "sold": 854
+    }
+  },
+  {
+    "id": "2263",
+    "displayName": "Rathmichael, Dublin",
+    "displayValue": "rathmichael-dublin",
+    "propertyCount": {
+      "residentialForSale": 29,
+      "residentialForRent": 1,
+      "sharing": 2,
+      "commercialForSale": 2,
+      "commercialToRent": 2,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 1,
+      "studentAccommodationToShare": 2,
+      "recent": 29,
+      "sold": 814
+    }
+  },
+  {
+    "id": "2125",
+    "displayName": "Edmondstown, Dublin",
+    "displayValue": "edmondstown-dublin",
+    "propertyCount": {
+      "residentialForSale": 16,
+      "residentialForRent": 3,
+      "sharing": 5,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 3,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 3,
+      "studentAccommodationToShare": 5,
+      "recent": 16,
+      "sold": 803
+    }
+  },
+  {
+    "id": "2044",
+    "displayName": "Ayrfield, Dublin",
+    "displayValue": "ayrfield-dublin",
+    "propertyCount": {
+      "residentialForSale": 12,
+      "residentialForRent": 0,
+      "sharing": 4,
+      "commercialForSale": 0,
+      "commercialToRent": 2,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 4,
+      "recent": 12,
+      "sold": 809
+    }
+  },
+  {
+    "id": "753",
+    "displayName": "Cherry Orchard, Dublin",
+    "displayValue": "cherry-orchard-dublin",
+    "propertyCount": {
+      "residentialForSale": 15,
+      "residentialForRent": 8,
+      "sharing": 4,
+      "commercialForSale": 1,
+      "commercialToRent": 1,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 8,
+      "studentAccommodationToShare": 4,
+      "recent": 15,
+      "sold": 773
+    }
+  },
+  {
+    "id": "2313",
+    "displayName": "Sallynoggin, Dublin",
+    "displayValue": "sallynoggin-dublin",
+    "propertyCount": {
+      "residentialForSale": 11,
+      "residentialForRent": 1,
+      "sharing": 3,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 1,
+      "studentAccommodationToShare": 3,
+      "recent": 11,
+      "sold": 764
+    }
+  },
+  {
+    "id": "2112",
+    "displayName": "Coolmine, Dublin",
+    "displayValue": "coolmine-dublin",
+    "propertyCount": {
+      "residentialForSale": 11,
+      "residentialForRent": 2,
+      "sharing": 3,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 2,
+      "studentAccommodationToShare": 3,
+      "recent": 11,
+      "sold": 759
+    }
+  },
+  {
+    "id": "2131",
+    "displayName": "Glasthule, Dublin",
+    "displayValue": "glasthule-dublin",
+    "propertyCount": {
+      "residentialForSale": 20,
+      "residentialForRent": 1,
+      "sharing": 1,
+      "commercialForSale": 1,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 1,
+      "studentAccommodationToShare": 1,
+      "recent": 20,
+      "sold": 724
+    }
+  },
+  {
+    "id": "4075",
+    "displayName": "Bray, Dublin",
+    "displayValue": "bray-dublin",
+    "propertyCount": {
+      "residentialForSale": 11,
+      "residentialForRent": 0,
+      "sharing": 4,
+      "commercialForSale": 0,
+      "commercialToRent": 1,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 3,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 4,
+      "recent": 11,
+      "sold": 713
+    }
+  },
+  {
+    "id": "1029",
+    "displayName": "Hanover Quay, Dublin",
+    "displayValue": "hanover-quay-dublin",
+    "propertyCount": {
+      "residentialForSale": 6,
+      "residentialForRent": 7,
+      "sharing": 3,
+      "commercialForSale": 0,
+      "commercialToRent": 49,
+      "parkingForSale": 0,
+      "parkingToRent": 2,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 7,
+      "studentAccommodationToShare": 3,
+      "recent": 6,
+      "sold": 664
+    }
+  },
+  {
+    "id": "2141",
+    "displayName": "Greenhills, Dublin",
+    "displayValue": "greenhills-dublin",
+    "propertyCount": {
+      "residentialForSale": 21,
+      "residentialForRent": 0,
+      "sharing": 2,
+      "commercialForSale": 4,
+      "commercialToRent": 1,
+      "parkingForSale": 1,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 2,
+      "recent": 21,
+      "sold": 680
+    }
+  },
+  {
+    "id": "2324",
+    "displayName": "Willbrook, Dublin",
+    "displayValue": "willbrook-dublin",
+    "propertyCount": {
+      "residentialForSale": 8,
+      "residentialForRent": 0,
+      "sharing": 3,
+      "commercialForSale": 1,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 3,
+      "recent": 8,
+      "sold": 676
+    }
+  },
+  {
+    "id": "2119",
+    "displayName": "Deansgrange, Dublin",
+    "displayValue": "deansgrange-dublin",
+    "propertyCount": {
+      "residentialForSale": 15,
+      "residentialForRent": 1,
+      "sharing": 0,
+      "commercialForSale": 3,
+      "commercialToRent": 23,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 1,
+      "studentAccommodationToShare": 0,
+      "recent": 15,
+      "sold": 634
+    }
+  },
+  {
+    "id": "1873",
+    "displayName": "Donnycarney, Dublin",
+    "displayValue": "donnycarney-dublin",
+    "propertyCount": {
+      "residentialForSale": 10,
+      "residentialForRent": 1,
+      "sharing": 3,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 1,
+      "studentAccommodationToShare": 3,
+      "recent": 10,
+      "sold": 649
+    }
+  },
+  {
+    "id": "372",
+    "displayName": "Irishtown, Dublin",
+    "displayValue": "irishtown-dublin",
+    "propertyCount": {
+      "residentialForSale": 15,
+      "residentialForRent": 6,
+      "sharing": 1,
+      "commercialForSale": 1,
+      "commercialToRent": 0,
+      "parkingForSale": 1,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 6,
+      "studentAccommodationToShare": 1,
+      "recent": 15,
+      "sold": 626
+    }
+  },
+  {
+    "id": "435",
+    "displayName": "Jobstown, Dublin",
+    "displayValue": "jobstown-dublin",
+    "propertyCount": {
+      "residentialForSale": 10,
+      "residentialForRent": 10,
+      "sharing": 2,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 10,
+      "studentAccommodationToShare": 2,
+      "recent": 10,
+      "sold": 614
+    }
+  },
+  {
+    "id": "2078",
+    "displayName": "Chapelizod, Dublin",
+    "displayValue": "chapelizod-dublin",
+    "propertyCount": {
+      "residentialForSale": 7,
+      "residentialForRent": 3,
+      "sharing": 0,
+      "commercialForSale": 0,
+      "commercialToRent": 3,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 3,
+      "studentAccommodationToShare": 0,
+      "recent": 7,
+      "sold": 619
+    }
+  },
+  {
+    "id": "437",
+    "displayName": "Kilbarrack, Dublin",
+    "displayValue": "kilbarrack-dublin",
+    "propertyCount": {
+      "residentialForSale": 12,
+      "residentialForRent": 5,
+      "sharing": 2,
+      "commercialForSale": 1,
+      "commercialToRent": 3,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 5,
+      "studentAccommodationToShare": 2,
+      "recent": 12,
+      "sold": 591
+    }
+  },
+  {
+    "id": "2120",
+    "displayName": "Dollymount, Dublin",
+    "displayValue": "dollymount-dublin",
+    "propertyCount": {
+      "residentialForSale": 5,
+      "residentialForRent": 1,
+      "sharing": 1,
+      "commercialForSale": 0,
+      "commercialToRent": 5,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 1,
+      "studentAccommodationToShare": 1,
+      "recent": 5,
+      "sold": 573
+    }
+  },
+  {
+    "id": "2168",
+    "displayName": "Merrion, Dublin",
+    "displayValue": "merrion-dublin",
+    "propertyCount": {
+      "residentialForSale": 17,
+      "residentialForRent": 9,
+      "sharing": 5,
+      "commercialForSale": 0,
+      "commercialToRent": 1,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 3,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 9,
+      "studentAccommodationToShare": 5,
+      "recent": 17,
+      "sold": 488
+    }
+  },
+  {
+    "id": "2062",
+    "displayName": "Ballymount, Dublin",
+    "displayValue": "ballymount-dublin",
+    "propertyCount": {
+      "residentialForSale": 8,
+      "residentialForRent": 1,
+      "sharing": 4,
+      "commercialForSale": 3,
+      "commercialToRent": 68,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 1,
+      "studentAccommodationToShare": 4,
+      "recent": 8,
+      "sold": 425
+    }
+  },
+  {
+    "id": "691",
+    "displayName": "Bayside, Dublin",
+    "displayValue": "bayside-dublin",
+    "propertyCount": {
+      "residentialForSale": 11,
+      "residentialForRent": 0,
+      "sharing": 1,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 1,
+      "recent": 11,
+      "sold": 477
+    }
+  },
+  {
+    "id": "1099",
+    "displayName": "Old Connaught, Dublin",
+    "displayValue": "old-connaught-dublin",
+    "propertyCount": {
+      "residentialForSale": 6,
+      "residentialForRent": 1,
+      "sharing": 1,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 1,
+      "studentAccommodationToShare": 1,
+      "recent": 6,
+      "sold": 454
+    }
+  },
+  {
+    "id": "2049",
+    "displayName": "Ballinascorney, Dublin",
+    "displayValue": "ballinascorney-dublin",
+    "propertyCount": {
+      "residentialForSale": 7,
+      "residentialForRent": 5,
+      "sharing": 5,
+      "commercialForSale": 0,
+      "commercialToRent": 4,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 5,
+      "studentAccommodationToShare": 5,
+      "recent": 7,
+      "sold": 423
+    }
+  },
+  {
+    "id": "4417",
+    "displayName": "Brennanstown, Dublin",
+    "displayValue": "brennanstown-dublin",
+    "propertyCount": {
+      "residentialForSale": 10,
+      "residentialForRent": 1,
+      "sharing": 0,
+      "commercialForSale": 1,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 3,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 1,
+      "studentAccommodationToShare": 0,
+      "recent": 10,
+      "sold": 412
+    }
+  },
+  {
+    "id": "2136",
+    "displayName": "Temple Bar, Dublin",
+    "displayValue": "temple-bar-dublin",
+    "propertyCount": {
+      "residentialForSale": 6,
+      "residentialForRent": 5,
+      "sharing": 3,
+      "commercialForSale": 2,
+      "commercialToRent": 51,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 5,
+      "studentAccommodationToShare": 3,
+      "recent": 6,
+      "sold": 356
+    }
+  },
+  {
+    "id": "2149",
+    "displayName": "Kill O' The Grange, Dublin",
+    "displayValue": "kill-o-the-grange-dublin",
+    "propertyCount": {
+      "residentialForSale": 14,
+      "residentialForRent": 5,
+      "sharing": 0,
+      "commercialForSale": 3,
+      "commercialToRent": 24,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 5,
+      "studentAccommodationToShare": 0,
+      "recent": 14,
+      "sold": 352
+    }
+  },
+  {
+    "id": "2122",
+    "displayName": "Edenmore, Dublin",
+    "displayValue": "edenmore-dublin",
+    "propertyCount": {
+      "residentialForSale": 2,
+      "residentialForRent": 1,
+      "sharing": 2,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 1,
+      "studentAccommodationToShare": 2,
+      "recent": 2,
+      "sold": 358
+    }
+  },
+  {
+    "id": "2066",
+    "displayName": "Belfield, Dublin",
+    "displayValue": "belfield-dublin",
+    "propertyCount": {
+      "residentialForSale": 8,
+      "residentialForRent": 1,
+      "sharing": 1,
+      "commercialForSale": 1,
+      "commercialToRent": 11,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 1,
+      "studentAccommodationToShare": 1,
+      "recent": 8,
+      "sold": 316
+    }
+  },
+  {
+    "id": "2041",
+    "displayName": "Aylesbury, Dublin",
+    "displayValue": "aylesbury-dublin",
+    "propertyCount": {
+      "residentialForSale": 4,
+      "residentialForRent": 0,
+      "sharing": 1,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 1,
+      "recent": 4,
+      "sold": 335
+    }
+  },
+  {
+    "id": "1890",
+    "displayName": "Portrane, Dublin",
+    "displayValue": "portrane-dublin",
+    "propertyCount": {
+      "residentialForSale": 10,
+      "residentialForRent": 0,
+      "sharing": 2,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 2,
+      "recent": 10,
+      "sold": 311
+    }
+  },
+  {
+    "id": "2115",
+    "displayName": "Darndale, Dublin",
+    "displayValue": "darndale-dublin",
+    "propertyCount": {
+      "residentialForSale": 7,
+      "residentialForRent": 1,
+      "sharing": 1,
+      "commercialForSale": 1,
+      "commercialToRent": 7,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 1,
+      "studentAccommodationToShare": 1,
+      "recent": 7,
+      "sold": 302
+    }
+  },
+  {
+    "id": "2173",
+    "displayName": "Naul, Dublin",
+    "displayValue": "naul-dublin",
+    "propertyCount": {
+      "residentialForSale": 6,
+      "residentialForRent": 1,
+      "sharing": 1,
+      "commercialForSale": 3,
+      "commercialToRent": 1,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 1,
+      "studentAccommodationToShare": 1,
+      "recent": 6,
+      "sold": 296
+    }
+  },
+  {
+    "id": "2039",
+    "displayName": "Ashington, Dublin",
+    "displayValue": "ashington-dublin",
+    "propertyCount": {
+      "residentialForSale": 7,
+      "residentialForRent": 1,
+      "sharing": 2,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 1,
+      "studentAccommodationToShare": 2,
+      "recent": 7,
+      "sold": 266
+    }
+  },
+  {
+    "id": "1898",
+    "displayName": "Ward, Dublin",
+    "displayValue": "ward-dublin",
+    "propertyCount": {
+      "residentialForSale": 9,
+      "residentialForRent": 1,
+      "sharing": 0,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 1,
+      "studentAccommodationToShare": 0,
+      "recent": 9,
+      "sold": 266
+    }
+  },
+  {
+    "id": "2212",
+    "displayName": "Park West, Dublin",
+    "displayValue": "park-west-dublin",
+    "propertyCount": {
+      "residentialForSale": 4,
+      "residentialForRent": 4,
+      "sharing": 0,
+      "commercialForSale": 5,
+      "commercialToRent": 18,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 4,
+      "studentAccommodationToShare": 0,
+      "recent": 4,
+      "sold": 244
+    }
+  },
+  {
+    "id": "2072",
+    "displayName": "Brittas, Dublin",
+    "displayValue": "brittas-dublin",
+    "propertyCount": {
+      "residentialForSale": 7,
+      "residentialForRent": 1,
+      "sharing": 1,
+      "commercialForSale": 0,
+      "commercialToRent": 6,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 1,
+      "studentAccommodationToShare": 1,
+      "recent": 7,
+      "sold": 254
+    }
+  },
+  {
+    "id": "2153",
+    "displayName": "Kilsallaghan, Dublin",
+    "displayValue": "kilsallaghan-dublin",
+    "propertyCount": {
+      "residentialForSale": 8,
+      "residentialForRent": 2,
+      "sharing": 0,
+      "commercialForSale": 4,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 2,
+      "studentAccommodationToShare": 0,
+      "recent": 8,
+      "sold": 247
+    }
+  },
+  {
+    "id": "2128",
+    "displayName": "Fox & Geese, Dublin",
+    "displayValue": "fox-and-geese-dublin",
+    "propertyCount": {
+      "residentialForSale": 5,
+      "residentialForRent": 0,
+      "sharing": 1,
+      "commercialForSale": 6,
+      "commercialToRent": 17,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 1,
+      "recent": 5,
+      "sold": 222
+    }
+  },
+  {
+    "id": "1095",
+    "displayName": "Damastown, Dublin",
+    "displayValue": "damastown-dublin",
+    "propertyCount": {
+      "residentialForSale": 4,
+      "residentialForRent": 2,
+      "sharing": 3,
+      "commercialForSale": 2,
+      "commercialToRent": 22,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 2,
+      "studentAccommodationToShare": 3,
+      "recent": 4,
+      "sold": 209
+    }
+  },
+  {
+    "id": "1100",
+    "displayName": "Ronanstown, Dublin",
+    "displayValue": "ronanstown-dublin",
+    "propertyCount": {
+      "residentialForSale": 6,
+      "residentialForRent": 1,
+      "sharing": 3,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 1,
+      "studentAccommodationToShare": 3,
+      "recent": 6,
+      "sold": 221
+    }
+  },
+  {
+    "id": "2069",
+    "displayName": "Bluebell, Dublin",
+    "displayValue": "bluebell-dublin",
+    "propertyCount": {
+      "residentialForSale": 6,
+      "residentialForRent": 3,
+      "sharing": 4,
+      "commercialForSale": 1,
+      "commercialToRent": 2,
+      "parkingForSale": 0,
+      "parkingToRent": 1,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 3,
+      "studentAccommodationToShare": 4,
+      "recent": 6,
+      "sold": 210
+    }
+  },
+  {
+    "id": "1362",
+    "displayName": "Garristown, Dublin",
+    "displayValue": "garristown-dublin",
+    "propertyCount": {
+      "residentialForSale": 4,
+      "residentialForRent": 1,
+      "sharing": 0,
+      "commercialForSale": 7,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 1,
+      "studentAccommodationToShare": 0,
+      "recent": 4,
+      "sold": 220
+    }
+  },
+  {
+    "id": "1895",
+    "displayName": "Ticknock, Dublin",
+    "displayValue": "ticknock-dublin",
+    "propertyCount": {
+      "residentialForSale": 3,
+      "residentialForRent": 3,
+      "sharing": 1,
+      "commercialForSale": 0,
+      "commercialToRent": 1,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 3,
+      "studentAccommodationToShare": 1,
+      "recent": 3,
+      "sold": 217
+    }
+  },
+  {
+    "id": "1886",
+    "displayName": "Glencullen, Dublin",
+    "displayValue": "glencullen-dublin",
+    "propertyCount": {
+      "residentialForSale": 6,
+      "residentialForRent": 0,
+      "sharing": 0,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 0,
+      "recent": 6,
+      "sold": 181
+    }
+  },
+  {
+    "id": "2114",
+    "displayName": "Cornelscourt, Dublin",
+    "displayValue": "cornelscourt-dublin",
+    "propertyCount": {
+      "residentialForSale": 9,
+      "residentialForRent": 0,
+      "sharing": 2,
+      "commercialForSale": 1,
+      "commercialToRent": 1,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 2,
+      "recent": 9,
+      "sold": 168
+    }
+  },
+  {
+    "id": "2108",
+    "displayName": "Collinswood, Dublin",
+    "displayValue": "collinswood-dublin",
+    "propertyCount": {
+      "residentialForSale": 4,
+      "residentialForRent": 0,
+      "sharing": 0,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 0,
+      "recent": 4,
+      "sold": 171
+    }
+  },
+  {
+    "id": "2200",
+    "displayName": "Oldtown, Dublin",
+    "displayValue": "oldtown-dublin",
+    "propertyCount": {
+      "residentialForSale": 4,
+      "residentialForRent": 0,
+      "sharing": 0,
+      "commercialForSale": 2,
+      "commercialToRent": 2,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 0,
+      "recent": 4,
+      "sold": 164
+    }
+  },
+  {
+    "id": "677",
+    "displayName": "Ard Na Greine, Dublin",
+    "displayValue": "ard-na-greine-dublin",
+    "propertyCount": {
+      "residentialForSale": 3,
+      "residentialForRent": 0,
+      "sharing": 0,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 0,
+      "recent": 3,
+      "sold": 169
+    }
+  },
+  {
+    "id": "2289",
+    "displayName": "Rolestown, Dublin",
+    "displayValue": "rolestown-dublin",
+    "propertyCount": {
+      "residentialForSale": 6,
+      "residentialForRent": 0,
+      "sharing": 0,
+      "commercialForSale": 1,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 0,
+      "recent": 6,
+      "sold": 152
+    }
+  },
+  {
+    "id": "4415",
+    "displayName": "Clonburris, Dublin",
+    "displayValue": "clonburris-dublin",
+    "propertyCount": {
+      "residentialForSale": 8,
+      "residentialForRent": 1,
+      "sharing": 6,
+      "commercialForSale": 1,
+      "commercialToRent": 8,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 5,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 1,
+      "studentAccommodationToShare": 6,
+      "recent": 8,
+      "sold": 86
+    }
+  },
+  {
+    "id": "1384",
+    "displayName": "Dublin Pike, Cork",
+    "displayValue": "dublin-pike-cork",
+    "propertyCount": {
+      "residentialForSale": 3,
+      "residentialForRent": 0,
+      "sharing": 0,
+      "commercialForSale": 1,
+      "commercialToRent": 1,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 0,
+      "recent": 3,
+      "sold": 250
+    }
+  },
+  {
+    "id": "2123",
+    "displayName": "St. James Gate, Dublin",
+    "displayValue": "st-james-gate-dublin",
+    "propertyCount": {
+      "residentialForSale": 2,
+      "residentialForRent": 2,
+      "sharing": 0,
+      "commercialForSale": 1,
+      "commercialToRent": 6,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 2,
+      "studentAccommodationToShare": 0,
+      "recent": 2,
+      "sold": 109
+    }
+  },
+  {
+    "id": "1102",
+    "displayName": "The Five Roads, Dublin",
+    "displayValue": "the-five-roads-dublin",
+    "propertyCount": {
+      "residentialForSale": 4,
+      "residentialForRent": 0,
+      "sharing": 0,
+      "commercialForSale": 0,
+      "commercialToRent": 1,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 0,
+      "recent": 4,
+      "sold": 109
+    }
+  },
+  {
+    "id": "2288",
+    "displayName": "Rockbrook, Dublin",
+    "displayValue": "rockbrook-dublin",
+    "propertyCount": {
+      "residentialForSale": 2,
+      "residentialForRent": 0,
+      "sharing": 1,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 1,
+      "recent": 2,
+      "sold": 106
+    }
+  },
+  {
+    "id": "4416",
+    "displayName": "Seven Mills, Dublin",
+    "displayValue": "seven-mills-dublin",
+    "propertyCount": {
+      "residentialForSale": 5,
+      "residentialForRent": 1,
+      "sharing": 5,
+      "commercialForSale": 0,
+      "commercialToRent": 8,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 3,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 1,
+      "studentAccommodationToShare": 5,
+      "recent": 5,
+      "sold": 75
+    }
+  },
+  {
+    "id": "2257",
+    "displayName": "Priorswood, Dublin",
+    "displayValue": "priorswood-dublin",
+    "propertyCount": {
+      "residentialForSale": 1,
+      "residentialForRent": 0,
+      "sharing": 2,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 2,
+      "recent": 1,
+      "sold": 99
+    }
+  },
+  {
+    "id": "2059",
+    "displayName": "Ballycorus, Dublin",
+    "displayValue": "ballycorus-dublin",
+    "propertyCount": {
+      "residentialForSale": 3,
+      "residentialForRent": 0,
+      "sharing": 1,
+      "commercialForSale": 1,
+      "commercialToRent": 2,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 1,
+      "recent": 3,
+      "sold": 88
+    }
+  },
+  {
+    "id": "1155",
+    "displayName": "Laughanstown, Dublin",
+    "displayValue": "laughanstown-dublin",
+    "propertyCount": {
+      "residentialForSale": 0,
+      "residentialForRent": 0,
+      "sharing": 0,
+      "commercialForSale": 1,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 0,
+      "recent": 0,
+      "sold": 96
+    }
+  },
+  {
+    "id": "2163",
+    "displayName": "Loughshinny, Dublin",
+    "displayValue": "loughshinny-dublin",
+    "propertyCount": {
+      "residentialForSale": 5,
+      "residentialForRent": 0,
+      "sharing": 0,
+      "commercialForSale": 0,
+      "commercialToRent": 1,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 0,
+      "recent": 5,
+      "sold": 73
+    }
+  },
+  {
+    "id": "4396",
+    "displayName": "Kilcarbery, Dublin",
+    "displayValue": "kilcarbery-dublin",
+    "propertyCount": {
+      "residentialForSale": 4,
+      "residentialForRent": 2,
+      "sharing": 4,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 2,
+      "studentAccommodationToShare": 4,
+      "recent": 4,
+      "sold": 63
+    }
+  },
+  {
+    "id": "1344",
+    "displayName": "Galloping Green, Dublin",
+    "displayValue": "galloping-green-dublin",
+    "propertyCount": {
+      "residentialForSale": 5,
+      "residentialForRent": 0,
+      "sharing": 0,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 1,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 0,
+      "recent": 5,
+      "sold": 71
+    }
+  },
+  {
+    "id": "1885",
+    "displayName": "Glenasmole, Dublin",
+    "displayValue": "glenasmole-dublin",
+    "propertyCount": {
+      "residentialForSale": 1,
+      "residentialForRent": 0,
+      "sharing": 0,
+      "commercialForSale": 0,
+      "commercialToRent": 0,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 0,
+      "recent": 1,
+      "sold": 24
+    }
+  },
+  {
+    "id": "438",
+    "displayName": "Killakee, Dublin",
+    "displayValue": "killakee-dublin",
+    "propertyCount": {
+      "residentialForSale": 1,
+      "residentialForRent": 0,
+      "sharing": 0,
+      "commercialForSale": 0,
+      "commercialToRent": 7,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 1,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 0,
+      "recent": 1,
+      "sold": 13
+    }
+  },
+  {
+    "id": "2065",
+    "displayName": "Balscaddan, Dublin",
+    "displayValue": "balscaddan-dublin",
+    "propertyCount": {
+      "residentialForSale": 0,
+      "residentialForRent": 0,
+      "sharing": 0,
+      "commercialForSale": 0,
+      "commercialToRent": 1,
+      "parkingForSale": 0,
+      "parkingToRent": 0,
+      "newHomes": 0,
+      "holidayHomes": 0,
+      "studentAccommodationForRent": 0,
+      "studentAccommodationToShare": 0,
+      "recent": 0,
+      "sold": 15
+    }
+  }
+]
