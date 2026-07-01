@@ -36,7 +36,7 @@ Rotate the **Telegram bot token** in @BotFather (`/revoke` → select your bot �
 Create `infra/terraform.tfvars` (gitignored):
 
 ```hcl
-alert_email = "volfar.vlad@gmail.com"
+alert_email = "you@example.com"
 ```
 
 From `infra/`:
@@ -66,7 +66,7 @@ Terraform-managed params (`infra/ssm.tf`) are created with value `REPLACE_ME`; `
 ```powershell
 aws ssm put-parameter --name /daftiescanner/prod/TENANTS_ACTIVE            --value "1"                                          --type String --overwrite
 aws ssm put-parameter --name /daftiescanner/prod/TENANT_1_ENABLED          --value "true"                                       --type String --overwrite
-aws ssm put-parameter --name /daftiescanner/prod/TENANT_1_EMAIL            --value "volfar.vlad@gmail.com"                      --type String --overwrite
+aws ssm put-parameter --name /daftiescanner/prod/TENANT_1_EMAIL            --value "you@example.com"                      --type String --overwrite
 aws ssm put-parameter --name /daftiescanner/prod/TENANT_1_SECTION          --value "residential-to-rent"                        --type String --overwrite
 aws ssm put-parameter --name /daftiescanner/prod/TENANT_1_RENTAL_PRICE_MIN --value "1200"                                       --type String --overwrite
 aws ssm put-parameter --name /daftiescanner/prod/TENANT_1_RENTAL_PRICE_MAX --value "2300"                                       --type String --overwrite
@@ -79,7 +79,7 @@ aws ssm put-parameter --name /daftiescanner/prod/TENANT_1_STORED_SHAPE_IDS --val
 ```powershell
 aws ssm put-parameter --name /daftiescanner/prod/DAFT_TELEGRAM_TOKEN          --value "<NEW_ROTATED_TOKEN>" --type SecureString --overwrite
 aws ssm put-parameter --name /daftiescanner/prod/TENANT_1_NOTIFIERS           --value "logging,telegram"    --type String       --overwrite
-aws ssm put-parameter --name /daftiescanner/prod/DAFT_TELEGRAM_ADMIN_CONTACT  --value "@Volfar"             --type String       --overwrite
+aws ssm put-parameter --name /daftiescanner/prod/DAFT_TELEGRAM_ADMIN_CONTACT  --value "@YourHandle"         --type String       --overwrite
 ```
 
 > **`.env.aws.example` is the source of truth for the full key list** (notifiers, BER ratings, poll tuning, alert config). Cross-check it. `DAFT_DYNAMO_ENDPOINT` and the CloudWatch metrics flag are already set in `docker-compose.aws.yml`, so they don't need SSM entries.
@@ -119,7 +119,7 @@ On start, `entrypoint.sh` fetches SSM params via the instance-profile credential
 ## Phase 6 — Verify end-to-end
 
 1. **Logs**: "SSM config loaded", Spring startup, "Scheduled Telegram update poller". No `/bot<token>/` appears (redaction is in place).
-2. **Telegram**: send your bot `/subscribe volfar.vlad@gmail.com` → you get a confirmation.
+2. **Telegram**: send your bot `/subscribe you@example.com` → you get a confirmation.
 3. **Listings**: within a poll cycle (~60s + jitter) you receive listing messages (one per listing, table + Copy-link button).
 4. **CloudWatch**: the `/daftiescanner/app` log group fills (awslogs driver) and the `DaftieScanner` metric namespace shows data.
 5. **DynamoDB**: `daftiescanner_seen` / `_cursor` start getting items.

@@ -9,7 +9,8 @@ public record FilterSpec(
         Range rentalPrice,
         Range numBeds,
         List<String> storedShapeIds,
-        List<BerRating> berRatings
+        List<BerRating> berRatings,
+        List<String> propertyTypes
 ) {
     public record Range(Integer from, Integer to) {
         public boolean isFullyBound() {

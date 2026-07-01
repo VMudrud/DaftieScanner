@@ -39,6 +39,23 @@ DynamoDB table names (`daftiescanner_seen`, `daftiescanner_cursor`, `daftiescann
 in `DynamoTables`. Set `daft.dynamo.enabled=false` to skip all DynamoDB beans (used in unit tests).
 CloudWatch metrics export is disabled by default; enable it in production via the env var above.
 
+### Per-tenant search filters
+
+Each active tenant (listed in `TENANTS_ACTIVE`, e.g. `1,2`) is configured via `TENANT_<N>_*` vars and
+polled independently on its own cursor. See `.env.example` for the full list.
+
+| Var | Description |
+|-----|-------------|
+| `TENANT_<N>_SECTION` | daft.ie section, e.g. `residential-to-rent` |
+| `TENANT_<N>_RENTAL_PRICE_MIN` / `_MAX` | Monthly rent bounds |
+| `TENANT_<N>_NUM_BEDS_MIN` / `_MAX` | Bedroom range (blank = no filter) |
+| `TENANT_<N>_STORED_SHAPE_IDS` | Comma-separated daft.ie area IDs (blank = all Ireland) |
+| `TENANT_<N>_PROPERTY_TYPES` | Comma-separated property types, e.g. `houses,apartments` (blank = all) |
+| `TENANT_<N>_BER_RATINGS` | Comma-separated BER ratings (blank = all) |
+| `TENANT_<N>_NOTIFIERS` | Comma-separated: `email`, `telegram`, `logging` |
+
+Example: tenant `2` scans County Dublin (`STORED_SHAPE_IDS=1`) for `houses` only at €2000–4000/month.
+
 ## Metrics published (Micrometer → CloudWatch namespace `DaftieScanner`)
 
 | Metric | Type | Tags | Description |

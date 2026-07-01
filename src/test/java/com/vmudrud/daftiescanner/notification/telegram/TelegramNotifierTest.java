@@ -42,7 +42,7 @@ class TelegramNotifierTest {
                 new FilterSpec("residential-to-rent",
                         new FilterSpec.Range(1, 9999),
                         new FilterSpec.Range(1, 5),
-                        List.of("42"), List.of()),
+                        List.of("42"), List.of(), List.of()),
                 List.of("telegram"));
     }
 

@@ -29,6 +29,7 @@ public class DaftClient {
     private static final String SORT = "publishDateDesc";
     private static final String AD_STATE = "published";
     private static final String FILTER_AD_STATE = "adState";
+    private static final String FILTER_PROPERTY_TYPE = "propertyType";
     private static final String RANGE_RENTAL_PRICE = "rentalPrice";
     private static final String RANGE_NUM_BEDS = "numBeds";
     private static final String PAGE_FROM = "0";
@@ -70,7 +71,7 @@ public class DaftClient {
     private SearchRequest toRequest(FilterSpec filter) {
         return new SearchRequest(
                 filter.section(),
-                List.of(new NameValues(FILTER_AD_STATE, List.of(AD_STATE))),
+                toFilters(filter),
                 List.of(),
                 toRanges(filter),
                 new PagingParam(PAGE_FROM, PAGE_SIZE),
@@ -78,6 +79,18 @@ public class DaftClient {
                 StringUtils.EMPTY,
                 SORT
         );
+    }
+
+    private static List<NameValues> toFilters(FilterSpec filter) {
+        var filters = new ArrayList<NameValues>(2);
+        filters.add(new NameValues(FILTER_AD_STATE, List.of(AD_STATE)));
+        var propertyTypes = filter.propertyTypes().stream()
+                .filter(type -> type != null && !type.isBlank())
+                .toList();
+        if (!propertyTypes.isEmpty()) {
+            filters.add(new NameValues(FILTER_PROPERTY_TYPE, propertyTypes));
+        }
+        return filters;
     }
 
     private static List<RangeParam> toRanges(FilterSpec filter) {

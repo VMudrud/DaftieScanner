@@ -60,7 +60,7 @@ class ScannerJobTest {
                 new FilterSpec("residential-to-rent",
                         new FilterSpec.Range(1200, 2300),
                         new FilterSpec.Range(1, 3),
-                        List.of("42"), List.of()),
+                        List.of("42"), List.of(), List.of()),
                 List.of("email"));
         job = new ScannerJob(tenant, daftClient, cursorStore, dedupStore, blockDetector,
                 eventPublisher, backoff, metricsPublisher, alertThrottle, new AtomicBoolean(false));
@@ -348,7 +348,7 @@ class ScannerJobTest {
                 new FilterSpec("residential-to-rent",
                         new FilterSpec.Range(1200, 2300),
                         new FilterSpec.Range(1, 3),
-                        List.of("42"), berRatings),
+                        List.of("42"), berRatings, List.of()),
                 List.of("email"));
         return new ScannerJob(filteredTenant, daftClient, cursorStore, dedupStore, blockDetector,
                 eventPublisher, backoff, metricsPublisher, alertThrottle, new AtomicBoolean(false));

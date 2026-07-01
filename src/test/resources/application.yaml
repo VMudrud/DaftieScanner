@@ -19,3 +19,5 @@ tenant:
     stored-shape-ids:
       - "42"
       - "43"
+    property-types:
+      - "houses"

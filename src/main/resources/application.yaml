@@ -82,8 +82,25 @@ tenant:
     #   Neighbourhoods (e.g. 2135 Tallaght, 2068 Blanchardstown, 2164 Lucan, 2107 Clondalkin,
     #     2261 Rathfarnham, ...) -> see docs/aucocomplete.json for the complete list.
     stored-shape-ids: ${TENANT_1_STORED_SHAPE_IDS:}
+    # property-types: daft.ie ad property types (a list) sent as a "propertyType"
+    # search filter. Leave blank to match all types. For residential-to-rent common
+    # values are: houses, apartments, studio-apartments, flats. e.g. "houses,apartments".
+    property-types: ${TENANT_1_PROPERTY_TYPES:}
     notifiers: ${TENANT_1_NOTIFIERS:email}
     ber-ratings: ${TENANT_1_BER_RATINGS:}
+  # Tenant 2 — houses only. Add "2" to TENANTS_ACTIVE to enable.
+  "2":
+    enabled: ${TENANT_2_ENABLED:false}
+    email: ${TENANT_2_EMAIL:noreply@example.com}
+    section: ${TENANT_2_SECTION:residential-to-rent}
+    rental-price-min: ${TENANT_2_RENTAL_PRICE_MIN:0}
+    rental-price-max: ${TENANT_2_RENTAL_PRICE_MAX:0}
+    num-beds-min: ${TENANT_2_NUM_BEDS_MIN:}
+    num-beds-max: ${TENANT_2_NUM_BEDS_MAX:}
+    stored-shape-ids: ${TENANT_2_STORED_SHAPE_IDS:}
+    property-types: ${TENANT_2_PROPERTY_TYPES:}
+    notifiers: ${TENANT_2_NOTIFIERS:email}
+    ber-ratings: ${TENANT_2_BER_RATINGS:}
 
 logging:
   level:

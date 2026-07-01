@@ -56,7 +56,8 @@ class TenantConfiguration {
                 new FilterSpec.Range(slot.getRentalPriceMin(), slot.getRentalPriceMax()),
                 new FilterSpec.Range(parseOptionalInt(slot.getNumBedsMin()), parseOptionalInt(slot.getNumBedsMax())),
                 slot.getStoredShapeIds(),
-                berRatings
+                berRatings,
+                slot.getPropertyTypes()
         );
     }
 
@@ -100,5 +101,6 @@ class TenantConfiguration {
         private List<String> storedShapeIds = List.of();
         private List<String> notifiers = List.of();
         private List<String> berRatings = List.of();
+        private List<String> propertyTypes = List.of();
     }
 }

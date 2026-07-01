@@ -27,5 +27,6 @@ class TenantConfigurationTest {
         assertThat(t.filter().rentalPrice()).isEqualTo(new FilterSpec.Range(1200, 2300));
         assertThat(t.filter().numBeds()).isEqualTo(new FilterSpec.Range(1, 3));
         assertThat(t.filter().storedShapeIds()).containsExactlyInAnyOrder("42", "43");
+        assertThat(t.filter().propertyTypes()).containsExactly("houses");
     }
 }

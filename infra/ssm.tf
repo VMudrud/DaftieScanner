@@ -10,6 +10,18 @@ locals {
     # rejects empty values. application.yaml defaults them to "" → null. Add a
     # parameter here manually only if you want an actual bed filter.
     "TENANT_1_STORED_SHAPE_IDS"       = "REPLACE_ME"
+    # TENANT_1_PROPERTY_TYPES omitted: blank = all types. Like num-beds, SSM rejects
+    # empty values; application.yaml defaults it to "" → no propertyType filter.
+    # Tenant 2 — houses only.
+    "TENANT_2_EMAIL"                  = "REPLACE_ME"
+    "TENANT_2_ENABLED"                = "REPLACE_ME"
+    "TENANT_2_SECTION"                = "REPLACE_ME"
+    "TENANT_2_RENTAL_PRICE_MIN"       = "REPLACE_ME"
+    "TENANT_2_RENTAL_PRICE_MAX"       = "REPLACE_ME"
+    "TENANT_2_NUM_BEDS_MIN"           = "REPLACE_ME"
+    "TENANT_2_NUM_BEDS_MAX"           = "REPLACE_ME"
+    "TENANT_2_STORED_SHAPE_IDS"       = "REPLACE_ME"
+    "TENANT_2_PROPERTY_TYPES"         = "REPLACE_ME"
     "AWS_REGION"                      = "eu-west-1"
     "DAFT_DYNAMO_ALERTS_TABLE"        = "daftiescanner_alerts"
     "DAFT_DYNAMO_SEEN_TABLE"          = "daftiescanner_seen"

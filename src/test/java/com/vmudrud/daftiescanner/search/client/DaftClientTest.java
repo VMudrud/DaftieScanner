@@ -30,7 +30,7 @@ class DaftClientTest {
             "residential-to-rent",
             new FilterSpec.Range(1200, 2300),
             new FilterSpec.Range(1, 2),
-            List.of("42", "43"), List.of()
+            List.of("42", "43"), List.of(), List.of()
     );
 
     @BeforeEach
@@ -77,7 +77,7 @@ class DaftClientTest {
         var ireland = new FilterSpec("residential-to-rent",
                 new FilterSpec.Range(1200, 2300),
                 new FilterSpec.Range(1, 2),
-                List.of(), List.of());
+                List.of(), List.of(), List.of());
 
         server.expect(requestTo(containsString("/api/v2/ads/listings")))
               .andExpect(method(HttpMethod.POST))
@@ -104,7 +104,7 @@ class DaftClientTest {
         var noMin = new FilterSpec("residential-to-rent",
                 new FilterSpec.Range(1200, 2300),
                 new FilterSpec.Range(null, 3),
-                List.of("42"), List.of());
+                List.of("42"), List.of(), List.of());
 
         server.expect(requestTo(containsString("/api/v2/ads/listings")))
               .andExpect(method(HttpMethod.POST))
@@ -120,7 +120,7 @@ class DaftClientTest {
         var noMax = new FilterSpec("residential-to-rent",
                 new FilterSpec.Range(1200, 2300),
                 new FilterSpec.Range(1, null),
-                List.of("42"), List.of());
+                List.of("42"), List.of(), List.of());
 
         server.expect(requestTo(containsString("/api/v2/ads/listings")))
               .andExpect(method(HttpMethod.POST))
@@ -135,7 +135,7 @@ class DaftClientTest {
         var noBeds = new FilterSpec("residential-to-rent",
                 new FilterSpec.Range(1200, 2300),
                 new FilterSpec.Range(null, null),
-                List.of("42"), List.of());
+                List.of("42"), List.of(), List.of());
 
         server.expect(requestTo(containsString("/api/v2/ads/listings")))
               .andExpect(method(HttpMethod.POST))
@@ -150,12 +150,54 @@ class DaftClientTest {
         var blanks = new FilterSpec("residential-to-rent",
                 new FilterSpec.Range(1200, 2300),
                 new FilterSpec.Range(1, 2),
-                List.of("", " "), List.of());
+                List.of("", " "), List.of(), List.of());
 
         server.expect(requestTo(containsString("/api/v2/ads/listings")))
               .andExpect(method(HttpMethod.POST))
               .andExpect(content().string(Matchers.containsString("\"storedShapeIds\":[]")))
               .andExpect(content().string(Matchers.not(Matchers.containsString("\"geoSearchType\""))))
+              .andRespond(withSuccess(new ClassPathResource("daft/sample-response.json"), MediaType.APPLICATION_JSON));
+
+        client.search(blanks);
+    }
+
+    @Test
+    void search_withPropertyTypes_sendsPropertyTypeFilterAlongsideAdState() {
+        var houses = new FilterSpec("residential-to-rent",
+                new FilterSpec.Range(2000, 4000),
+                new FilterSpec.Range(null, null),
+                List.of("1"), List.of(), List.of("houses"));
+
+        server.expect(requestTo(containsString("/api/v2/ads/listings")))
+              .andExpect(method(HttpMethod.POST))
+              .andExpect(content().string(Matchers.containsString("\"name\":\"adState\"")))
+              .andExpect(content().string(Matchers.containsString("\"name\":\"propertyType\"")))
+              .andExpect(content().string(Matchers.containsString("\"values\":[\"houses\"]")))
+              .andRespond(withSuccess(new ClassPathResource("daft/sample-response.json"), MediaType.APPLICATION_JSON));
+
+        client.search(houses);
+    }
+
+    @Test
+    void search_withNoPropertyTypes_omitsPropertyTypeFilter() {
+        server.expect(requestTo(containsString("/api/v2/ads/listings")))
+              .andExpect(method(HttpMethod.POST))
+              .andExpect(content().string(Matchers.not(Matchers.containsString("propertyType"))))
+              .andRespond(withSuccess(new ClassPathResource("daft/sample-response.json"), MediaType.APPLICATION_JSON));
+
+        client.search(FILTER);
+    }
+
+    @Test
+    void search_withBlankPropertyTypes_omitsPropertyTypeFilter() {
+        var blanks = new FilterSpec("residential-to-rent",
+                new FilterSpec.Range(2000, 4000),
+                new FilterSpec.Range(null, null),
+                List.of("1"), List.of(), List.of("", " "));
+
+        server.expect(requestTo(containsString("/api/v2/ads/listings")))
+              .andExpect(method(HttpMethod.POST))
+              .andExpect(content().string(Matchers.not(Matchers.containsString("propertyType"))))
               .andRespond(withSuccess(new ClassPathResource("daft/sample-response.json"), MediaType.APPLICATION_JSON));
 
         client.search(blanks);
